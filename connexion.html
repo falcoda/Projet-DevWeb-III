@@ -1,0 +1,63 @@
+<!-- Dallenogare Corentin -->
+<!-- Derwa Alexandre -->
+<!-- Lits Maxime -->
+<!-- Charlier François -->
+<!-- Projet JUIN 2021, Site Web de L'ASBL FALC'OHM SYSTEM -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+
+<script src="js/falc.js"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <title>falc'ohm system</title>
+
+    <div class="header" id="head" >
+        <img id="logoEnTete" src="img/falcohm_logo.png" alt="logo de la page" width="75px" height="75px">
+        <h1 id="titre"> FALC'OHM SYSTEM</h1>
+        <div class="navBar" id="enTete" >
+            <div class="navigation">
+                <a href="acceuil.html" >A Propos</a>   <!-- navigation -->
+                <a href="contact.html" >Contacts</a>
+                <a href="materiel.html" >Matériel</a>
+                <a href="connexion.html">Connexion</a> <!-- onglet permettant la connexion pour le rajout de données -->
+                <a href="devis.html" >Devis</a>
+            </div>
+            <div id="rectangle"></div>
+        </div>
+    </div>
+</head>
+<body onscroll="changeHead();" onload="chargerObj();chargerCateg('categ')" > <!-- au scroll, animation de la barre d'état + de la photo -->
+<!-- au chargement, charge les objets + charge les catégories en fonction de la BDD -->
+<br>
+<div style="text-align: center;">
+    <img src="img/sound2.jpg" alt="falc'ohm system " id="imgCouv">
+    <div id="sectionApropos"></div>
+    <div id="body">
+
+        <div style="background-color: lightslategray; height: 10em; margin-top: 10em; width: 65%; ">
+            <form id="form" name="connexion" style="padding-top: 5%;" onsubmit="return connect()" action="ajoutMateriel.html">
+                <label for="nom">Nom</label>
+                <input type="text" id="nom" name="nom">
+                </br>
+                <label for="psw">Mot de passe</label>
+                <input type="password" id="psw" name="psw">
+                <input type="submit" value="Connexion" >
+                <p id="verif" style="color: red"></p>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+
+
+
+
+

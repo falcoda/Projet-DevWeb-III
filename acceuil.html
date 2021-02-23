@@ -1,0 +1,69 @@
+<!-- Dallenogare Corentin -->
+<!-- Derwa Alexandre -->
+<!-- Lits Maxime -->
+<!-- Charlier François -->
+<!-- Projet JUIN 2021, Site Web de L'ASBL FALC'OHM SYSTEM -->
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+
+<script src="js/falc.js"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <title>falc'ohm system</title>
+
+    <div class="header" id="head" >
+        <img id="logoEnTete" src="img/falcohm_logo.png" alt="logo de la page" width="75px" height="75px">
+        <h1 id="titre"> FALC'OHM SYSTEM</h1>
+        <div class="navBar" id="enTete" >
+            <div class="navigation">
+                <a href="acceuil.html" >A Propos</a>   <!-- navigation -->
+                <a href="contact.html" >Contacts</a>
+                <a href="materiel.html" >Matériel</a>
+                <a href="connexion.html">Connexion</a> <!-- onglet permettant la connexion pour le rajout de données -->
+                <a href="devis.html" >Devis</a>
+            </div>
+            <div id="rectangle"></div>
+        </div>
+    </div>
+</head>
+<body onscroll="changeHead();" onload="chargerObj();chargerCateg('categ')" > <!-- au scroll, animation de la barre d'état + de la photo -->
+                                                                        <!-- au chargement, charge les objets + charge les catégories en fonction de la BDD -->
+<br>
+<div style="text-align: center;">
+    <img src="img/sound2.jpg" alt="falc'ohm system " id="imgCouv">
+    <div id="sectionApropos"></div>
+    <div id="body">
+        <div id="content" class="main">
+            <div class="section" id="sectionApropos2"><br>
+                <h2>Ω A propos de Falc'ohm System </h2>
+                <div id="presTexte"> <!-- presentation -->
+                    <p>Falc'ohm system est un soundsystem Belge crée en 2018 par 3 amis originaire du brabant wallon.<br>
+                        Ayant envie de partager leur passion de la musique, l'idée de construire un soundsystem ainsi que d'organiser des soirée est née.
+                    </p>
+                </div><!-- logo présent dans la section contact -->
+                <img id="logoCouleur" src="img/falcohm_stem_final_couleur_min.png"
+                     onmouseover="this.src='img/falcNoirB.png'" onmouseout="this.src='img/falcohm_stem_final_couleur_min.png'" alt="logo couleur" >
+
+                <hr width="500px"> <div id="sectionBaffle"></div>
+                <br ><br><br>
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
