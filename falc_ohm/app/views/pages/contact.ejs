@@ -22,13 +22,31 @@
     <div id="container"></div>
 </head>
 <body>
-<div class="row">
-    <div class="col">
-        <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+    <div  id = "content">
+        <h1>Contact</h1>
+        <form>
+            <fieldset>
+                <legend>Pour tout renseignement supplémentaire, veuillez nous contacter</legend>
+
+                <div class="form-group">
+                    <label for="nom">Entrez votre nom</label>
+                    <input type="text" class="form-control" id="nom" placeholder="Pierre GIRAUD">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Entrez votre mail</label>
+                    <input type="email" class="form-control form-control-lg" id="email" placeholder="pierre.giraud@edhec.com">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="bio">Commentaire</label>
+                    <textarea class="form-control" id="commentaire" rows="5"></textarea>
+                </div>
+                <button class="btn btn-light">Envoyer
+                </button>
+            </fieldset>
+        </form>
     </div>
-    <div class="col">
-        <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
-    </div>
-</div>
 </body>
 </html>

@@ -106,10 +106,11 @@ div.header{ /*div contenant l'en tête */
 #content{ /* contenu*/
     position: relative;
     top : -14px;
-    margin-top: 10px;
+    margin-top: 10%;
     background-color: lightslategray;
     width: 65%;
     display: inline-block;
+
 
 }
 
@@ -199,109 +200,3 @@ div.collection {
     margin-bottom:10px ;
 }
 
-
-/* modal */
-.modal{
-
-    display:none;
-    padding-top:100px;
-    position:fixed;
-    left:0;
-    top:0;
-    width:100%;
-    height:100%;
-    /* overflow:auto;/ barre pour descendre */
-
-}
-
-img.demo {
-    display: block;
-    margin-left: auto;
-    margin-right: auto }
-
-.modalContent{
-    z-index: 200;
-    margin:auto;
-    align-items: center;
-    background-color:grey;
-    opacity: 0.95;
-    position:relative;
-    padding:0.2em;
-    outline:0;
-    width:600px;
-    height: 500px;
-    border-radius: 20px;
-    /*overflow-y: scroll;*/
-
-}
-
-.modalFermer{
-    z-index: 300;
-    position:absolute;
-    right:10px;
-    top:10px}
-
-.modalTop{
-    margin-left:auto;
-    margin-right:auto;
-
-}
-
-.modalNavBar{
-    background-color: lightblue;
-    height: 30px;
-}
-
-
-.modalLNav{
-    position:absolute;
-    top:50%;
-    left:0;
-    transform:translate(0%,-50%);
-    -ms-transform:translate(-0%,-50%)
-}
-.modalRNav{
-    position:absolute;
-    top:50%;
-    right:0;
-    transform:translate(0%,-50%);
-    -ms-transform:translate(0%,-50%)
-}
-
-
-.navBarLR{
-    position: relative
-}
-
-.articles{
-    float:left;
-    width:33.33333%
-}
-.fleche{
-    padding:0 16px;
-    text-align:center;
-    cursor:pointer;
-}
-.fleche:hover{
-    box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-    border-radius: 5px;
-}
-#caption{
-    text-align:center;
-    background-color: red;
-}
-
-
-div#info a {
-    margin-bottom: 30px;
-
-}
-
-#connexion{
-    text-align: center;
-}
-
-.ajoutForme{
-    padding-bottom: 3px;
-
-}
