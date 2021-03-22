@@ -1,6 +1,10 @@
 let express = require("express");
 let app = express();
+//<<<<<<< HEAD
 //let bootstrap = require('bootstrap');
+
+/*const bootstrap = require('bootstrap');
+>>>>>>> 86bb03ddd7877e17cedca3d0eadb0465ea7e9483*/
 
 app.set("view engine", "ejs");
 
