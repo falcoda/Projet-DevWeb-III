@@ -52,7 +52,6 @@ class buttonSubmit extends React.Component {
         return <button type="submit" class="btn btn-light" onClick={() => this.setState({clicked: true})}>
             Envoyer
         </button>
-
     }
 }
 
