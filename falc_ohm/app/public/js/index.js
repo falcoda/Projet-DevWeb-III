@@ -50,28 +50,3 @@ function render() {
     ReactDOM.render(navbar,document.querySelector('#container'));
 }
 render();
-
-class buttonSubmit extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { clicked: false };
-    }
-
-    render() {
-        if (this.state.clicked) {
-            return <div><button className="btn btn-light" onClick={() => this.setState({clicked: true})}>
-                Envoyer
-            </button>
-            Message bien envoyé
-            </div>
-        }
-
-        return <button class="btn btn-light" onClick={() => this.setState({ clicked: true })}>
-            Envoyer
-        </button>
-
-    }
-}
-
-const domContainer = document.querySelector('#buttonSubmit');
-ReactDOM.render(React.createElement(buttonSubmit), domContainer);

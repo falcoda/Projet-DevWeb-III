@@ -7,7 +7,6 @@ html{
 }
 
 
-
 #imgCouv{
     position: relative;
     z-index: 1;
@@ -15,36 +14,9 @@ html{
     transition: all 1s;
 }
 
-#logoEnTete{ /* logo Noir/Blanc */
-    position: relative;
-    left: 20px;
-    top: 10px;
-    float: left;
-}
-
-
-
-#titre{
-    position: relative;
-    left: 40px;
-    color: black;
-}
-
-.navBar a { /*set de la bare des menus persistante */
-    float: left;
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-
-
 #body{ /* balise avec tout le bas de la page */
     margin-top: 140px;
     z-index: 2;
-
 
 }
 
