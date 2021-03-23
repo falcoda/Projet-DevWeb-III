@@ -16,32 +16,23 @@ form.addEventListener("submit", (param)=>{
 
    let xhr = new XMLHttpRequest();
 
-   xhr.open("POST", "/contact");
+   xhr.open("POST", "/sendMail");
    xhr.setRequestHeader("content-type", "application/json");
    xhr.onload = function () {
        console.log(xhr.responseText);
        if(xhr.responseText == "success") {
-           alert("success");
+           alert("Mail envoyé avec success");
 
            identite.value = "";
            mail.value = "";
            commentaire.value = "";
        }
        else {
-           alert("Problemes")
+           alert("Une donnée est mal encodée")
        }
    };
    xhr.send(JSON.stringify(data));
 });
-
-function sendData() {
-
-    con.query("INSERT INTO messages (identite, mail, message) VALUES ("+ identite +" , " + mail + ", " + commentaire + ")", function (err, result) {
-        if (err) throw err;
-        console.log("Données injectées !");
-    });
-    return false
-}
 
 class buttonSubmit extends React.Component {
     constructor(props) {
