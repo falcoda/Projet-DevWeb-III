@@ -123,3 +123,9 @@ div.collection {
     margin-bottom:10px ;
 }
 
+
+#textDevis {
+    color: #444444;
+    background-color: rgba(0, 0, 0, 0.35);
+}
+
