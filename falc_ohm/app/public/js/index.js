@@ -38,7 +38,7 @@ function render() {
         <div className="navigation">
         <a href="/">A Propos</a>
         <a href="contact">Contacts</a>
-        <a href="materiel">Matériel</a>
+        <a href="materiels">Matériels</a>
         <a href="authentification">Authentification</a>
         <a href="devis">Devis</a>
         </div>
