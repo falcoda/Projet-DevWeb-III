@@ -113,7 +113,7 @@ div.collection {
     position: relative;
     left: 20%;
 }
-#nom, #prenom, #email, #message, #submit{
+#adressemail, #motdepasse{
     color:grey;
     margin-bottom:10px ;
     border-radius: 5px;
