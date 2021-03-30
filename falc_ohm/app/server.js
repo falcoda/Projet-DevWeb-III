@@ -81,7 +81,7 @@ app.get("/authentification", (request, response)=> {
     response.render("pages/authentification")
 });
 
-app.listen(83);
+app.listen(80);
 
 /*
 var mysql = require('mysql');

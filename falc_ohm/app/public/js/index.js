@@ -37,9 +37,9 @@ function render() {
     <div className="navBar" id="enTete">
         <div className="navigation">
         <a href="/">A Propos</a>
-    <a href="contact">Contacts</a>
+        <a href="contact">Contacts</a>
         <a href="materiel">Matériel</a>
-        <a href="connexion">Connexion</a>
+        <a href="authentification">Authentification</a>
         <a href="devis">Devis</a>
         </div>
         <div id="rectangle"></div>
