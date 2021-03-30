@@ -16,7 +16,7 @@ form.addEventListener("submit", (param)=>{
 
    let xhr = new XMLHttpRequest();
 
-   xhr.open("POST", "/sendMail");
+   xhr.open("POST", "/mail");
    xhr.setRequestHeader("content-type", "application/json");
    xhr.onload = function () {
        console.log(xhr.responseText);

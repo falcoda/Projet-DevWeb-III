@@ -32,7 +32,7 @@ app.get("/contact", (request, response)=> {
     response.render("pages/contact");
 });
 
-app.post("/sendMail", (request, response)=>{
+app.post("/mail", (request, response)=>{
     console.log(request.body);
     const transporter = nodemailer.createTransport({
         host: 'ssl0.ovh.net',
@@ -69,7 +69,7 @@ app.post("/sendMail", (request, response)=>{
     }
 });
 
-app.get("/materiel", (request, response)=> {
+app.get("/materiels", (request, response)=> {
     response.render("pages/materiel")
 });
 
@@ -77,8 +77,8 @@ app.get("/devis", (request, response)=> {
     response.render("pages/devis")
 });
 
-app.get("/connexion", (request, response)=> {
-    response.render("pages/connexion")
+app.get("/authentification", (request, response)=> {
+    response.render("pages/authentification")
 });
 
 app.listen(83);
