@@ -3,10 +3,11 @@ div.header{ /*div contenant l'en tête */
     position: fixed; /* Set the navbar to fixed position */
     top: 0;
     width: 100%;
-    height: 14%;
+    height: 12%;
     left: 0;
     z-index: 20;
     text-align: left;
+
 
 }
 .navigation{
@@ -21,9 +22,10 @@ div.header{ /*div contenant l'en tête */
     height: 15px;
     position: absolute;
     z-index: 3;
-    top : 30px;
+    top : 52px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+
 }
 
 #head{
@@ -37,10 +39,11 @@ div.header{ /*div contenant l'en tête */
     position: relative;
     top : -75px;
     border-radius: 5px;
-    padding: 3px;
+
     width: 600px; /*400*/
     left: 51.5%;
     font-size: 20px;
+    padding-top: 2%;
 
 
 }
