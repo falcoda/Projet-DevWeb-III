@@ -16,63 +16,52 @@ div.header{ /*div contenant l'en tête */
 
 }
 
-#rectangle{
-    width: 531px; /*372*/
-    background-color: lightgrey;
-    height: 15px;
-    position: absolute;
-    z-index: 3;
-    top : 52px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
 
-}
 
 #head{
-
+    position: relative;
+    z-index: 20;
     transition: all 2.5s ease;
     background-color: transparent;
+    opacity: 0.8;
+}
+body{
+    z-index: 10;
 }
 
-.navBar { /* set de la taille et position de la barre des menus */
-    overflow: hidden;
-    position: relative;
-    top : -75px;
-    border-radius: 5px;
+.nav-item{
+     font-size: 140%;
 
-    width: 600px; /*400*/
-    left: 51.5%;
-    font-size: 20px;
-    padding-top: 2%;
+ }
+.nav-link{
+    color: black;
 
+}
+.nav-link:hover{
+    color: black;
 
 }
 
-.navBar a:hover {/* Change background on mouse-over */
+.nav-item:hover{
+
     background: lightgrey;
     color: black;
     border-radius: 5px;
-    height: 10px;
+    height: 50px;
 }
+ul.nav{
+    width: 50%;
 
-.navBar a { /*set de la bare des menus persistante */
-    float: left;
-    display: block;
+}
+a.navbar-brand{
+    font-size: 200%;
     color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
 
-#logoEnTete{ /* logo Noir/Blanc */
-    position: relative;
-    left: 20px;
-    top: 10px;
-    float: left;
+    font-family: "3ds Light";
 }
+a.navbar-brand:hover{
 
-#titre{
-    position: relative;
-    left: 40px;
     color: black;
+
 }
+

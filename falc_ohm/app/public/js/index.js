@@ -1,12 +1,6 @@
 function changeHead() { // animation visuelles au niveau de la photo de couverture et de  la barre d'état
 
-    if (document.body.scrollTop > 45 || document.documentElement.scrollTop > 45) { //lorsqu'on descend de 45px
-        document.getElementById("head").style.backgroundColor = "whitesmoke";
-        document.getElementById("head").style.opacity= "0.95";
-    }
-    else  {                                                                             //quand on remonte
-        document.getElementById("head").style.backgroundColor = "transparent";
-    }
+
 
     if (document.body.scrollTop > 180 || document.documentElement.scrollTop > 180) {  //lorsqu'on descend de 180 px
         document.getElementById("imgCouv").style.transform = "scale(1.20)";  //augmenter l'échelle
@@ -28,22 +22,28 @@ function zoomOut(n) {  // dézoom lorsque la souris sort de la photo
 }
 
 function render() {
-	const navbar =<div className="row align-items-end">
+	const navbar =<div id="head">
 		<title>falc'ohm system</title>
-		<div className="header m-auto" id="head">
-			<img id="logoEnTete" src="img/falcohm_logo.png" alt="logo de la page" width="75px" height="75px"></img>
-			<h1 id="titre"> FALC'OHM SYSTEM</h1>
-			<div className="navBar" id="enTete">
-				<div className="navigation">
-					<a href="/">A Propos</a>
-					<a href="contact">Contacts</a>
-					<a href="materiels">Matériels</a>
-					<a href="authentification">Authentification</a>
-					<a href="devis">Devis</a>
+		<nav className="navbar navbar-expand-lg fixed-top bg-light ">
+			<div className="container-fluid">
+				<div className="navbar-header">
+					<a className="navbar-brand" href="/">
+						<img  id="logoEnTete" src="img/falcohm_logo.png" alt="logo de la page" width="75px" height="75px"></img>
+                        FALC'OHM SYSTEM
+					</a>
 				</div>
-				<div id="rectangle"></div>
+
+				<ul className="nav navbar-nav">
+					<li className="nav-item"><a href="/" className="nav-link">A Propos</a></li>
+					<li className="nav-item"><a href="contact" className="nav-link">Contacts</a></li>
+					<li className="nav-item"><a href="materiel" className="nav-link">Matériels</a></li>
+					<li className="nav-item"><a href="authentification" className="nav-link">Authentification</a></li>
+					<li className="nav-item"><a href="devis" className="nav-link">Devis</a></li>
+				</ul>
+
 			</div>
-		</div>
+
+		</nav>
 
 	</div>;
 	// eslint-disable-next-line no-undef

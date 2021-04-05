@@ -7,10 +7,14 @@ html{
 }
 
 body{
+    position: relative;
     margin-top: 2%;
     background-color: whitesmoke;
+    z-index: 10;
 }
-
+.allPage{
+    margin-top: 1%;
+}
 #imgCouv{
     position: relative;
     z-index: 1;
