@@ -28,25 +28,25 @@ function zoomOut(n) {  // dézoom lorsque la souris sort de la photo
 }
 
 function render() {
-    const navbar =<div>
-    <title>falc'ohm system</title>
+	const navbar =<div className="row align-items-end">
+		<title>falc'ohm system</title>
+		<div className="header m-auto" id="head">
+			<img id="logoEnTete" src="img/falcohm_logo.png" alt="logo de la page" width="75px" height="75px"></img>
+			<h1 id="titre"> FALC'OHM SYSTEM</h1>
+			<div className="navBar" id="enTete">
+				<div className="navigation">
+					<a href="/">A Propos</a>
+					<a href="contact">Contacts</a>
+					<a href="materiels">Matériels</a>
+					<a href="authentification">Authentification</a>
+					<a href="devis">Devis</a>
+				</div>
+				<div id="rectangle"></div>
+			</div>
+		</div>
 
-    <div className="header" id="head">
-        <img id="logoEnTete" src="img/falcohm_logo.png" alt="logo de la page" width="75px" height="75px"></img>
-        <h1 id="titre"> FALC'OHM SYSTEM</h1>
-    <div className="navBar" id="enTete">
-        <div className="navigation">
-        <a href="/">A Propos</a>
-        <a href="contact">Contacts</a>
-        <a href="materiels">Matériels</a>
-        <a href="authentification">Authentification</a>
-        <a href="devis">Devis</a>
-        </div>
-        <div id="rectangle"></div>
-        </div>
-        </div>
-
-        </div>;
-    ReactDOM.render(navbar,document.querySelector('#container'));
+	</div>;
+	// eslint-disable-next-line no-undef
+	ReactDOM.render(navbar,document.querySelector("#container"));
 }
 render();
