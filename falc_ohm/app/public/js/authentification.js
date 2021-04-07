@@ -1,3 +1,4 @@
+/*
 let form1 = document.getElementById("formConnexion");
 let form2 = document.getElementById("formInscription");
 let adressemail1 = document.getElementById("adressemail1");
@@ -8,7 +9,7 @@ let numerotel = document.getElementById("numerotel");
 let adressemail2 = document.getElementById("adressemail2");
 let motdepasse2 = document.getElementById("motdepasse2");
 
-form.addEventListener("submit", (param)=>{
+form1.addEventListener("submit", (param)=>{
     param.preventDefault();
 
     let data1 = {
@@ -16,16 +17,7 @@ form.addEventListener("submit", (param)=>{
         motdepasse1: motdepasse1.value,
     };
 
-    let data2 = {
-        nom: nom.value,
-        prenom: prenom.value,
-        numerotel: numerotel.value,
-        adressemail2: adressemail2.value,
-        motdepasse2: motdepasse2.value,
-    };
-
     console.log(data1);
-    console.log(data2);
 
     let tableUtilisateurs = [];
 
@@ -39,7 +31,7 @@ form.addEventListener("submit", (param)=>{
         let compteur = 0;
         for (let i of tableUtilisateurs) {
             compteur++;
-            if (adressemail1 == i.utilisateur && motdepasse1 == i.motdepasse) {
+            if (adressemail1.value == i.utilisateur && motdepasse1.value == i.motdepasse) {
                 // CODE POUR FAIRE LES COOKIES
             }
             else if (compteur = tableUsers.length) {
@@ -51,7 +43,66 @@ form.addEventListener("submit", (param)=>{
     xhr.send();
 });
 
-class buttonSubmit extends React.Component {
+form2.addEventListener("submit", (param)=>{
+    param.preventDefault();
+
+    let data2 = {
+        nom: nom.value,
+        prenom: prenom.value,
+        numerotel: numerotel.value,
+        adressemail2: adressemail2.value,
+        motdepasse2: motdepasse2.value,
+    };
+
+    console.log(data2);
+
+    let tableUtilisateurs = [];
+
+    let nom = form2.nom.value;
+    let prenom = formualire.prenom.value;
+    let pseudo = formualire.pseudo.value;
+    let motDePasse = formualire.motDePasse.value;
+    let confirmation = formualire.confirmation.value;
+    let adresseMail = formualire.adresseMail.value;
+    let date = formualire.date.value;
+    let genre = formualire.genre.value;
+
+    if (motDePasse.length >= 8 && motDePasse == confirmation) {
+        let xhr = new XMLHttpRequest();
+        xhr.open('get', 'http://localhost/get_usersTable', true);
+        xhr.onload = function jsonToTable() {
+            let compteur = 0;
+            let check = true;
+            tableUtilisateurs =  JSON.parse(xhr.responseText);
+            for (let i of tableUsers) {
+                compteur++;
+                if (pseudo == i.userPseudo || adresseMail == i.userMail) {
+                    check = false;
+                    getElemId('messageErreur1').hidden= false;
+                    getElemId('messageErreur2').hidden= true;
+                    break;
+                }
+
+                if (check && compteur == tableUsers.length){
+                    let xhr2 = new XMLHttpRequest;
+                    xhr2.open('get', 'http://localhost/get_createUser?nom=' + nom + '&prenom=' + prenom + '&pseudo=' + pseudo + '&motDePasse=' + motDePasse + '&mail=' + adresseMail + '&naissance=' + date + '&sexe='+ genre, true);
+                    xhr2.send();
+                    formualire.nom.value = "";
+                    formualire.prenom.value="";
+                    formualire.pseudo.value="";
+                    formualire.motDePasse.value="";
+                    formualire.adresseMail.value="";
+                    formualire.date.value="";
+                    formualire.genre.value="M";
+                    goToConnexion();
+                }
+            }
+        };
+        xhr.send();
+};
+*/
+
+class buttonSubmit1 extends React.Component {
     constructor(props) {
         super(props);
         this.state = { clicked: false };
@@ -72,5 +123,5 @@ class buttonSubmit extends React.Component {
     }
 }
 
-const domContainer = document.querySelector('#buttonSubmit');
-ReactDOM.render(React.createElement(buttonSubmit), domContainer);
+const domContainer = document.querySelector('#buttonSubmit1');
+ReactDOM.render(React.createElement(buttonSubmit1), domContainer);
