@@ -69,8 +69,26 @@ app.post("/mail", (request, response)=>{
     }
 });
 
-app.get("/materiels", (request, response)=> {
-    response.render("pages/materiel")
+app.get("/materiels/:format?", (request, response)=> {
+
+    if (request.params.format == "json") {
+
+        let con = mysql.createConnection({
+            host: "localhost",
+            user: "root",
+            password: "root",
+            database: "falcohm"
+        });
+        con.connect(function (err) {
+            if (err) throw err;
+            data = con.query("SELECT m.nom,m.prix,m.description,m.nombre,m.en_location,c.nom_categorie from materiels as m JOIN categories c on m.id_categorie = c.id_categorie GROUP BY nom_categorie", function (err, result) {
+                response.send(JSON.stringify(result))
+            });
+        });
+    }
+    else{
+        response.render("pages/materiel")
+    }
 });
 
 app.get("/devis", (request, response)=> {
