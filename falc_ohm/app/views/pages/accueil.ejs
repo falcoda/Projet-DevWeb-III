@@ -6,32 +6,54 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="fr">
 <link rel="stylesheet" type="text/css" href="css/navbar.css">
-<link rel="stylesheet" type="text/css" href="css/index.css">
+<link rel="stylesheet" type="text/css" href="css/accueil.css">
+<link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+        crossorigin="anonymous"
+/>
 
 <script src="https://unpkg.com/react@16/umd/react.development.js" defer></script>
 <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" defer></script>
 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> <!--que pour le développement -->
 <script type="text/babel"  defer src="js/index.js"></script>
 
-<head >
+<head>
     <meta charset="UTF-8">
     <div id="container"></div>
 </head>
-<body onscroll="changeHead();" onload="chargerObj();chargerCateg('categ')" class="row align-items-end" >
-<div class="m-auto ">
-    <br>
-    <img src="img/sound2.jpg" alt="falc'ohm system " id="imgCouv" >
+<body onscroll="changeHead();" style="z-index: 10" >
 
-    <div  id="content"><br>
-        <h2>Ω A propos de Falc'ohm System </h2>
-        <img id="logoCouleur" src="img/falcohm_stem_final_couleur_min.png"
-             onmouseover="this.src='img/falcNoirB.png'" onmouseout="this.src='img/falcohm_stem_final_couleur_min.png'" alt="logo couleur" >
-        <p>description asbl ...</p>
+    <div class="allPage row align-items-start flex-column" >
+        <div class="m-auto align-self-center" ><br>
+            <img src="img/sound2.jpg" alt="falc'ohm system " id="imgCouv" >
+        </div><br><br><br><br><br>
+        <div id="content" class="m-auto align-self-end row container" >
+            <h2 class="titreContent">Ω A propos de Falc'ohm System </h2>
+            <div class="row">
+
+
+            <div class="col-md-12">
+                <img id="logoCouleur" src="img/falcohm_stem_final_couleur_min.png" style='float:left;width:200px;height:200px; margin-right:10px;'
+                     onmouseover="this.src='img/falcNoirB.png'" onmouseout="this.src='img/falcohm_stem_final_couleur_min.png'" alt="logo couleur" >
+                <p>Un projet est avant tout une idée qui germe dans un coin et qui mûrit lentement, grandissant et s'étirant au fil du temps. "Falcohm system", voici la nôtre. </p>
+
+                <p>Initialement conçu pour servir de Sound Système perso, le chemin parcouru est déjà tel que nous répondons maintenant sous le nom d'une l'ASBL. Constituée essentiellement de passionnés autodidactes, nous continuons de faire avancer le projet par différentes voies.</p>
+
+                <p>L'association a un an déjà et contribue à l'offre de service de location de matériels son/lumière dans la région wallonne. </p>
+                <p> Parallèlement, nous proposons nos propres soirées organisées en interne, et plus récemment des streamings, dans lesquelles nous utilisons nos équipements et développons nos connaissances.</p>
+
+                <p>Nous défendons, avec ce projet, les valeurs de la musique en tant qu'art essentiel et encré dans la société à tout point de vue. La vision de notre ASBL reflète la liberté dont doit bénéficier cette culture.</p>
+                <p>Nous sommes heureux de pouvoir vous la partager par le biais de ce site qui on l'espère répondra à vos attentes.</p>
+            </div>
+            </div>
+        </div>
     </div>
 
-</div>
 </body>
 </html>

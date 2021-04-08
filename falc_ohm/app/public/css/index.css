@@ -7,55 +7,8 @@ html{
 }
 
 
-#imgCouv{
-    position: relative;
-    z-index: 1;
-    top:65px;
-    transition: all 1s;
-}
-
-#body{ /* balise avec tout le bas de la page */
-    margin-top: 140px;
-    z-index: 2;
-
-}
-
-#soundNoirBlanc{ /*photo de couverture */
-    position: relative;
-    width:75% ;
-    height:75% ;
-
-}
-
-#content{ /* contenu*/
-
-    margin-top: 11%;
-    background-color: lightslategray;
-    width: 65%;
 
 
-
-}
-
-#sectionApropos2, #sectionBaffle2, #sectionContact { /* alignement des textes */
-    text-align: left;
-    padding-left: 10px;
-
-}
-
-#logoCouleur{ /* logo dans a propos */
-    height: 15%;
-    width: 15%;
-    position: relative;
-    left: 80%;
-    top : -100px;
-
-}
-
-#presTexte{ /* taille de la zone de texte a propos */
-    width: 85%;
-    color: whitesmoke;
-}
 
 #liste{
     font-size: 20px;
@@ -68,26 +21,6 @@ html{
     top: 700px;
 }
 
-.label, .nomProd{
-    text-align: center;
-    margin: 1px;
-}
-
-.collection{
-    padding: 5px;
-    margin-bottom: 10px;
-    text-align: center;
-    overflow: hidden;
-
-}
-.collection:hover{
-    border-bottom: 2px solid darkgray;
-}
-/*
-.zoom:hover{
-    transform: scale(0.90);
-    transition: all .3s;
-}*/
 
 .zoom{
     border-radius: 3px;
