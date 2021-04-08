@@ -81,6 +81,37 @@ app.get("/authentification", (request, response)=> {
     response.render("pages/authentification")
 });
 
+app.get("/utilisateurs", (request, response)=> {
+    let con = mysql.createConnection({
+        host: "localhost",
+        user: "root",
+        password: "root",
+        database : "falcohm"
+    });
+    con.connect(function(err) {
+        if (err) throw err;
+        con.query("SELECT utilisateurs.id_utilisateurs, utilisateurs.adressemail, utilisateurs.motdepasse, utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone, utilisateurs.admin from utilisateurs", function (err, result) {
+            response.send(JSON.stringify(result));
+        });
+    });
+});
+
+app.post("/inscription", (request, response)=> {
+    console.log(typeof(request.body.motdepasse2));
+    let con = mysql.createConnection({
+        host: "localhost",
+        user: "root",
+        password: "root",
+        database : "falcohm"
+    });
+    con.connect(function(err) {
+        if (err) throw err;
+        con.query("INSERT INTO utilisateurs (nom, prenom, numerotelephone, adressemail, motdepasse) VALUES (?, ?, ?, ?, ?)", [request.body.nom, request.body.prenom, request.body.numerotel, request.body.adressemail2, request.body.motdepasse2], function (err, result) {
+            response.send("succes");
+        });
+    });
+});
+
 app.listen(80);
 
 /*
