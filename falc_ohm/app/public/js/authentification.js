@@ -1,6 +1,3 @@
-let utilisateurConnecte = GetCookie("connexion");
-console.log("session sur " +utilisateurConnecte);
-
 //******************************************************************************
 //  Cookie Functions -- "Night of the Living Cookie" Version (25-Jul-96)
 //  Written by:  Bill Dortch, hIdaho Design <bdortch@hidaho.com>
