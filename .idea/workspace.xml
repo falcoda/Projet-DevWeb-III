@@ -54,6 +54,17 @@
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="MySQL for 5.1 - @localhost" type="feb32156:DbDataSourceImpl" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL for 5.1 - @localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL for 5.1 - @localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="falcohm: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
     </expand>
     <select />
   </component>
@@ -103,6 +114,9 @@
     <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\charl\Documents\GitHub\Projet-DevWeb-III\falc_ohm\app\public\img" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\" />
     </key>
@@ -169,6 +183,12 @@
       <workItem from="1617113609791" duration="2355000" />
       <workItem from="1617188860497" duration="8605000" />
       <workItem from="1617614627384" duration="15132000" />
+      <workItem from="1617895114214" duration="391000" />
+      <workItem from="1617895531619" duration="7795000" />
+      <workItem from="1617905518061" duration="1799000" />
+      <workItem from="1617968869156" duration="4898000" />
+      <workItem from="1617981639096" duration="6048000" />
+      <workItem from="1618054733407" duration="4224000" />
     </task>
     <task id="LOCAL-00001" summary="ajout bootstrap">
       <created>1616347354449</created>
