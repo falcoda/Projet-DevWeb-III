@@ -1,4 +1,5 @@
-let utilisateurConnecte;
+let utilisateurConnecte = GetCookie("connexion");
+console.log("session sur " +utilisateurConnecte);
 
 //******************************************************************************
 //  Cookie Functions -- "Night of the Living Cookie" Version (25-Jul-96)
@@ -125,7 +126,12 @@ form1.addEventListener("submit", (param)=>{
         for (let i of tableUtilisateurs) {
             compteur++;
             if (data1.adressemail1 == i.adressemail && data1.motdepasse1 == i.motdepasse) {
-                //utilisateurConnecte = GetCookie(connexion);
+                let duree_cookie = 100;         // durée de vie du cookie en jours
+                let expiration = new Date();    // date et heure courante en format texte
+                expiration.setTime(expiration.getTime() + (duree_cookie * 24*60*60*1000));
+                // => on peut utiliser la variable "expiration"
+                SetCookie ("connexion",data1.adressemail1,expiration,null,null,false);
+                utilisateurConnecte = GetCookie("connexion");
                 console.log("succès")
                 break;
             }
@@ -180,7 +186,16 @@ form2.addEventListener("submit", (param)=>{
                 }
 
                 if (check && compteur == tableUtilisateurs.length) {
-                    console.log("utilisateur bien créé")
+                    let duree_cookie = 100;         // durée de vie du cookie en jours
+                    let expiration = new Date();    // date et heure courante en format texte
+                    expiration.setTime(expiration.getTime() + (duree_cookie * 24*60*60*1000));
+                    // => on peut utiliser la variable "expiration"
+                    SetCookie ("connexion",data2.adressemail2,expiration,null,null,false);
+                    utilisateurConnecte = GetCookie("connexion");
+                    if (utilisateurConnecte != 0){
+                        console.log("le cookie est bien sur " + getCookie("connexion"))
+                    }
+                    console.log("utilisateur bien créé");
                 }
             }
         };

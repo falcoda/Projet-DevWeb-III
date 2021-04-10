@@ -97,7 +97,6 @@ app.get("/utilisateurs", (request, response)=> {
 });
 
 app.post("/inscription", (request, response)=> {
-    console.log(typeof(request.body.motdepasse2));
     let con = mysql.createConnection({
         host: "localhost",
         user: "root",
