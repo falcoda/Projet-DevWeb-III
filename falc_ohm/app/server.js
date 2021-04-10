@@ -51,7 +51,7 @@ app.post("/mail", (request, response)=>{
 	};
 	if(request.body.commentaire ===""){
 	    response.send("comInvalid");
-    }
+	}
 	else if(request.body.nom ==="" ) {
 		response.send("nomInvalid");
 	}
@@ -71,7 +71,7 @@ app.post("/mail", (request, response)=>{
 		});
 		con.connect(function(err) {
 			if (err) throw err;
-			    con.query("INSERT INTO messages (identite, mail, message) VALUES (?, ?, ?)", [request.body.nom +" " +request.body.prenom, request.body.mail, request.body.commentaire], function (err, result) {
+				con.query("INSERT INTO messages (identite, mail, message) VALUES (?, ?, ?)", [request.body.nom +" " +request.body.prenom, request.body.mail, request.body.commentaire], function (err, result) {
 			});
 		});
 		response.send("success");
@@ -110,33 +110,33 @@ app.get("/authentification", (request, response)=> {
 });
 
 app.get("/utilisateurs", (request, response)=> {
-    let con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "root",
-        database : "falcohm"
-    });
-    con.connect(function(err) {
-        if (err) throw err;
-        con.query("SELECT utilisateurs.id_utilisateurs, utilisateurs.adressemail, utilisateurs.motdepasse, utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone, utilisateurs.admin from utilisateurs", function (err, result) {
-            response.send(JSON.stringify(result));
-        });
-    });
+	let con = mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "root",
+		database : "falcohm"
+	});
+	con.connect(function(err) {
+		if (err) throw err;
+		con.query("SELECT utilisateurs.id_utilisateurs, utilisateurs.adressemail, utilisateurs.motdepasse, utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone, utilisateurs.admin from utilisateurs", function (err, result) {
+			response.send(JSON.stringify(result));
+		});
+	});
 });
 
 app.post("/inscription", (request, response)=> {
-    let con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "root",
-        database : "falcohm"
-    });
-    con.connect(function(err) {
-        if (err) throw err;
-        con.query("INSERT INTO utilisateurs (nom, prenom, numerotelephone, adressemail, motdepasse) VALUES (?, ?, ?, ?, ?)", [request.body.nom, request.body.prenom, request.body.numerotel, request.body.adressemail2, request.body.motdepasse2], function (err, result) {
-            response.send("succes");
-        });
-    });
+	let con = mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "root",
+		database : "falcohm"
+	});
+	con.connect(function(err) {
+		if (err) throw err;
+		con.query("INSERT INTO utilisateurs (nom, prenom, numerotelephone, adressemail, motdepasse) VALUES (?, ?, ?, ?, ?)", [request.body.nom, request.body.prenom, request.body.numerotel, request.body.adressemail2, request.body.motdepasse2], function (err, result) {
+			response.send("succes");
+		});
+	});
 });
 
 app.listen(80);
