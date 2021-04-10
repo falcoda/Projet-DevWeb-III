@@ -4,17 +4,43 @@ body{
     justify-content: center;
 }
 
-.card_container{
+#container2{
     width: 100%;
-     margin: 5%;
+    padding: 1%;
+    padding-right: 10%;
+    padding-left: 10%;
+}
+
+#materielsTable{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#typeSelect{
+    background-color: darkgrey;
+    padding: 1%;
+    border-radius: 15px;
+    width: 20%;
+}
+
+.card_container{
+    width: 20%;
+    margin-left: 0;
+    margin: 5%;
+    box-shadow: 0.1em 0.2em 0.5em 0.1em;
+    border-radius: 20px;
  }
 
 .card {
-    width: 350%;
+    border: 0;
+    width: 100.1%;
     height: 350px;
     transition: transform 2s;
     transform-style: preserve-3d;
     position: relative;
+    border-radius: 22px;
 }
 
 .card_front img{
@@ -24,7 +50,7 @@ body{
 }
 
 .card_front{
-    height: 500%;
+    height: 100%;
     display: flex;
     backface-visibility: hidden;
     position: absolute;
@@ -33,6 +59,7 @@ body{
 .card_back{
     transform: rotateY( 180deg );
     backface-visibility: hidden;
+    padding: 3%;
     position: absolute;
     text-align: center;
     background-color: lightslategray;
@@ -46,7 +73,7 @@ body{
     background-color: lightgray;
     text-align: left;
     display: flex;
-    width: 350%;
+    width: 100%;
     height: 50px;
     border-radius: 20px;
     border-top-left-radius: 0;
@@ -64,5 +91,5 @@ body{
 
 .photo {
     width: 100%;
-    height: 20%;
+    height: 100%;
 }
