@@ -1,6 +1,27 @@
+
+let utilisateurConnecte = GetCookie("connexion");
+console.log("session sur " +utilisateurConnecte);
+
+function GetCookie (name) {
+    var arg = name + "=";
+    var alen = arg.length;
+    var clen = document.cookie.length;
+    var i = 0;
+    while (i < clen) {
+        var j = i + alen;
+        if (document.cookie.substring(i, j) == arg)
+            return getCookieVal (j);
+        i = document.cookie.indexOf(" ", i) + 1;
+        if (i == 0) break;
+    }
+    return null;
+}
+
+
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable no-undef */
+
 function changeHead() { // animation visuelles au niveau de la photo de couverture et de  la barre d'état
 
 
