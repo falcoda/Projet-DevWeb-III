@@ -49,7 +49,19 @@ app.post("/mail", (request, response)=>{
 		subject: "Message de " + request.body.mail,
 		text: request.body.commentaire
 	};
-	if (request.body.commentaire !== undefined && request.body.identite !== undefined && validateEmail(request.body.mail)) {
+	if(request.body.commentaire ===""){
+	    response.send("comInvalid");
+    }
+	else if(request.body.nom ==="" ) {
+		response.send("nomInvalid");
+	}
+	else if(request.body.prenom ==="") {
+		response.send("prenomInvalid");
+	}
+	else if(request.body.mail ===undefined || validateEmail(request.body.mail) ===false  ) {
+		response.send("mailInvalid");
+	}
+	else if (request.body.commentaire !== undefined && request.body.nom !== undefined &&request.body.prenom !== undefined && validateEmail(request.body.mail)) {
 		transporter.sendMail(mailOptions);
 		let con = mysql.createConnection({
 			host: "localhost",
@@ -59,14 +71,12 @@ app.post("/mail", (request, response)=>{
 		});
 		con.connect(function(err) {
 			if (err) throw err;
-			con.query("INSERT INTO messages (identite, mail, message) VALUES (?, ?, ?)", [request.body.identite, request.body.mail, request.body.commentaire], function (err, result) {
+			    con.query("INSERT INTO messages (identite, mail, message) VALUES (?, ?, ?)", [request.body.nom +" " +request.body.prenom, request.body.mail, request.body.commentaire], function (err, result) {
 			});
 		});
 		response.send("success");
 	}
-	else {
-		response.send("error");
-	}
+
 });
 
 app.get("/materiel/:format?", (request, response)=> {
