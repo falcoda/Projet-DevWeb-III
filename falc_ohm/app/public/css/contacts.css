@@ -17,6 +17,7 @@ html{
 #body{ /* balise avec tout le bas de la page */
     margin-top: 140px;
     z-index: 2;
+    background-color: whitesmoke;
 
 }
 
@@ -33,14 +34,6 @@ html{
     background-color: lightslategray;
     width: 65%;
 
-
-
-}
-
-#sectionApropos2, #sectionBaffle2, #sectionContact { /* alignement des textes */
-    text-align: left;
-    padding-left: 10px;
-
 }
 
 #logoCouleur{ /* logo dans a propos */
@@ -55,43 +48,6 @@ html{
 #presTexte{ /* taille de la zone de texte a propos */
     width: 85%;
     color: whitesmoke;
-}
-
-#liste{
-    font-size: 20px;
-}
-
-#listeDroite{
-    font-size: 25px;
-    position: absolute;
-    left: 300px;
-    top: 700px;
-}
-
-.label, .nomProd{
-    text-align: center;
-    margin: 1px;
-}
-
-.collection{
-    padding: 5px;
-    margin-bottom: 10px;
-    text-align: center;
-    overflow: hidden;
-
-}
-.collection:hover{
-    border-bottom: 2px solid darkgray;
-}
-/*
-.zoom:hover{
-    transform: scale(0.90);
-    transition: all .3s;
-}*/
-
-.zoom{
-    border-radius: 3px;
-    cursor:pointer
 }
 
 
