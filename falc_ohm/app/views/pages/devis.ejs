@@ -19,7 +19,8 @@
 <script src="https://unpkg.com/react@16/umd/react.development.js" defer></script>
 <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" defer></script>
 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> <!--que pour le développement -->
-<script type="text/babel"  defer src="js/index.js"></script>
+<script type="text/babel"  defer src="js/devis.js"></script>
+<script src="js/devis.js"></script>
 
 <head >
     <meta charset="UTF-8">
@@ -28,7 +29,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body class="row align-items-end" style="margin-top: 7%;">
-    <div class="container" id="content">
+    <div class="container m-auto" id="content">
         <h1 class="display-4">Votre devis personnalisé</h1>
             <p>En remplissant les différents le formulaire de paramétrage, nous allons pouvoir générer automatiquement un
             devis personnalisé en fonctions de vos paramètres. </p>
@@ -37,7 +38,7 @@
     </div>
     <div class="m-auto" id="content">
         <h1 class="display-6"> Veuillez remplir ce formulaire afin de pouvoir créer la simulation pour votre événement</h1>
-             <form>
+             <form onSubmit={this.mySubmitHandler}>
                     <fieldset>
                          <div class="row align-items-center">
                              <!-- Entrée type d'événement -->
@@ -56,32 +57,38 @@
                                      </div>
                                  </div>
                              </div>
+                         </div>
                              <!-- Entrée taille de la salle-->
-                             <div class="col-auto">
-                                <label for="superficie" class="form-label">Taille de votre salle qui acceuilera la sonorisation :</label>
-                             </div>
-                             <div class="col-auto">
-                                <input type="number" class="form-control form-control-sm" id="superficie" name="quantity" min="1" max="1000">
-                             </div>
-                             <div class="col-auto">
-                                <span id="formHelpMeter" class="form-text">
-                                    M²
-                                </span>
+                             <div class="form-group">
+                                 <div class="col-auto">
+                                    <label for="superficie" class="form-label">Taille de votre salle qui acceuilera la sonorisation :</label>
+                                 </div>
+                                 <div class="col-auto">
+                                    <input onChange={this.myChangeHandler} type="number" class="form-control form-control-sm" id="superficie" name="quantity" min="1" max="1000">
+                                 </div>
+                                 <div class="col-auto">
+                                    <span id="formHelpMeter" class="form-text">
+                                        M²
+                                    </span>
+                                 </div>
                              </div>
                              <!-- Entrée nombre de personnes -->
-                             <div class="col-auto">
-                                <label for="nombredepersonne" class="form-label">Nombre de personnes maximale attendues à l'événement :</label>
-                             </div>
-                             <div class="col-auto">
-                                <input type="number" class="form-control form-control-sm" id="superficie" name="nombredepersonne" min="1" max="1000">
-                             </div>
-                             <div class="col-auto">
-                                 <span id="formHelpMeter" class="form-text">
-                                    Personnes
-                                </span>
+                             <div class="form-group">
+                                 <div class="col-auto">
+                                    <label for="nombredepersonne" class="form-label">Nombre de personnes maximale attendues à l'événement :</label>
+                                 </div>
+                                 <div class="col-auto">
+                                    <input onChange={this.myChangeHandler} type="number" class="form-control form-control-sm" id="superficie" name="nombredepersonne" min="1" max="1000">
+                                 </div>
+                                 <div class="col-auto">
+                                     <span id="formHelpMeter" class="form-text">
+                                        Personnes
+                                    </span>
+                                 </div>
                              </div>
                                   <!-- Boutons choix de soundsystem-->
-                                  <div class="col-auto">
+                             <div class="form-check">
+                                  <div class="col-auto form-check">
                                       <span class="form-text">Si vous avez une préférence de la type de sonorisation que vous voulez : </span>
                                       <div class="form-check">
                                           <input type="radio" class="form-check-input" id="grossound" name="typedesound" value="Gros sound">
@@ -99,8 +106,10 @@
                                           <input type="radio" class="form-check-input" id="nopref" name="typedesound" value="nopref" checked>
                                           <label class="form-check-label" for="nopref">Pas de préférences (génération automatique en fct des paramètres)</label>
                                       </div>
+                                  </div>
+                             </div>
                                       <!-- Boutons choix de show light -->
-                                  <div class="col-auto">
+                                  <div class="col-auto form-check">
                                       <span class="form-text">Si vous avez une préférence pour le showlight que vous voulez :  </span>
                                       <div class="form-check">
                                           <input type="radio" class="form-check-input" id="grosLum" name="typedelumiere" value="Grosse lum">
@@ -118,12 +127,26 @@
                                           <input type="radio" class="form-check-input" id="nopref" name="typedesound" value="nopref" checked>
                                           <label class="form-check-label" for="nopref">Pas de préférences (génération automatique en fct des paramètres)</label>
                                       </div>
-                                <input type="submit" value="Génération de la simulation">
-                                <input type="submit" value="Resimuler">
-                                <input type="submit" value="Enregister la simulation">
-                                <input type="submit" value="Télécharger la simulation au format JPG">
+                                  </div>
+                                <input type="submit" class="btn btn-primary" value="Génération de la simulation">
+                                <input type="submit" class="btn btn-primary" value="Resimuler">
+                                <input type="submit" class="btn btn-primary" value="Enregister la simulation">
+                                <input type="submit" class="btn btn-primary" value="Télécharger la simulation au format JPG">
              </fieldset>
             </form>
+    </div>
+        <!-- Simulation -->
+    <div class="container m-auto row align-items-center" id="simulationDiv">
+        <img src="img/lyresdessin.jpg" class="rounded p-2 taillemth">
+        <img src="img/nexosdessin.jpg" class="rounded p-2 taillemth">
+        <img src="img/MTH45.jpg" class="rounded p-2 taillemth">
+        <img src="img/MTH45.jpg" class="rounded p-2 taillemth">
+        <img src="img/MTH45.jpg" class="rounded p-2 taillemth">
+        <img src="img/MTH45.jpg" class="rounded p-2 taillemth">
+        <img src="img/MTH45.jpg" class="rounded p-2 taillemth">
+        <img src="img/MTH45.jpg" class="rounded p-2 taillemth">
+        <img src="img/nexosdessin.jpg" class="rounded p-2 taillemth">
+        <img src="img/lyresdessin.jpg" class="rounded p-2 taillemth">
     </div>
     <div class="m-auto" id="content">
         <h5>
@@ -136,8 +159,8 @@
             ...
         </p>
         <form>
-            <input type="submit" value="Télécharger le devis au format PDF">
-            <input type="submit" value="Envoyer un mail avec le devis">
+            <input type="submit" class="btn btn-primary" value="Télécharger le devis au format PDF">
+            <input type="submit" class="btn btn-primary" value="Envoyer un mail avec le devis">
         </form>
 
 
