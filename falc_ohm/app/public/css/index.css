@@ -1,0 +1,64 @@
+html{
+    width: 100%;
+    color: white;
+    background-color: whitesmoke;
+    font-family:Gadugi, cursive ;
+    text-align: center;
+}
+
+
+
+
+
+#liste{
+    font-size: 20px;
+}
+
+#listeDroite{
+    font-size: 25px;
+    position: absolute;
+    left: 300px;
+    top: 700px;
+}
+
+
+.zoom{
+    border-radius: 3px;
+    cursor:pointer
+}
+
+
+.group2{
+    text-align: center;
+    box-sizing: content-box;
+}
+div.collection {
+    box-sizing:border-box;
+    width:50%;
+
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+    margin-right:10% ;
+    margin-left:10% ;
+}
+#sectionContact{
+    position: relative;
+    left: 20%;
+}
+#adressemail, #motdepasse{
+    color:grey;
+    margin-bottom:10px ;
+    border-radius: 5px;
+    padding: 2px;
+}
+#submit, #comm{
+    margin-bottom:10px ;
+}
+
+
+#textDevis {
+    color: #444444;
+    background-color: rgba(0, 0, 0, 0.35);
+}
+

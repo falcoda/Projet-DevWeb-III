@@ -1,0 +1,53 @@
+html{
+    width: 100%;
+    color: white;
+    background-color: whitesmoke;
+    font-family:Gadugi, cursive ;
+    text-align: center;
+}
+
+body{
+    position: relative;
+    margin-top: 2%;
+    background-color: whitesmoke;
+    z-index: 10;
+}
+.allPage{
+    margin-top: 1%;
+}
+#imgCouv{
+    position: relative;
+    z-index: 1;
+    top:65px;
+    transition: all 1s;
+}
+
+
+
+#soundNoirBlanc{ /*photo de couverture */
+    position: relative;
+    width:75% ;
+    height:75% ;
+
+}
+
+#content{ /* contenu*/
+
+
+    background-color: lightslategray;
+    width: 70%;
+    padding: 2%;
+}
+
+.titreContent{    /*  titre de la présentation */
+    padding-bottom: 2%;
+}
+
+#logoCouleur{ /* logo dans a propos */
+    height: 45%;
+    width: 45%;
+
+}
+.imagePres{
+    float: right;
+}
