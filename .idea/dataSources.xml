@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-
-    <data-source source="LOCAL" name="@localhost [2]" uuid="40b8b8a2-9825-4bcf-b971-c09e3b96e0e8">
-
-    <data-source source="LOCAL" name="MySQL for 5.1 - @localhost" uuid="97cd74ae-c528-4eca-b7c9-7da6e7476de8">
-
+    <data-source source="LOCAL" name="falcohm@localhost" uuid="5b7b9916-1814-4ed8-be16-bba7013e7292">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/falcohm</jdbc-url>
     </data-source>
   </component>
 </project>

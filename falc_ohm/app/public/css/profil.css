@@ -1,0 +1,24 @@
+html{
+    width: 100%;
+    color: white;
+    background-color: whitesmoke;
+    font-family:Gadugi, cursive ;
+    text-align: center;
+}
+
+#content{ /* contenu*/
+
+    margin-top: 11%;
+    background-color: lightslategray;
+    width: 65%;
+
+
+
+}
+
+#adressemail1, #motdepasse1, #nom, #prenom, #numerotel, adressemail2, #motdepasse1{
+    color:grey;
+    margin-bottom:10px ;
+    border-radius: 5px;
+    padding: 2px;
+}

@@ -73,8 +73,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -113,12 +113,17 @@
     <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
+<<<<<<< Updated upstream
 
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
 
     <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
 
+=======
+    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+>>>>>>> Stashed changes
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -203,7 +208,11 @@
       <workItem from="1617968869156" duration="4898000" />
       <workItem from="1617981639096" duration="6048000" />
       <workItem from="1618054733407" duration="4224000" />
+<<<<<<< Updated upstream
 
+=======
+      <workItem from="1618325502664" duration="6676000" />
+>>>>>>> Stashed changes
     </task>
     <task id="LOCAL-00001" summary="ajout bootstrap">
       <created>1616347354449</created>
@@ -223,7 +232,7 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -244,9 +253,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;backend/.idea/workspace.xml&#10;#&#9;backend/package-lock.json&#10;#&#9;backend/package.json&#10;#&#9;backend/server.js" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2334" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1617900246521">
+    <state x="2334" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1618329384167">
       <screen x="1920" y="0" width="1920" height="1030" />
     </state>
+<<<<<<< Updated upstream
     <state x="2334" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1617900246521" />
     <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1618069374173">
       <screen x="1920" y="0" width="1920" height="1030" />
@@ -264,6 +274,25 @@
       <screen x="1920" y="0" width="1920" height="1030" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.right/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1618069374173" />
+=======
+    <state x="2334" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1618329384167" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1618332457068">
+      <screen x="1920" y="0" width="1920" height="1030" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1618332457068" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1618332457068">
+      <screen x="1920" y="0" width="1920" height="1030" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.center/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1618332457068" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1618332457068">
+      <screen x="1920" y="0" width="1920" height="1030" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.left/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1618332457068" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1618332457068">
+      <screen x="1920" y="0" width="1920" height="1030" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.right/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1618332457068" />
+>>>>>>> Stashed changes
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1617907280424">
       <screen x="1920" y="0" width="1920" height="1030" />
     </state>
@@ -325,9 +354,10 @@
       <screen x="1920" y="0" width="1920" height="1030" />
     </state>
     <state x="2610" y="324" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1617810119711" />
-    <state x="2404" y="227" width="983" height="666" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1617899307885">
+    <state x="2404" y="227" width="983" height="666" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1618329791419">
       <screen x="1920" y="0" width="1920" height="1030" />
     </state>
+<<<<<<< Updated upstream
     <state x="2404" y="227" width="983" height="666" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1617899307885" />
 
     <state x="2334" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1617113026429" />
@@ -348,5 +378,8 @@
     </state>
     <state width="1899" height="282" key="GridCell.Tab.0.right/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1617115473497" />
 
+=======
+    <state x="2404" y="227" width="983" height="666" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1618329791419" />
+>>>>>>> Stashed changes
   </component>
 </project>
