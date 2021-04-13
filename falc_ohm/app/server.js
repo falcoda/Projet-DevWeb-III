@@ -109,6 +109,10 @@ app.get("/authentification", (request, response)=> {
 	response.render("pages/authentification");
 });
 
+app.get("/profil", (request, response)=> {
+	response.render("pages/profil");
+});
+
 app.get("/utilisateurs", (request, response)=> {
     let con = mysql.createConnection({
         host: "localhost",
