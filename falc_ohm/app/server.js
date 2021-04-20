@@ -40,7 +40,7 @@ app.post("/mail", (request, response)=>{
 		secure: false,
 		auth: {
 			user: "corentin@4x4vert.be",
-			pass: "??ProjetDev3"
+			pass: "??ProjetDev33"
 		}
 	});
 	const mailOptions = {
@@ -49,19 +49,27 @@ app.post("/mail", (request, response)=>{
 		subject: "Message de " + request.body.mail,
 		text: request.body.commentaire
 	};
-	if(request.body.commentaire ===""){
-	    response.send("comInvalid");
-    }
-	else if(request.body.nom ==="" ) {
-		response.send("nomInvalid");
+	let reponses = Object.entries(request.body);
+	let isValid ="";
+	if (!validateEmail(request.body.mail)){
+		isValid+= "-mailInvalid";
 	}
-	else if(request.body.prenom ==="") {
-		response.send("prenomInvalid");
+	for(let i of reponses){
+		if (i[1] === ""  ){
+			if (i[0]=== "nom"){
+				isValid+= "-nomInvalid";
+			}
+			else if (i[0]=== "prenom"){
+				isValid+= "-prenomInvalid";
+			}
+			else{
+				isValid+= "-comInvalid";
+			}
+		}
 	}
-	else if(request.body.mail ===undefined || validateEmail(request.body.mail) ===false  ) {
-		response.send("mailInvalid");
-	}
-	else if (request.body.commentaire !== undefined && request.body.nom !== undefined &&request.body.prenom !== undefined && validateEmail(request.body.mail)) {
+
+
+	if (request.body.commentaire !== "" && request.body.nom !== "" &&request.body.prenom !== "" && validateEmail(request.body.mail)) {
 		transporter.sendMail(mailOptions);
 		let con = mysql.createConnection({
 			host: "localhost",
@@ -75,6 +83,9 @@ app.post("/mail", (request, response)=>{
 			});
 		});
 		response.send("success");
+	}
+	else{
+		response.send(isValid);
 	}
 
 });
