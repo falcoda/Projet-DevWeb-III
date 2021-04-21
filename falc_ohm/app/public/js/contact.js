@@ -40,36 +40,40 @@ class FormsPage extends React.Component {
 		xhr.setRequestHeader("content-type", "application/json");
 		xhr.onload = function () {
 			console.log(xhr.responseText);
+			console.log("coucou");
 			if(xhr.responseText == "success") {
 				alert("Mail envoyé avec success");
-
-
+				document.getElementById("prenom").classList.remove("is-invalid");
+				document.getElementById("nom").classList.remove("is-invalid");
+				document.getElementById("email").classList.remove("is-invalid");
+				document.getElementById("commentaire").classList.remove("is-invalid");
 				nom.value= "";
 				prenom.value= "";
 				mail.value = "";
 				commentaire.value = "";
 			}
-			else if(xhr.responseText === "comInvalid") {
-				alert("comInvalid");
-				document.getElementById("nom").innerHTML = <input type="email" className="form-control form-control-lg w-25 notValid" defaultValue="j@mail.com" id="email"
-																  placeholder="email" required/>
+
+
+
+			else{
+				let isInvalid = xhr.responseText.split("-") ;
+				console.log(isInvalid);
+				for(let i of isInvalid){
+					if(i === "comInvalid") {
+						document.getElementById("commentaire").classList.add("is-invalid");
+					}
+					else if(i === "mailInvalid") {
+						document.getElementById("email").classList.add("is-invalid");
+					}
+					else if(i === "nomInvalid") {
+						document.getElementById("nom").classList.add("is-invalid");
+					}
+					else if(i === "prenomInvalid") {
+						document.getElementById("prenom").classList.add("is-invalid");
+					}
+				}
 			}
-			else if(xhr.responseText === "mailInvalid") {
-				alert("mailInvalid");
-			}
-			else if(xhr.responseText === "nomInvalid") {
-				alert("identiteInvalid");
-				document.getElementById("nom").classList.add("is-invalid");
-			}
-			else if(xhr.responseText === "prenomInvalid") {
-				alert("identiteInvalid");
-				document.getElementById("prenom").classList.add("is-invalid");
-			}
-			else if(xhr.responseText === "succes") {
-				document.getElementById("prenom").classList.remove("is-invalid");
-				document.getElementById("nom").classList.remove("is-invalid");
-				document.getElementById("mail").classList.remove("is-invalid");
-			}
+
 
 		};
 		xhr.send(JSON.stringify(data));
@@ -121,3 +125,11 @@ class FormsPage extends React.Component {
 
 ReactDOM.render(<FormsPage/>,document.getElementById("FormsPage"));
 
+
+mymap = L.map('map').setView([50.66595108289637, 4.612268456094151], 17);
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+	maxZoom: 20,
+	id: 'mapbox/streets-v11',
+	tileSize: 512,
+	zoomOffset: -1
+}).addTo(mymap);
