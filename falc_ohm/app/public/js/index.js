@@ -28,24 +28,6 @@ function zoomOut(n) {  // dézoom lorsque la souris sort de la photo
 function renderSiPasConnecte() {
 	const navbar =<div id="head">
 
-		<title>falc'ohm system</title>
-		<nav className="navbar navbar-expand-lg fixed-top bg-light ">
-			<div className="container-fluid">
-				<div className="navbar-header">
-					<a className="navbar-brand" href="/">
-						<img  id="logoEnTete" src="img/falcohm_logo.png" alt="logo de la page" width="75px" height="75px"></img>
-						FALC'OHM SYSTEM
-					</a>
-				</div>
-
-				<ul className="nav navbar-nav">
-					<li className="nav-item"><a href="/" className="nav-link">A Propos</a></li>
-					<li className="nav-item"><a href="contact" className="nav-link">Contacts</a></li>
-					<li className="nav-item"><a href="materiel" className="nav-link">Matériels</a></li>
-					<li className="nav-item"><a href="authentification" className="nav-link">Authentification</a></li>
-					<li className="nav-item"><a href="devis" className="nav-link">Devis</a></li>
-
-
 		<nav className="navbar navbar-expand-lg  navbar-light bg-light">
 			<a className="navbar-brand" href="/">
 				<img  id="logoEnTete" src="img/falcohm_logo.png" alt="logo de la page" width="75px" height="75px"></img>
@@ -74,7 +56,6 @@ function renderSiPasConnecte() {
 					<li className="nav-item">
 						<a className="nav-link" href="devis">Devis</a>
 					</li>
-
 				</ul>
 
 			</div>
