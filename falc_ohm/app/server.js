@@ -168,6 +168,21 @@ app.post("/ajouterMateriel", (request, response)=> {
 	});
 });
 
+app.post("/ajouterMateriel", (request, response)=> {
+	let con = mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "root",
+		database : "falcohm"
+	});
+	con.connect(function(err) {
+		if (err) throw err;
+		con.query("INSERT INTO materiels (nom, id_categorie, prix, nombre, description) VALUES (?, ?, ?, ?, ?)", [request.body.nom, request.body.categorie, request.body.prix, request.body.nombre, request.body.description], function (err, result) {
+			response.send("succes");
+		});
+	});
+});
+
 app.listen(80);
 
 /*
