@@ -22,3 +22,7 @@ html{
     border-radius: 5px;
     padding: 2px;
 }
+
+#buttonSubmit{
+    margin-bottom: 8px;
+}
