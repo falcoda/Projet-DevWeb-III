@@ -21,8 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b8dff3ea-25ff-44d1-9507-021b20555276" name="Default Changelist" comment="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;backend/.idea/workspace.xml&#10;#&#9;backend/package-lock.json&#10;#&#9;backend/package.json&#10;#&#9;backend/server.js">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/falc_ohm/app/public/css/contacts.css" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/public/css/contacts.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/falc_ohm/app/public/js/contact.js" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/public/js/contact.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/falc_ohm/app/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/falc_ohm/app/views/pages/contact.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/views/pages/contact.ejs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
