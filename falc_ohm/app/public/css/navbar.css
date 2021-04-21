@@ -1,5 +1,23 @@
 
 
+
+}
+.navigation{
+    position: relative;
+    z-index: 30;
+
+}
+
+
+#head{
+    position: relative;
+    z-index: 20;
+    transition: all 2.5s ease;
+    background-color: transparent;
+    opacity: 0.8;
+}
+
+
 body{
     z-index: 10;
 }
@@ -26,6 +44,10 @@ body{
 }
 ul.nav{
     width: 50%;
+
+    justify-content: flex-end;
+
+
 
 
 }
