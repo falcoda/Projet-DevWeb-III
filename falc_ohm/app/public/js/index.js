@@ -1,23 +1,3 @@
-
-let utilisateurConnecte = GetCookie("connexion");
-console.log("session sur " +utilisateurConnecte);
-
-function GetCookie (name) {
-    var arg = name + "=";
-    var alen = arg.length;
-    var clen = document.cookie.length;
-    var i = 0;
-    while (i < clen) {
-        var j = i + alen;
-        if (document.cookie.substring(i, j) == arg)
-            return getCookieVal (j);
-        i = document.cookie.indexOf(" ", i) + 1;
-        if (i == 0) break;
-    }
-    return null;
-}
-
-
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable no-undef */
@@ -45,8 +25,26 @@ function zoomOut(n) {  // dézoom lorsque la souris sort de la photo
 	document.getElementsByClassName("zoom")[n].style.transition= "all .3s";
 }
 
-function render() {
+function renderSiPasConnecte() {
 	const navbar =<div id="head">
+
+		<title>falc'ohm system</title>
+		<nav className="navbar navbar-expand-lg fixed-top bg-light ">
+			<div className="container-fluid">
+				<div className="navbar-header">
+					<a className="navbar-brand" href="/">
+						<img  id="logoEnTete" src="img/falcohm_logo.png" alt="logo de la page" width="75px" height="75px"></img>
+						FALC'OHM SYSTEM
+					</a>
+				</div>
+
+				<ul className="nav navbar-nav">
+					<li className="nav-item"><a href="/" className="nav-link">A Propos</a></li>
+					<li className="nav-item"><a href="contact" className="nav-link">Contacts</a></li>
+					<li className="nav-item"><a href="materiel" className="nav-link">Matériels</a></li>
+					<li className="nav-item"><a href="authentification" className="nav-link">Authentification</a></li>
+					<li className="nav-item"><a href="devis" className="nav-link">Devis</a></li>
+
 
 		<nav className="navbar navbar-expand-lg  navbar-light bg-light">
 			<a className="navbar-brand" href="/">
@@ -76,6 +74,7 @@ function render() {
 					<li className="nav-item">
 						<a className="nav-link" href="devis">Devis</a>
 					</li>
+
 				</ul>
 
 			</div>
@@ -86,4 +85,39 @@ function render() {
 	</div>;
 	ReactDOM.render(navbar,document.querySelector("#container"));
 }
-render();
+
+function renderSiConnecte() {
+	const navbar =<div id="head">
+		<title>falc'ohm system</title>
+		<nav className="navbar navbar-expand-lg fixed-top bg-light ">
+			<div className="container-fluid">
+				<div className="navbar-header">
+					<a className="navbar-brand" href="/">
+						<img  id="logoEnTete" src="img/falcohm_logo.png" alt="logo de la page" width="75px" height="75px"></img>
+						FALC'OHM SYSTEM
+					</a>
+				</div>
+
+				<ul className="nav navbar-nav">
+					<li className="nav-item"><a href="/" className="nav-link">A Propos</a></li>
+					<li className="nav-item"><a href="contact" className="nav-link">Contacts</a></li>
+					<li className="nav-item"><a href="materiel" className="nav-link">Matériels</a></li>
+					<li className="nav-item"><a href="devis" className="nav-link">Devis</a></li>
+					<li className="nav-item"><a href="profil"><img id="logoProfil" src="img/profil.png" alt="icone de profil" width="50px" height="50px"></img></a></li>
+				</ul>
+
+			</div>
+
+		</nav>
+
+	</div>;
+	ReactDOM.render(navbar,document.querySelector("#container"));
+}
+
+if (utilisateurConnecte == null) {
+	renderSiPasConnecte();
+}
+
+if (utilisateurConnecte != null) {
+	renderSiConnecte();
+}

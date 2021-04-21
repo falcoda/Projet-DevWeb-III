@@ -5,10 +5,10 @@
 
 //  "Internal" function to return the decoded value of a cookie
 function getCookieVal (offset) {
-    var endstr = document.cookie.indexOf (";", offset);
-    if (endstr == -1)
-        endstr = document.cookie.length;
-    return unescape(document.cookie.substring(offset, endstr));
+	var endstr = document.cookie.indexOf (";", offset);
+	if (endstr == -1)
+		endstr = document.cookie.length;
+	return unescape(document.cookie.substring(offset, endstr));
 }
 
 
@@ -18,18 +18,18 @@ function getCookieVal (offset) {
 //              or null if the cookie does not exist.
 //
 function GetCookie (name) {
-    var arg = name + "=";
-    var alen = arg.length;
-    var clen = document.cookie.length;
-    var i = 0;
-    while (i < clen) {
-        var j = i + alen;
-        if (document.cookie.substring(i, j) == arg)
-            return getCookieVal (j);
-        i = document.cookie.indexOf(" ", i) + 1;
-        if (i == 0) break;
-    }
-    return null;
+	var arg = name + "=";
+	var alen = arg.length;
+	var clen = document.cookie.length;
+	var i = 0;
+	while (i < clen) {
+		var j = i + alen;
+		if (document.cookie.substring(i, j) == arg)
+			return getCookieVal (j);
+		i = document.cookie.indexOf(" ", i) + 1;
+		if (i == 0) break;
+	}
+	return null;
 }
 
 
@@ -61,7 +61,7 @@ function GetCookie (name) {
 //      SetCookie (myCookieVar, cookieValueVar, null, "/myPath", null, true);
 //
 function SetCookie (name,value,expires,path,domain,secure) {
-    document.cookie = name + "=" + escape (value) +
+	document.cookie = name + "=" + escape (value) +
         ((expires) ? "; expires=" + expires.toGMTString() : "") +
         ((path) ? "; path=" + path : "") +
         ((domain) ? "; domain=" + domain : "") +
@@ -78,15 +78,16 @@ function SetCookie (name,value,expires,path,domain,secure) {
 //             This MUST be the same as the domain used to create the cookie, or
 //             null/omitted if no domain was specified when creating the cookie.
 //
+/*
 function DeleteCookie (name,path,domain) {
-    if (GetCookie(name)) {
-        document.cookie = name + "=" +
+	if (GetCookie(name)) {
+		document.cookie = name + "=" +
             ((path) ? "; path=" + path : "") +
             ((domain) ? "; domain=" + domain : "") +
             "; expires=Thu, 01-Jan-70 00:00:01 GMT";
-    }
+	}
 }
-
+*/
 //******************************************************************************
 
 let form1 = document.getElementById("formConnexion");
@@ -101,103 +102,107 @@ let motdepasse2 = document.getElementById("motdepasse2");
 let confirmation = document.getElementById("confirmation");
 
 form1.addEventListener("submit", (param)=>{
-    param.preventDefault();
+	param.preventDefault();
 
-    let data1 = {
-        adressemail1: adressemail1.value,
-        motdepasse1: motdepasse1.value,
-    };
+	let data1 = {
+		adressemail1: adressemail1.value,
+		motdepasse1: motdepasse1.value,
+	};
 
-    console.log(data1);
+	console.log(data1);
 
-    let tableUtilisateurs = [];
+	let tableUtilisateurs = [];
 
-    let xhr = new XMLHttpRequest();
+	let xhr = new XMLHttpRequest();
 
-    xhr.open("GET", "http://localhost/utilisateurs");
-    xhr.setRequestHeader("content-type", "application/json");
-    xhr.onload = function () {
-        console.log(xhr.responseText);
-        tableUtilisateurs =  JSON.parse(xhr.responseText);
-        let compteur = 0;
-        for (let i of tableUtilisateurs) {
-            compteur++;
-            if (data1.adressemail1 == i.adressemail && data1.motdepasse1 == i.motdepasse) {
-                let duree_cookie = 100;         // durée de vie du cookie en jours
-                let expiration = new Date();    // date et heure courante en format texte
-                expiration.setTime(expiration.getTime() + (duree_cookie * 24*60*60*1000));
-                // => on peut utiliser la variable "expiration"
-                SetCookie ("connexion",data1.adressemail1,expiration,null,null,false);
-                utilisateurConnecte = GetCookie("connexion");
-                console.log("succès")
-                break;
-            }
-            else if (compteur = tableUtilisateurs.length) {
-                // MESSAGE D'ERREUR
-            }
+	xhr.open("GET", "http://localhost/utilisateurs");
+	xhr.setRequestHeader("content-type", "application/json");
+	xhr.onload = function () {
+		console.log(xhr.responseText);
+		tableUtilisateurs =  JSON.parse(xhr.responseText);
+		let compteur = 0;
+		for (let i of tableUtilisateurs) {
+			compteur++;
+			if (data1.adressemail1 == i.adressemail && data1.motdepasse1 == i.motdepasse) {
+				let duree_cookie = 100;         // durée de vie du cookie en jours
+				let expiration = new Date();    // date et heure courante en format texte
+				expiration.setTime(expiration.getTime() + (duree_cookie * 24*60*60*1000));
+				// => on peut utiliser la variable "expiration"
+				SetCookie ("connexion",data1.adressemail1,expiration,null,null,false);
+				// eslint-disable-next-line no-undef
+				utilisateurConnecte = GetCookie("connexion");
+				console.log("succès");
+				break;
+			}
+			// eslint-disable-next-line no-cond-assign
+			else if (compteur == tableUtilisateurs.length) {
+				// MESSAGE D'ERREUR
+			}
 
-        }
-    };
-    xhr.send();
+		}
+	};
+	xhr.send();
 });
 
 form2.addEventListener("submit", (param)=>{
-    param.preventDefault();
+	param.preventDefault();
 
-    let data2 = {
-        nom: nom.value,
-        prenom: prenom.value,
-        numerotel: numerotel.value,
-        adressemail2: adressemail2.value,
-        motdepasse2: motdepasse2.value,
-        confirmation: confirmation.value
-    };
+	let data2 = {
+		nom: nom.value,
+		prenom: prenom.value,
+		numerotel: numerotel.value,
+		adressemail2: adressemail2.value,
+		motdepasse2: motdepasse2.value,
+		confirmation: confirmation.value
+	};
 
-    console.log(data2);
+	console.log(data2);
 
-    let tableUtilisateurs = [];
+	let tableUtilisateurs = [];
 
-    let xhr = new XMLHttpRequest();
+	let xhr = new XMLHttpRequest();
 
-    xhr.open("GET", "http://localhost/utilisateurs");
-    xhr.setRequestHeader("content-type", "application/json");
-    xhr.onload = function () {
-        console.log(xhr.responseText);
-        tableUtilisateurs =  JSON.parse(xhr.responseText);
-    };
-    xhr.send();
+	xhr.open("GET", "http://localhost/utilisateurs");
+	xhr.setRequestHeader("content-type", "application/json");
+	xhr.onload = function () {
+		console.log(xhr.responseText);
+		tableUtilisateurs =  JSON.parse(xhr.responseText);
+	};
+	xhr.send();
 
-    if (data2.motdepasse2.length >= 8 && data2.motdepasse2 == data2.confirmation) {
-        let xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://localhost/inscription');
-        xhr.setRequestHeader("content-type", "application/json");
-        xhr.onload = function () {
-            let compteur = 0;
-            let check = true;
-            for (let i of tableUtilisateurs) {
-                compteur++;
-                if (data2.adressemail2 == i.adressemail) {
-                    check = false;
-                    // MESSAGE D ERREUR
-                    break;
-                }
+	if (data2.motdepasse2.length >= 8 && data2.motdepasse2 == data2.confirmation) {
+		let xhr = new XMLHttpRequest();
+		xhr.open("POST", "http://localhost/inscription");
+		xhr.setRequestHeader("content-type", "application/json");
+		xhr.onload = function () {
+			let compteur = 0;
+			let check = true;
+			for (let i of tableUtilisateurs) {
+				compteur++;
+				if (data2.adressemail2 == i.adressemail) {
+					check = false;
+					// MESSAGE D ERREUR
+					break;
+				}
 
-                if (check && compteur == tableUtilisateurs.length) {
-                    let duree_cookie = 100;         // durée de vie du cookie en jours
-                    let expiration = new Date();    // date et heure courante en format texte
-                    expiration.setTime(expiration.getTime() + (duree_cookie * 24*60*60*1000));
-                    // => on peut utiliser la variable "expiration"
-                    SetCookie ("connexion",data2.adressemail2,expiration,null,null,false);
-                    utilisateurConnecte = GetCookie("connexion");
-                    if (utilisateurConnecte != 0){
-                        console.log("le cookie est bien sur " + getCookie("connexion"))
-                    }
-                    console.log("utilisateur bien créé");
-                }
-            }
-        };
-        xhr.send(JSON.stringify(data2));
-    };
+				if (check && compteur == tableUtilisateurs.length) {
+					let duree_cookie = 100;         // durée de vie du cookie en jours
+					let expiration = new Date();    // date et heure courante en format texte
+					expiration.setTime(expiration.getTime() + (duree_cookie * 24*60*60*1000));
+					// => on peut utiliser la variable "expiration"
+					SetCookie ("connexion",data2.adressemail2,expiration,null,null,false);
+					// eslint-disable-next-line no-undef
+					utilisateurConnecte = GetCookie("connexion");
+					// eslint-disable-next-line no-undef
+					if (utilisateurConnecte != 0){
+						console.log("le cookie est bien sur " + GetCookie("connexion"));
+					}
+					console.log("utilisateur bien créé");
+				}
+			}
+		};
+		xhr.send(JSON.stringify(data2));
+	}
 });
 
 
