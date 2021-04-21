@@ -102,13 +102,13 @@ class FormsPage extends React.Component {
 
 						<div className="form-group">
 							<label htmlFor="email">Entrez votre mail</label>
-							<input type="email" className="form-control form-control-lg w-25"  id="email"
-								   placeholder="email" required/>
+							<input type="email" className="form-control w-25"  id="email"
+								   placeholder="Adresse mail" required/>
 						</div>
 
 						<div className="form-group">
 							<label htmlFor="bio">Commentaire</label>
-							<textarea className="form-control " id="commentaire" rows="5" ></textarea>
+							<textarea className="form-control " id="commentaire" rows="5" placeholder="Entrez votre commentaire"></textarea>
 						</div>
 						<input type="submit" className="btn btn-light" id="buttonSubmit" value={"envoyer"} />
 

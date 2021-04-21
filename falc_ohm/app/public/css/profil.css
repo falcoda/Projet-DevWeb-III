@@ -9,6 +9,7 @@ html{
 #content{ /* contenu*/
 
     margin-top: 11%;
+    padding-bottom: 8px;
     background-color: lightslategray;
     width: 65%;
 
@@ -21,8 +22,4 @@ html{
     margin-bottom:10px ;
     border-radius: 5px;
     padding: 2px;
-}
-
-#buttonSubmit{
-    margin-bottom: 8px;
 }

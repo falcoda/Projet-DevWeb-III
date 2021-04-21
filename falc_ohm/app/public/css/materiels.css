@@ -92,7 +92,7 @@ body{
     height: 100%;
 }
 
-@media screen and (max-width: 500px){
+@media screen and (max-width: 420px){
 
     #materielsTable{
         grid-template-columns: 1fr;
