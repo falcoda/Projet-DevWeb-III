@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-
-    <data-source name="@localhost [2]" uuid="40b8b8a2-9825-4bcf-b971-c09e3b96e0e8">
-
-    <data-source name="MySQL for 5.1 - @localhost" uuid="97cd74ae-c528-4eca-b7c9-7da6e7476de8">
-
+    <data-source name="falcohm@localhost" uuid="fbc53eff-1ad9-4957-85e1-6e739e6efd6b">
       <database-info product="MySQL" version="8.0.23" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.47 ( Revision: fe1903b1ecb4a96a917f7ed3190d80c049b1de29 )" dbms="MYSQL" exact-version="8.0.23" exact-driver-version="5.1">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
       </database-info>
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
+      <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
       <schema-mapping>
         <introspection-scope>
-          <node kind="schema">
-            <name qname="@" />
-            <name qname="falcohm" />
-          </node>
+          <node kind="schema" qname="@" />
         </introspection-scope>
       </schema-mapping>
     </data-source>

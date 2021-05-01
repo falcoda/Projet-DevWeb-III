@@ -40,7 +40,7 @@ app.post("/mail", (request, response)=>{
 		secure: false,
 		auth: {
 			user: "corentin@4x4vert.be",
-			pass: "??ProjetDev3"
+			pass: "??ProjetDev33"
 		}
 	});
 	const mailOptions = {
@@ -49,23 +49,43 @@ app.post("/mail", (request, response)=>{
 		subject: "Message de " + request.body.mail,
 		text: request.body.commentaire
 	};
-	if (request.body.commentaire !== undefined && request.body.identite !== undefined && validateEmail(request.body.mail)) {
+
+
+	let reponses = Object.entries(request.body);
+	let isValid = "";
+	if (!validateEmail(request.body.mail)) {
+		isValid += "-mailInvalid";
+
+	}
+	for (let i of reponses) {
+		if (i[1] === "") {
+			if (i[0] === "nom") {
+				isValid += "-nomInvalid";
+			} else if (i[0] === "prenom") {
+				isValid += "-prenomInvalid";
+			} else {
+				isValid += "-comInvalid";
+			}
+		}
+	}
+
+
+	if (request.body.commentaire !== "" && request.body.nom !== "" && request.body.prenom !== "" && validateEmail(request.body.mail)) {
 		transporter.sendMail(mailOptions);
 		let con = mysql.createConnection({
 			host: "localhost",
 			user: "root",
 			password: "root",
-			database : "falcohm"
+			database: "falcohm"
 		});
-		con.connect(function(err) {
+		con.connect(function (err) {
 			if (err) throw err;
-			con.query("INSERT INTO messages (identite, mail, message) VALUES (?, ?, ?)", [request.body.identite, request.body.mail, request.body.commentaire], function (err, result) {
+			con.query("INSERT INTO messages (identite, mail, message) VALUES (?, ?, ?)", [request.body.nom + " " + request.body.prenom, request.body.mail, request.body.commentaire], function (err, result) {
 			});
 		});
 		response.send("success");
-	}
-	else {
-		response.send("error");
+	} else {
+		response.send(isValid);
 	}
 });
 
@@ -131,6 +151,36 @@ app.post("/inscription", (request, response)=> {
             response.send("succes");
         });
     });
+});
+
+app.post("/ajouterMateriel", (request, response)=> {
+	let con = mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "root",
+		database : "falcohm"
+	});
+	con.connect(function(err) {
+		if (err) throw err;
+		con.query("INSERT INTO materiels (nom, id_categorie, prix, nombre, description) VALUES (?, ?, ?, ?, ?)", [request.body.nom, request.body.categorie, request.body.prix, request.body.nombre, request.body.description], function (err, result) {
+			response.send("succes");
+		});
+	});
+});
+
+app.post("/ajouterMateriel", (request, response)=> {
+	let con = mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "root",
+		database : "falcohm"
+	});
+	con.connect(function(err) {
+		if (err) throw err;
+		con.query("INSERT INTO materiels (nom, id_categorie, prix, nombre, description) VALUES (?, ?, ?, ?, ?)", [request.body.nom, request.body.categorie, request.body.prix, request.body.nombre, request.body.description], function (err, result) {
+			response.send("succes");
+		});
+	});
 });
 
 app.listen(80);
