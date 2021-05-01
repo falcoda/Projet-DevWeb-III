@@ -1,27 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
-    <select />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8dff3ea-25ff-44d1-9507-021b20555276" name="Default Changelist" comment="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;backend/.idea/workspace.xml&#10;#&#9;backend/package-lock.json&#10;#&#9;backend/package.json&#10;#&#9;backend/server.js">
+    <list default="true" id="90091e18-45ee-4eb2-802e-420dac4e4040" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/dataSources/40b8b8a2-9825-4bcf-b971-c09e3b96e0e8.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/dataSources/40b8b8a2-9825-4bcf-b971-c09e3b96e0e8/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/falc_ohm/app/public/css/navbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/public/css/navbar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/public/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/pages/accueil.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/pages/accueil.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/pages/contact.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/pages/contact.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,64 +25,64 @@
       <executable />
     </execution>
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="backend" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
+        <option value="HTML File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_CHANGES_POLICY" value="SHELVE" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="JsFlowSettings">
-    <service-enabled>true</service-enabled>
-    <exe-path />
-    <other-services-enabled>true</other-services-enabled>
-    <auto-save>true</auto-save>
-  </component>
-  <component name="ProjectId" id="1psMWbqM52fTKVXk9UMYUmYNyQ4" />
+  <component name="ProjectId" id="1ppv2rlxaPivggpe0k57m053hZZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="redshift&#10;mysql" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="DatabaseDriversLRU" value="sqlite&#10;mysql" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/Edit As Language" value="SQL" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/node_modules/eslint" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.jscs" value="true" />
-    <property name="node.js.detected.package.standard" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.jscs" value="project" />
-    <property name="node.js.path.for.package.standard" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.jscs" value="" />
-    <property name="node.js.selected.package.standard" value="" />
+    <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
-    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\charl\Documents\GitHub\Projet-DevWeb-III\falc_ohm\app\public\img" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\" />
+      <recent name="C:\Users\charl\WebstormProjects\falc_ohm\app" />
+      <recent name="C:\Users\charl\WebstormProjects\backend\public" />
+      <recent name="C:\Users\charl\WebstormProjects\backend\html" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.start">
     <configuration name="start" type="js.build_tools.npm">
-      <package-json value="$PROJECT_DIR$/falc_ohm/app/package.json" />
+      <package-json value="$PROJECT_DIR$/app/package.json" />
       <command value="run" />
       <scripts>
         <script value="start" />
@@ -99,142 +91,48 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="test" type="js.build_tools.npm" temporary="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="test" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="npm.start" />
+      <item itemvalue="npm.test" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.test" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b8dff3ea-25ff-44d1-9507-021b20555276" name="Default Changelist" comment="" />
-      <created>1616347231500</created>
+      <changelist id="90091e18-45ee-4eb2-802e-420dac4e4040" name="Default Changelist" comment="" />
+      <created>1615892641352</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1616347231500</updated>
-      <workItem from="1616347232791" duration="144000" />
-      <workItem from="1616347406413" duration="1905000" />
-      <workItem from="1616349487991" duration="8258000" />
-      <workItem from="1616496077823" duration="637000" />
-      <workItem from="1617112045336" duration="3090000" />
-      <workItem from="1617805216375" duration="4022000" />
-      <workItem from="1617809257113" duration="3548000" />
-      <workItem from="1617895515661" duration="11677000" />
-      <workItem from="1618068009736" duration="1340000" />
-      <workItem from="1617112045336" duration="3440000" />
-      <workItem from="1617113609791" duration="2355000" />
-      <workItem from="1617188860497" duration="8605000" />
-      <workItem from="1617614627384" duration="15132000" />
-      <workItem from="1617895114214" duration="391000" />
-      <workItem from="1617895531619" duration="7795000" />
-      <workItem from="1617905518061" duration="1799000" />
-      <workItem from="1617968869156" duration="4898000" />
-      <workItem from="1617981639096" duration="6048000" />
-      <workItem from="1618054733407" duration="4224000" />
-      <workItem from="1618325502664" duration="6676000" />
-      <workItem from="1618241130549" duration="2790000" />
-      <workItem from="1618755927534" duration="16069000" />
-      <workItem from="1619529680473" duration="4187000" />
+      <updated>1615892641352</updated>
+      <workItem from="1615892642951" duration="7982000" />
+      <workItem from="1615901634943" duration="1988000" />
+      <workItem from="1615903653699" duration="6229000" />
+      <workItem from="1615967114221" duration="248000" />
+      <workItem from="1615967377210" duration="626000" />
+      <workItem from="1615972438289" duration="3194000" />
+      <workItem from="1616343534405" duration="1008000" />
+      <workItem from="1618922299681" duration="101000" />
     </task>
-    <task id="LOCAL-00001" summary="ajout bootstrap">
-      <created>1616347354449</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1616347354449</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;backend/.idea/workspace.xml&#10;#&#9;backend/package-lock.json&#10;#&#9;backend/package.json&#10;#&#9;backend/server.js">
-      <created>1616410500663</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1616410500664</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="ajout bootstrap" />
-    <MESSAGE value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;backend/.idea/workspace.xml&#10;#&#9;backend/package-lock.json&#10;#&#9;backend/package.json&#10;#&#9;backend/server.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;backend/.idea/workspace.xml&#10;#&#9;backend/package-lock.json&#10;#&#9;backend/package.json&#10;#&#9;backend/server.js" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="2334" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1619002093248">
-      <screen x="1920" y="0" width="1920" height="1030" />
-    </state>
-    <state x="2334" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1619002093248" />
-    <state width="723" height="210" key="GridCell.Tab.0.bottom" timestamp="1619535031508">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="723" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1619535031508" />
-    <state width="1493" height="282" key="GridCell.Tab.0.bottom/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1619013793743" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1619002917344" />
-    <state width="723" height="210" key="GridCell.Tab.0.center" timestamp="1619535031508">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="723" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1619535031508" />
-    <state width="1493" height="282" key="GridCell.Tab.0.center/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1619013793743" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1619002917343" />
-    <state width="723" height="210" key="GridCell.Tab.0.left" timestamp="1619535031508">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="723" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1619535031508" />
-    <state width="1493" height="282" key="GridCell.Tab.0.left/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1619013793743" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1619002917343" />
-    <state width="723" height="210" key="GridCell.Tab.0.right" timestamp="1619535031508">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="723" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1619535031508" />
-    <state width="1493" height="282" key="GridCell.Tab.0.right/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1619013793743" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1619002917343" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1619000879955" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1619000879955" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1619000879955" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1619000879955" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1619000879955" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1619000879955" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1619000879955" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1619000879955" />
-    <state width="1877" height="348" key="GridCell.Tab.2.bottom" timestamp="1619000879955" />
-    <state width="1877" height="348" key="GridCell.Tab.2.bottom/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1619000879955" />
-    <state width="1877" height="348" key="GridCell.Tab.2.center" timestamp="1619000879955" />
-    <state width="1877" height="348" key="GridCell.Tab.2.center/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1619000879955" />
-    <state width="1877" height="348" key="GridCell.Tab.2.left" timestamp="1619000879955" />
-    <state width="1877" height="348" key="GridCell.Tab.2.left/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1619000879955" />
-    <state width="1877" height="348" key="GridCell.Tab.2.right" timestamp="1619000879955" />
-    <state width="1877" height="348" key="GridCell.Tab.2.right/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1619000879955" />
-    <state width="1877" height="348" key="GridCell.Tab.3.bottom" timestamp="1619000879955" />
-    <state width="1877" height="348" key="GridCell.Tab.3.bottom/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1619000879955" />
-    <state width="1877" height="348" key="GridCell.Tab.3.center" timestamp="1619000879955" />
-    <state width="1877" height="348" key="GridCell.Tab.3.center/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1619000879955" />
-    <state width="1877" height="348" key="GridCell.Tab.3.left" timestamp="1619000879955" />
-    <state width="1877" height="348" key="GridCell.Tab.3.left/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1619000879955" />
-    <state width="1877" height="348" key="GridCell.Tab.3.right" timestamp="1619000879955" />
-    <state width="1877" height="348" key="GridCell.Tab.3.right/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1619000879955" />
-    <state x="2381" y="164" key="SettingsEditor" timestamp="1619000879955" />
-    <state x="2381" y="164" key="SettingsEditor/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1619000879955" />
-    <state x="2779" y="396" key="com.intellij.database.actions.DdlActions$CreateObject$1" timestamp="1619000879955" />
-    <state x="2779" y="396" key="com.intellij.database.actions.DdlActions$CreateObject$1/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1619000879955" />
-    <state x="2610" y="324" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog" timestamp="1619000879955" />
-    <state x="2610" y="324" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1619000879955" />
-    <state x="2404" y="227" width="983" height="666" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1619000879955" />
-    <state x="2404" y="227" width="983" height="666" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1619000879955" />
-    <state x="755" y="62" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1619530631715">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="755" y="62" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1619530631715" />
+    <option name="version" value="1" />
   </component>
 </project>
