@@ -231,4 +231,33 @@ app.get("/liste_utilisateur", (request, response)=> {
 	});
 });
 
+
+app.post("/nombre_materiel", (request, response)=> {
+	let con = mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "root",
+		database : "falcohm"
+	});
+
+	con.connect(function(err) {
+		if (err) throw err;
+		con.query("SELECT m.nom,m.nombre from materiels as m ", function (err, result) {
+			result.forEach(function(item){
+
+				if(item.nombre !== Number(request.body[item.nom]) && request.body[item.nom] !== undefined){
+
+					con.query("UPDATE materiels SET nombre = '"+Number(request.body[item.nom])+"' WHERE nom ='" + item.nom+"'"
+					);
+				}
+			})
+
+		});
+
+
+
+
+	});
+});
+
 app.listen(80);
