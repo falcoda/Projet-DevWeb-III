@@ -32,6 +32,10 @@ app.get("/contact", (request, response)=> {
 	response.render("pages/contact");
 });
 
+app.get("/administration", (request, response)=> {
+	response.render("pages/administration");
+});
+
 app.post("/mail", (request, response)=>{
 	console.log(request.body);
 	const transporter = nodemailer.createTransport({
