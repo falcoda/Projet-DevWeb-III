@@ -32,9 +32,7 @@ app.get("/contact", (request, response)=> {
 	response.render("pages/contact");
 });
 
-app.get("/administration", (request, response)=> {
-	response.render("pages/administration");
-});
+
 
 app.post("/mail", (request, response)=>{
 	console.log(request.body);
@@ -187,7 +185,7 @@ app.post("/ajouterMateriel", (request, response)=> {
 	});
 });
 
-app.listen(80);
+
 
 /*
 var mysql = require('mysql');
@@ -210,3 +208,27 @@ con.connect(function(err) {
 
 });
 */
+
+
+
+app.get("/administration", (request, response)=> {
+	response.render("pages/administration");
+});
+
+
+app.get("/liste_utilisateur", (request, response)=> {
+	let con = mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "root",
+		database : "falcohm"
+	});
+	con.connect(function(err) {
+		if (err) throw err;
+		con.query("SELECT utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone as numero, utilisateurs.adressemail as mail from utilisateurs", function (err, result) {
+			response.send(JSON.stringify(result));
+		});
+	});
+});
+
+app.listen(80);
