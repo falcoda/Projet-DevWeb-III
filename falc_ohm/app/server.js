@@ -168,6 +168,28 @@ app.post("/ajouterMateriel", (request, response)=> {
 	});
 });
 
+
+app.post("/panier", (request, response)=> {
+	let mail= request.body.mail;
+	let con = mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "root",
+		database : "falcohm"
+	});
+	con.connect(function(err) {
+		if (err) throw err;
+		con.query("select materiels.nom, panier_elem.nombre from panier_elem join materiels on materiels.id_materiel = panier_elem.id_materiel join panier on panier.id_panier = panier_elem.id_panier join utilisateurs on utilisateurs.id_utilisateurs = panier.id_utilisateurs where utilisateurs.adressemail ='" +mail +"'", function (err, result) {
+			response.send(JSON.stringify(result));
+		});
+	});
+});
+
+
+
+
+
+
 app.listen(80);
 
 /*
