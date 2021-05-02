@@ -19,13 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8dff3ea-25ff-44d1-9507-021b20555276" name="Default Changelist" comment="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;backend/.idea/workspace.xml&#10;#&#9;backend/package-lock.json&#10;#&#9;backend/package.json&#10;#&#9;backend/server.js">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+    <list default="true" id="b8dff3ea-25ff-44d1-9507-021b20555276" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/falc_ohm/app/public/img/falcohm_logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/public/img/falcohm_logo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/falc_ohm/app/public/js/administration.js" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/public/js/administration.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/falc_ohm/app/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/falc_ohm/app/views/pages/administration.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/views/pages/administration.ejs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -229,7 +226,7 @@
       <workItem from="1618755927534" duration="16069000" />
       <workItem from="1619529680473" duration="4187000" />
       <workItem from="1619864286104" duration="198000" />
-      <workItem from="1619864512330" duration="17776000" />
+      <workItem from="1619864512330" duration="19512000" />
     </task>
     <task id="LOCAL-00001" summary="ajout bootstrap">
       <created>1616347354449</created>
@@ -259,7 +256,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619873787200</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;backend/.idea/workspace.xml&#10;#&#9;backend/package-lock.json&#10;#&#9;backend/package.json&#10;#&#9;backend/server.js">
+      <created>1619883866756</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1619883866756</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

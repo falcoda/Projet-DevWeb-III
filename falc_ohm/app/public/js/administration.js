@@ -1,3 +1,8 @@
+/* eslint-disable no-undef */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable react/jsx-no-undef */
+
 let materiel;
 let users;
 
@@ -18,6 +23,7 @@ xhr.onload = function() {
 	ReactDOM.render(
 		<Bouttons/>,
 		document.getElementById("bouttons")
+
 	);
 };
 xhr.send();
@@ -139,14 +145,14 @@ class ListeMateriel extends React.Component {
 
 				<table className="table">
 					<thead>
-					<tr>
-						<th scope="col">Nom</th>
-						<th scope="col">Catégorie</th>
-						<th scope="col">Nombre</th>
-					</tr>
+						<tr>
+							<th scope="col">Nom</th>
+							<th scope="col">Catégorie</th>
+							<th scope="col">Nombre</th>
+						</tr>
 					</thead>
 					<tbody>
-					{rows}
+						{rows}
 					</tbody>
 				</table>
 				<button onClick={sendNumber}>Envoyer</button>
@@ -169,7 +175,6 @@ function afficherUtilis(){
 }
 
 function nombreMateriel() {
-	console.log(materiel);
 	ReactDOM.render(
 		<ListeMateriel materiels={JSON.parse(materiel)} />,
 		document.getElementById("conteneur")
