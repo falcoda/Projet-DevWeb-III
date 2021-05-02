@@ -21,9 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b8dff3ea-25ff-44d1-9507-021b20555276" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/falc_ohm/app/public/css/administration.css" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/public/css/administration.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/falc_ohm/app/public/js/administration.js" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/public/js/administration.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/falc_ohm/app/views/pages/administration.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/views/pages/administration.ejs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,6 +56,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="corentin" />
+      </list>
+    </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="main" />
@@ -220,7 +222,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619883866756</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="ajout de matériel dans la page admin">
+      <created>1619962874557</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1619962874557</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,7 +252,8 @@
     <MESSAGE value="ajout bootstrap" />
     <MESSAGE value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;backend/.idea/workspace.xml&#10;#&#9;backend/package-lock.json&#10;#&#9;backend/package.json&#10;#&#9;backend/server.js" />
     <MESSAGE value="modification du matériel + affichage des utilisateurs" />
-    <option name="LAST_COMMIT_MESSAGE" value="modification du matériel + affichage des utilisateurs" />
+    <MESSAGE value="ajout de matériel dans la page admin" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajout de matériel dans la page admin" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2334" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" />
