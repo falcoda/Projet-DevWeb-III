@@ -19,15 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8dff3ea-25ff-44d1-9507-021b20555276" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/falc_ohm/app/public/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/public/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/falc_ohm/app/public/js/profil.js" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/public/js/profil.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/falc_ohm/app/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/falc_ohm/app/views/pages/profil.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/views/pages/profil.ejs" afterDir="false" />
-    </list>
+    <list default="true" id="b8dff3ea-25ff-44d1-9507-021b20555276" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -280,7 +272,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ajout bootstrap" />
     <MESSAGE value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;backend/.idea/workspace.xml&#10;#&#9;backend/package-lock.json&#10;#&#9;backend/package.json&#10;#&#9;backend/server.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;backend/.idea/workspace.xml&#10;#&#9;backend/package-lock.json&#10;#&#9;backend/package.json&#10;#&#9;backend/server.js" />
+    <MESSAGE value="affichage du pannier" />
+    <option name="LAST_COMMIT_MESSAGE" value="affichage du pannier" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2334" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" />
