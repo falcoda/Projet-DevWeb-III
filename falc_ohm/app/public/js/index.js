@@ -3,18 +3,18 @@ let utilisateurConnecte = GetCookie("connexion");
 console.log("session sur " +utilisateurConnecte);
 
 function GetCookie (name) {
-    var arg = name + "=";
-    var alen = arg.length;
-    var clen = document.cookie.length;
-    var i = 0;
-    while (i < clen) {
-        var j = i + alen;
-        if (document.cookie.substring(i, j) == arg)
-            return getCookieVal (j);
-        i = document.cookie.indexOf(" ", i) + 1;
-        if (i == 0) break;
-    }
-    return null;
+	var arg = name + "=";
+	var alen = arg.length;
+	var clen = document.cookie.length;
+	var i = 0;
+	while (i < clen) {
+		var j = i + alen;
+		if (document.cookie.substring(i, j) == arg)
+			return getCookieVal(j);
+		i = document.cookie.indexOf(" ", i) + 1;
+		if (i == 0) break;
+	}
+	return null;
 }
 
 
@@ -54,8 +54,8 @@ function render() {
 				FALC'OHM SYSTEM
 			</a>
 			<button className="navbar-toggler" type="button" data-toggle="collapse"
-					data-target="#navbarnav" aria-controls="navbarnav" aria-expanded="false"
-					aria-label="Toggle navigation">
+				data-target="#navbarnav" aria-controls="navbarnav" aria-expanded="false"
+				aria-label="Toggle navigation">
 				<span className="navbar-toggler-icon"></span>
 			</button>
 

@@ -101,7 +101,7 @@ app.get("/materiel/:format?", (request, response)=> {
 		});
 		con.connect(function (err) {
 			if (err) throw err;
-			con.query("SELECT m.nom,m.prix,m.description,m.nombre,m.en_location,c.nom_categorie from materiels as m JOIN categories c on m.id_categorie = c.id_categorie GROUP BY nom_categorie", function (err, result) {
+			con.query("SELECT m.nom,m.prix,m.description,m.nombre,m.en_location,m.image,c.nom_categorie from materiels as m JOIN categories c on m.id_categorie = c.id_categorie", function (err, result) {
 				response.send(JSON.stringify(result));
 			});
 		});
