@@ -4,6 +4,12 @@
 
     <list default="true" id="b8dff3ea-25ff-44d1-9507-021b20555276" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/falc_ohm/app/public/js/profil.js" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/public/js/profil.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/falc_ohm/app/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/server.js" afterDir="false" />
+
+
+    <list default="true" id="b8dff3ea-25ff-44d1-9507-021b20555276" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
 
     <list default="true" id="90091e18-45ee-4eb2-802e-420dac4e4040" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
@@ -42,7 +48,55 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
+
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="falcohm: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="falcohm: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="materiels: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="falcohm: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="panier: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="falcohm: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="panier_elem: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="falcohm: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="utilisateurs: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+    </expand>
+
     <expand />
+
     <select />
   </component>
 
@@ -63,6 +117,14 @@
 
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="françois" />
+        <option value="corentin,françois" />
+      </list>
+    </option>
+
+
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
         <option value="corentin" />
       </list>
     </option>
@@ -71,6 +133,7 @@
         <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
+
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_CHANGES_POLICY" value="SHELVE" />
   </component>
@@ -100,7 +163,11 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -165,6 +232,22 @@
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
               <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@599f5d40" type="7427dc5b:ServiceModel$ServiceGroupNode" />
             </path>
+
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@b0c3941d" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@b0c3941d" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@320f6aa" type="9fbbdea:ServiceModel$ServiceNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@b0c3941d" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@6f57f7f8" type="9fbbdea:ServiceModel$ServiceNode" />
+            </path>
+
           </expand>
           <select />
         </treeState>
@@ -204,9 +287,13 @@
       <workItem from="1618325502664" duration="6676000" />
       <workItem from="1618241130549" duration="2790000" />
       <workItem from="1618755927534" duration="16069000" />
+
+      <workItem from="1620134016466" duration="3969000" />
+
       <workItem from="1619529680473" duration="4187000" />
       <workItem from="1619864286104" duration="198000" />
       <workItem from="1619864512330" duration="19512000" />
+
     </task>
     <task id="LOCAL-00001" summary="ajout bootstrap">
       <created>1616347354449</created>
@@ -222,6 +309,16 @@
       <option name="project" value="LOCAL" />
       <updated>1616410500664</updated>
     </task>
+
+    <task id="LOCAL-00003" summary="affichage du pannier">
+      <created>1619970824683</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1619970824683</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+
     <task id="LOCAL-00003" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;backend/.idea/workspace.xml&#10;#&#9;backend/package-lock.json&#10;#&#9;backend/package.json&#10;#&#9;backend/server.js">
       <created>1619867707535</created>
       <option name="number" value="00003" />
@@ -263,10 +360,12 @@
       <workItem from="1618922299681" duration="101000" />
     </task>
 
+
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+
 
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -285,9 +384,14 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ajout bootstrap" />
     <MESSAGE value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;backend/.idea/workspace.xml&#10;#&#9;backend/package-lock.json&#10;#&#9;backend/package.json&#10;#&#9;backend/server.js" />
+
+    <MESSAGE value="affichage du pannier" />
+    <option name="LAST_COMMIT_MESSAGE" value="affichage du pannier" />
+
     <MESSAGE value="modification du matériel + affichage des utilisateurs" />
     <MESSAGE value="ajout de matériel dans la page admin" />
     <option name="LAST_COMMIT_MESSAGE" value="ajout de matériel dans la page admin" />
+
   </component>
   <component name="WindowStateProjectService">
     <state x="2334" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" />
@@ -340,8 +444,10 @@
     <state x="2610" y="324" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" />
     <state x="2404" y="227" width="983" height="666" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" />
     <state x="2404" y="227" width="983" height="666" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" />
+
     <state x="755" y="62" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" />
     <state x="755" y="62" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" />
+
 
   </component>
 </project>

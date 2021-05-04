@@ -3,11 +3,7 @@ let nodemailer = require("nodemailer");
 let express = require("express");
 let cors = require("cors");
 let app = express();
-//<<<<<<< HEAD
-//let bootstrap = require('bootstrap');
 
-/*const bootstrap = require('bootstrap');
->>>>>>> 86bb03ddd7877e17cedca3d0eadb0465ea7e9483*/
 
 function validateEmail(email) {
 	const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -126,34 +122,35 @@ app.get("/profil", (request, response)=> {
 });
 
 app.get("/utilisateurs", (request, response)=> {
-    let con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "root",
-        database : "falcohm"
-    });
-    con.connect(function(err) {
-        if (err) throw err;
-        con.query("SELECT utilisateurs.id_utilisateurs, utilisateurs.adressemail, utilisateurs.motdepasse, utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone, utilisateurs.admin from utilisateurs", function (err, result) {
-            response.send(JSON.stringify(result));
-        });
-    });
+	let con = mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "root",
+		database : "falcohm"
+	});
+	con.connect(function(err) {
+		if (err) throw err;
+		con.query("SELECT utilisateurs.id_utilisateurs, utilisateurs.adressemail, utilisateurs.motdepasse, utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone, utilisateurs.admin from utilisateurs", function (err, result) {
+			response.send(JSON.stringify(result));
+		});
+	});
 });
 
 app.post("/inscription", (request, response)=> {
-    let con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "root",
-        database : "falcohm"
-    });
-    con.connect(function(err) {
-        if (err) throw err;
-        con.query("INSERT INTO utilisateurs (nom, prenom, numerotelephone, adressemail, motdepasse) VALUES (?, ?, ?, ?, ?)", [request.body.nom, request.body.prenom, request.body.numerotel, request.body.adressemail2, request.body.motdepasse2], function (err, result) {
-            response.send("succes");
-        });
-    });
+	let con = mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "root",
+		database : "falcohm"
+	});
+	con.connect(function(err) {
+		if (err) throw err;
+		con.query("INSERT INTO utilisateurs (nom, prenom, numerotelephone, adressemail, motdepasse) VALUES (?, ?, ?, ?, ?)", [request.body.nom, request.body.prenom, request.body.numerotel, request.body.adressemail2, request.body.motdepasse2], function (err, result) {
+			response.send("succes");
+		});
+	});
 });
+
 
 app.post("/ajouterMateriel", (request, response)=> {
 	let con = mysql.createConnection({
@@ -170,7 +167,15 @@ app.post("/ajouterMateriel", (request, response)=> {
 	});
 });
 
-app.post("/ajouterMateriel", (request, response)=> {
+
+
+
+app.get("/administration", (request, response)=> {
+	response.render("pages/administration");
+});
+
+
+app.get("/liste_utilisateur", (request, response)=> {
 	let con = mysql.createConnection({
 		host: "localhost",
 		user: "root",
@@ -179,35 +184,59 @@ app.post("/ajouterMateriel", (request, response)=> {
 	});
 	con.connect(function(err) {
 		if (err) throw err;
-		con.query("INSERT INTO materiels (nom, id_categorie, prix, nombre, description) VALUES (?, ?, ?, ?, ?)", [request.body.nom, request.body.categorie, request.body.prix, request.body.nombre, request.body.description], function (err, result) {
-			response.send("succes");
+		con.query("SELECT utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone as numero, utilisateurs.adressemail as mail from utilisateurs", function (err, result) {
+			response.send(JSON.stringify(result));
 		});
 	});
 });
 
 
+app.post("/nombre_materiel", (request, response)=> {
+	let con = mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "root",
+		database : "falcohm"
+	});
 
-/*
-var mysql = require('mysql');
+	con.connect(function(err) {
+		if (err) throw err;
+		con.query("SELECT m.nom,m.nombre from materiels as m ", function (err, result) {
+			result.forEach(function(item){
 
-var con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "root",
-    database : "falcohm"
+				if(item.nombre !== Number(request.body[item.nom]) && request.body[item.nom] !== undefined){
+
+					con.query("UPDATE materiels SET nombre = '"+Number(request.body[item.nom])+"' WHERE nom ='" + item.nom+"'"
+					);
+				}
+			});
+
+		});
+
+
+
+
+	});
 });
 
-con.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected!");
 
-    con.query("INSERT INTO messages (identite, mail, message) VALUES ('francois charlier', 'charlierfrancois@gmail.com', 'Bonjour, le site est très beau !')", function (err, result) {
-        if (err) throw err;
-        console.log("Données injectées !");
-    });
 
+app.post("/panier", (request, response)=> {
+	let mail= request.body.mail;
+	let con = mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "root",
+		database : "falcohm"
+	});
+	con.connect(function(err) {
+		if (err) throw err;
+		con.query("select materiels.nom, panier_elem.nombre from panier_elem join materiels on materiels.id_materiel = panier_elem.id_materiel join panier on panier.id_panier = panier_elem.id_panier join utilisateurs on utilisateurs.id_utilisateurs = panier.id_utilisateurs where utilisateurs.adressemail ='" +mail +"'", function (err, result) {
+			response.send(JSON.stringify(result));
+		});
+	});
 });
-*/
+
 
 
 
@@ -261,3 +290,4 @@ app.post("/nombre_materiel", (request, response)=> {
 });
 
 app.listen(80);
+
