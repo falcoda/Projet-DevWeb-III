@@ -32,6 +32,8 @@ app.get("/contact", (request, response)=> {
 	response.render("pages/contact");
 });
 
+
+
 app.post("/mail", (request, response)=>{
 	console.log(request.body);
 	const transporter = nodemailer.createTransport({
@@ -124,34 +126,35 @@ app.get("/profil", (request, response)=> {
 });
 
 app.get("/utilisateurs", (request, response)=> {
-    let con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "root",
-        database : "falcohm"
-    });
-    con.connect(function(err) {
-        if (err) throw err;
-        con.query("SELECT utilisateurs.id_utilisateurs, utilisateurs.adressemail, utilisateurs.motdepasse, utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone, utilisateurs.admin from utilisateurs", function (err, result) {
-            response.send(JSON.stringify(result));
-        });
-    });
+	let con = mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "root",
+		database : "falcohm"
+	});
+	con.connect(function(err) {
+		if (err) throw err;
+		con.query("SELECT utilisateurs.id_utilisateurs, utilisateurs.adressemail, utilisateurs.motdepasse, utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone, utilisateurs.admin from utilisateurs", function (err, result) {
+			response.send(JSON.stringify(result));
+		});
+	});
 });
 
 app.post("/inscription", (request, response)=> {
-    let con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "root",
-        database : "falcohm"
-    });
-    con.connect(function(err) {
-        if (err) throw err;
-        con.query("INSERT INTO utilisateurs (nom, prenom, numerotelephone, adressemail, motdepasse) VALUES (?, ?, ?, ?, ?)", [request.body.nom, request.body.prenom, request.body.numerotel, request.body.adressemail2, request.body.motdepasse2], function (err, result) {
-            response.send("succes");
-        });
-    });
+	let con = mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "root",
+		database : "falcohm"
+	});
+	con.connect(function(err) {
+		if (err) throw err;
+		con.query("INSERT INTO utilisateurs (nom, prenom, numerotelephone, adressemail, motdepasse) VALUES (?, ?, ?, ?, ?)", [request.body.nom, request.body.prenom, request.body.numerotel, request.body.adressemail2, request.body.motdepasse2], function (err, result) {
+			response.send("succes");
+		});
+	});
 });
+
 
 app.post("/ajouterMateriel", (request, response)=> {
 	let con = mysql.createConnection({
@@ -167,6 +170,58 @@ app.post("/ajouterMateriel", (request, response)=> {
 		});
 	});
 });
+
+
+
+app.get("/administration", (request, response)=> {
+	response.render("pages/administration");
+});
+
+
+app.get("/liste_utilisateur", (request, response)=> {
+	let con = mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "root",
+		database : "falcohm"
+	});
+	con.connect(function(err) {
+		if (err) throw err;
+		con.query("SELECT utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone as numero, utilisateurs.adressemail as mail from utilisateurs", function (err, result) {
+			response.send(JSON.stringify(result));
+		});
+	});
+});
+
+
+app.post("/nombre_materiel", (request, response)=> {
+	let con = mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "root",
+		database : "falcohm"
+	});
+
+	con.connect(function(err) {
+		if (err) throw err;
+		con.query("SELECT m.nom,m.nombre from materiels as m ", function (err, result) {
+			result.forEach(function(item){
+
+				if(item.nombre !== Number(request.body[item.nom]) && request.body[item.nom] !== undefined){
+
+					con.query("UPDATE materiels SET nombre = '"+Number(request.body[item.nom])+"' WHERE nom ='" + item.nom+"'"
+					);
+				}
+			});
+
+		});
+
+
+
+
+	});
+});
+
 
 
 app.post("/panier", (request, response)=> {
@@ -191,25 +246,3 @@ app.post("/panier", (request, response)=> {
 
 
 app.listen(80);
-
-/*
-var mysql = require('mysql');
-
-var con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "root",
-    database : "falcohm"
-});
-
-con.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected!");
-
-    con.query("INSERT INTO messages (identite, mail, message) VALUES ('francois charlier', 'charlierfrancois@gmail.com', 'Bonjour, le site est très beau !')", function (err, result) {
-        if (err) throw err;
-        console.log("Données injectées !");
-    });
-
-});
-*/
