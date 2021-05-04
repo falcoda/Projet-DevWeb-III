@@ -19,7 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8dff3ea-25ff-44d1-9507-021b20555276" name="Default Changelist" comment="" />
+    <list default="true" id="b8dff3ea-25ff-44d1-9507-021b20555276" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/falc_ohm/app/public/js/profil.js" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/public/js/profil.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/falc_ohm/app/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/server.js" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,6 +239,7 @@
       <workItem from="1618325502664" duration="6676000" />
       <workItem from="1618241130549" duration="2790000" />
       <workItem from="1618755927534" duration="16069000" />
+      <workItem from="1620134016466" duration="3969000" />
     </task>
     <task id="LOCAL-00001" summary="ajout bootstrap">
       <created>1616347354449</created>
@@ -250,11 +255,18 @@
       <option name="project" value="LOCAL" />
       <updated>1616410500664</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="affichage du pannier">
+      <created>1619970824683</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1619970824683</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
