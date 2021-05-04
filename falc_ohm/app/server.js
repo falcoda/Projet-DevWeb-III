@@ -3,11 +3,7 @@ let nodemailer = require("nodemailer");
 let express = require("express");
 let cors = require("cors");
 let app = express();
-//<<<<<<< HEAD
-//let bootstrap = require('bootstrap');
 
-/*const bootstrap = require('bootstrap');
->>>>>>> 86bb03ddd7877e17cedca3d0eadb0465ea7e9483*/
 
 function validateEmail(email) {
 	const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -173,6 +169,7 @@ app.post("/ajouterMateriel", (request, response)=> {
 
 
 
+
 app.get("/administration", (request, response)=> {
 	response.render("pages/administration");
 });
@@ -243,6 +240,54 @@ app.post("/panier", (request, response)=> {
 
 
 
+app.get("/administration", (request, response)=> {
+	response.render("pages/administration");
+});
 
+
+app.get("/liste_utilisateur", (request, response)=> {
+	let con = mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "root",
+		database : "falcohm"
+	});
+	con.connect(function(err) {
+		if (err) throw err;
+		con.query("SELECT utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone as numero, utilisateurs.adressemail as mail from utilisateurs", function (err, result) {
+			response.send(JSON.stringify(result));
+		});
+	});
+});
+
+
+app.post("/nombre_materiel", (request, response)=> {
+	let con = mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "root",
+		database : "falcohm"
+	});
+
+	con.connect(function(err) {
+		if (err) throw err;
+		con.query("SELECT m.nom,m.nombre from materiels as m ", function (err, result) {
+			result.forEach(function(item){
+
+				if(item.nombre !== Number(request.body[item.nom]) && request.body[item.nom] !== undefined){
+
+					con.query("UPDATE materiels SET nombre = '"+Number(request.body[item.nom])+"' WHERE nom ='" + item.nom+"'"
+					);
+				}
+			})
+
+		});
+
+
+
+
+	});
+});
 
 app.listen(80);
+

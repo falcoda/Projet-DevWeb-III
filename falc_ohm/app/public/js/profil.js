@@ -1,4 +1,5 @@
 
+
 let panier_utilis;
 
 let xhr = new XMLHttpRequest();
@@ -103,3 +104,4 @@ function afficherInfos() {
 function afficherCommande() {
 
 }
+

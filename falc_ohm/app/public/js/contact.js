@@ -102,13 +102,13 @@ class FormsPage extends React.Component {
 
 						<div className="form-group">
 							<label htmlFor="email">Entrez votre mail</label>
-							<input type="email" className="form-control form-control-lg w-25"  id="email"
-								   placeholder="email" required/>
+							<input type="email" className="form-control w-25"  id="email"
+								   placeholder="Adresse mail" required/>
 						</div>
 
 						<div className="form-group">
 							<label htmlFor="bio">Commentaire</label>
-							<textarea className="form-control " id="commentaire" rows="5" ></textarea>
+							<textarea className="form-control " id="commentaire" rows="5" placeholder="Entrez votre commentaire"></textarea>
 						</div>
 						<input type="submit" className="btn btn-light" id="buttonSubmit" value={"envoyer"} />
 
@@ -126,10 +126,17 @@ class FormsPage extends React.Component {
 ReactDOM.render(<FormsPage/>,document.getElementById("FormsPage"));
 
 
-mymap = L.map('map').setView([50.66595108289637, 4.612268456094151], 17);
+let mymap = L.map('mapid').setView([50.627339, 4.451884], 13);
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
 	maxZoom: 20,
 	id: 'mapbox/streets-v11',
 	tileSize: 512,
 	zoomOffset: -1
+}).addTo(mymap);
+
+var circle = L.circle([50.627339, 4.451884], {
+	color: 'red',
+	fillColor: '#f03',
+	fillOpacity: 0.5,
+	radius: 500
 }).addTo(mymap);
