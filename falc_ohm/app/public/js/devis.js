@@ -324,13 +324,365 @@ class MyForm extends React.Component {
                     }
                 }
             }
-        }else if(this.state.typeEvenement == "event2"){ //mariage
+        }
+        else if(this.state.typeEvenement == "event2"){ //mariage
+            if (parseInt(this.state.tailleSalle) <= 100){ //nombre de personnes
+                if(this.state.typeSound == "sound1"){ //preference sonorisation
+                    console.log("force grosSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+                }else if(this.state.typeSound == "sound2"){
+                    console.log("force moyenSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
 
-        }else if(this.state.typeEvenement == "event3"){ //festival
+                }else if(this.state.typeSound == "sound3"){
+                    console.log("force petitSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
 
-        }else if(this.state.typeEvenement == "event4"){ //teuf
+                }else {
+                    console.log("pas de pref");
+                    console.log("du coup petit sound");
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+                }
+            }else if (parseInt(this.state.tailleSalle) > 100 && parseInt(this.state.tailleSalle) <= 200){
+                if(this.state.typeSound == "sound1"){ //preference sonorisation
+                    console.log("force grosSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+                }else if(this.state.typeSound == "sound2"){
+                    console.log("force moyenSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
 
-        }else if(this.state.typeEvenement == "event5"){ //conference ou seminaire
+                }else if(this.state.typeSound == "sound3"){
+                    console.log("force petitSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+
+                }else {
+                    console.log("pas de pref");
+                    console.log("du coup petit sound complet (ludo et coda)");
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+                }
+            }else if (parseInt(this.state.tailleSalle) > 200 && parseInt(this.state.tailleSalle) <= 500){
+                if(this.state.typeSound == "sound1"){ //preference sonorisation
+                    console.log("force grosSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+                }else if(this.state.typeSound == "sound2"){
+                    console.log("force moyenSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+
+                }else if(this.state.typeSound == "sound3"){
+                    console.log("force petitSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+
+                }else {
+                    console.log("pas de pref")
+                    console.log("du coup 2mth et 6top 2 voie");
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+                }
+            }else if (parseInt(this.state.tailleSalle) > 500){
+                console.log("Nous somme pas en mesure de fournir une telle préstation, veuillez nous contacter pour plus d'info")
+                }else {
+                console.log("error holder")
+            }
+
+        }
+        else if(this.state.typeEvenement == "event3" || this.state.typeEvenement == "event4"){ //festival ou festival car mêmes valeurs
+            if (parseInt(this.state.tailleSalle) <= 100){ //nombre de personnes
+                if(this.state.typeSound == "sound1"){ //preference sonorisation
+                    console.log("force grosSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+                }else if(this.state.typeSound == "sound2"){
+                    console.log("force moyenSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+
+                }else if(this.state.typeSound == "sound3"){
+                    console.log("force petitSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+
+                }else {
+                    console.log("pas de pref");
+                    console.log("du coup petit sound complet (coda et ludo) ");
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+                }
+            }else if (parseInt(this.state.tailleSalle) > 100 && parseInt(this.state.tailleSalle) <= 200){
+                if(this.state.typeSound == "sound1"){ //preference sonorisation
+                    console.log("force grosSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+                }else if(this.state.typeSound == "sound2"){
+                    console.log("force moyenSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+
+                }else if(this.state.typeSound == "sound3"){
+                    console.log("force petitSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+
+                }else {
+                    console.log("pas de pref");
+                    console.log("du coup 4mth 2 nexos");
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+                }
+            }else if (parseInt(this.state.tailleSalle) > 200 && parseInt(this.state.tailleSalle) <= 500){
+                if(this.state.typeSound == "sound1"){ //preference sonorisation
+                    console.log("force grosSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+                }else if(this.state.typeSound == "sound2"){
+                    console.log("force moyenSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+
+                }else if(this.state.typeSound == "sound3"){
+                    console.log("force petitSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+
+                }else {
+                    console.log("pas de pref")
+                    console.log("du coup 6 mth 2 nexos");
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+                }
+            }else if (parseInt(this.state.tailleSalle) > 500){
+                if(this.state.typeSound == "sound1"){ //preference sonorisation
+                    console.log("force grosSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+                }else if(this.state.typeSound == "sound2"){
+                    console.log("force moyenSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+
+                }else if(this.state.typeSound == "sound3"){
+                    console.log("force petitSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+
+                }else {
+                    console.log("pas de pref")
+                    console.log("du coup 10mth 4 nexos");
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+                }
+            }else {
+                console.log("error holder")
+            }
+        //}else if(this.state.typeEvenement == "event4"){ //teuf
+        }
+        else if(this.state.typeEvenement == "event5"){ //conference ou seminaire
 
         }else{   //pas de type d'event séléctionné => l'afficher sur la page html qe c'est requis
 
