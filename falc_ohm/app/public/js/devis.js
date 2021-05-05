@@ -10,13 +10,15 @@ class MyForm extends React.Component {
             typeEvenement : '',   //valeur par défaut
             typeSound : 'soundAuto',
             typeLight : 'lightAuto',
+            tailleSalle : '',
+            nombrePersonne : '',
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleChange(e) {
         const name = e.target.name;
-        console.log(e.target.name)
+        //console.log(e.target.name)
         this.setState({
             [name]: e.target.value   //changer les valeur dans state
         })
@@ -25,9 +27,317 @@ class MyForm extends React.Component {
         e.preventDefault()
         const data = JSON.stringify(this.state)
         console.log(data)
-        console.log(this.state.typeSound) //soundauto si rien choisi
+        //console.log(this.state.typeSound) //soundauto si rien choisi;
+        if (this.state.typeEvenement == "event1"){ //soiree dansante
+            if (parseInt(this.state.tailleSalle) <= 100){ //nombre de personnes
+                if(this.state.typeSound == "sound1"){ //preference sonorisation
+                    console.log("force grosSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+                }else if(this.state.typeSound == "sound2"){
+                    console.log("force moyenSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+
+                }else if(this.state.typeSound == "sound3"){
+                    console.log("force petitSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+
+                }else {
+                    console.log("pas de pref");
+                    console.log("du coup petit sound 1/2");
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+                }
+            }else if (parseInt(this.state.tailleSalle) > 100 && parseInt(this.state.tailleSalle) <= 200){
+                if(this.state.typeSound == "sound1"){ //preference sonorisation
+                    console.log("force grosSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+                }else if(this.state.typeSound == "sound2"){
+                    console.log("force moyenSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+
+                }else if(this.state.typeSound == "sound3"){
+                    console.log("force petitSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+
+                }else {
+                    console.log("pas de pref");
+                    console.log("du coup petit sound");
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+                }
+            }else if (parseInt(this.state.tailleSalle) > 200 && parseInt(this.state.tailleSalle) <= 300){
+                if(this.state.typeSound == "sound1"){ //preference sonorisation
+                    console.log("force grosSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+                }else if(this.state.typeSound == "sound2"){
+                    console.log("force moyenSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+
+                }else if(this.state.typeSound == "sound3"){
+                    console.log("force petitSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+
+                }else {
+                    console.log("pas de pref")
+                    console.log("du coup 2mth 1 nexos");
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+                }
+            }else if (parseInt(this.state.tailleSalle) > 300 && parseInt(this.state.tailleSalle) <= 500){
+                if(this.state.typeSound == "sound1"){ //preference sonorisation
+                    console.log("force grosSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+                }else if(this.state.typeSound == "sound2"){
+                    console.log("force moyenSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+
+                }else if(this.state.typeSound == "sound3"){
+                    console.log("force petitSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+
+                }else {
+                    console.log("pas de pref")
+                    console.log("du coup 4mth 2 nexos");
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+                }
+            }else if (parseInt(this.state.tailleSalle) > 500 && parseInt(this.state.tailleSalle) <= 1000){
+                if(this.state.typeSound == "sound1"){ //preference sonorisation
+                    console.log("force grosSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+                }else if(this.state.typeSound == "sound2"){
+                    console.log("force moyenSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+
+                }else if(this.state.typeSound == "sound3"){
+                    console.log("force petitSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+
+                }else {
+                    console.log("pas de pref")
+                    console.log("du coup 6 mth 2 nexos");
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+                }
+            }else{
+                if(this.state.typeSound == "sound1"){ //preference sonorisation
+                    console.log("force grosSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+                }else if(this.state.typeSound == "sound2"){
+                    console.log("force moyenSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+
+                }else if(this.state.typeSound == "sound3"){
+                    console.log("force petitSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+
+                }else {
+                    console.log("pas de pref")
+                    console.log("du coup 10 mth 4nexos");
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+                }
+            }
+        }else if(this.state.typeEvenement == "event2"){ //mariage
+
+        }else if(this.state.typeEvenement == "event3"){ //festival
+
+        }else if(this.state.typeEvenement == "event4"){ //teuf
+
+        }else if(this.state.typeEvenement == "event5"){ //conference ou seminaire
+
+        }else{   //pas de type d'event séléctionné => l'afficher sur la page html qe c'est requis
+
+        }
 
     }
+
     //ici on crée le html qui sera la simulation
     render() {
 
@@ -40,6 +350,7 @@ class MyForm extends React.Component {
                         <div className="col-12">
                             <label htmlFor="typeEvent">Type d'évenement : </label>
                             <select name="typeEvenement" value={this.state.typeEvenement} onChange={this.handleChange}>
+                                <option value="pasDeChoix">Faites votre choix </option>
                                 <option value="event1">Soirée dansante</option>
                                 <option value="event2">Mariage</option>
                                 <option value="event3">Festival</option>
@@ -58,12 +369,12 @@ class MyForm extends React.Component {
                     {/* Entrée taille de la salle */}
                     <div className="form-group">
                         <div className="col-auto">
-                            <label htmlFor="superficie" className="form-label">Taille de votre salle qui acceuilera la
+                            <label htmlFor="tailleSalle" className="form-label">Taille de votre salle qui acceuilera la
                                 sonorisation :</label>
                         </div>
                         <div className="col-auto">
                             <input onChange={this.handleChange} type="number"
-                                   className="form-control form-control-sm" id="superficie" name="quantity" min="1"
+                                   className="form-control form-control-sm" id="superficie" name="tailleSalle" min="1"
                                    max="1000"/>
                         </div>
                         <div className="col-auto">
@@ -75,12 +386,12 @@ class MyForm extends React.Component {
                     {/* Entrée nombre de personnes */}
                     <div className="form-group">
                         <div className="col-auto">
-                            <label htmlFor="nombredepersonne" className="form-label">Nombre de personnes maximale
+                            <label htmlFor="nombrePersonne" className="form-label">Nombre de personnes maximale
                                 attendues à l'événement :</label>
                         </div>
                         <div className="col-auto">
                             <input onChange={this.handleChange} type="number"
-                                   className="form-control form-control-sm" id="public" name="nombredepersonne"
+                                   className="form-control form-control-sm" id="public" name="nombrePersonne"
                                    min="1" max="1000"/>
                         </div>
                         <div className="col-auto">
@@ -93,6 +404,7 @@ class MyForm extends React.Component {
                     <div>
                         <label htmlFor="typeSound">Taille du soundsystem : </label>
                         <select name="typeSound" value={this.state.typeSound} onChange={this.handleChange}>
+                            <option value="soundAuto">Pas de préférences</option>
                             <option value="sound1">SoundSystem complet</option>
                             <option value="sound2">SoundSystem moyen</option>
                             <option value="sound3">Petit soundsystem</option>
@@ -129,6 +441,7 @@ class MyForm extends React.Component {
                     <div className="col-auto form-check">
                         <label htmlFor="typeLight">Show light voulu : </label>
                         <select name="typeLight" value={this.state.typeLight} onChange={this.handleChange}>
+                            <option value="lightAuto">Pas de préférences</option>
                             <option value="light1">Show light complet</option>
                             <option value="light2">Show light léger</option>
                             <option value="light3">Pas de show light</option>
