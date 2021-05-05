@@ -683,9 +683,111 @@ class MyForm extends React.Component {
         //}else if(this.state.typeEvenement == "event4"){ //teuf
         }
         else if(this.state.typeEvenement == "event5"){ //conference ou seminaire
+            if (parseInt(this.state.tailleSalle) <= 200 ){ //nombre de personnes  (ici 0-200 = meme sono)
+                if(this.state.typeSound == "sound1"){ //preference sonorisation
+                    console.log("force grosSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+                }else if(this.state.typeSound == "sound2"){
+                    console.log("force moyenSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
 
-        }else{   //pas de type d'event séléctionné => l'afficher sur la page html qe c'est requis
+                }else if(this.state.typeSound == "sound3"){
+                    console.log("force petitSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
 
+                }else {
+                    console.log("pas de pref");
+                    console.log("du coup petit sound complet (coda et ludo) ");
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+                }
+            }else if (parseInt(this.state.tailleSalle) > 200 && parseInt(this.state.tailleSalle) <= 500){
+                if(this.state.typeSound == "sound1"){ //preference sonorisation
+                    console.log("force grosSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+                }else if(this.state.typeSound == "sound2"){
+                    console.log("force moyenSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+
+                }else if(this.state.typeSound == "sound3"){
+                    console.log("force petitSound")
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+
+                }else {
+                    console.log("pas de pref")
+                    console.log("du coup 2 mth 6 top 2 voie");
+                    if (this.state.typeLight == "light1"){ //preferences show light
+                        console.log("force biglight");
+                    }else if (this.state.typeLight == "light2"){
+                        console.log("force legerLight");
+                    }else if (this.state.typeLight == "light3"){
+                        console.log("force pasdelight");
+                    }else {
+                        console.log("pas de préférences")
+                    }
+                }
+            }else {
+                console.log("Nous somme pas en mesure de fournir une telle préstation, veuillez nous contacter pour plus d'info")
+            }
+
+        }
+        else{   //pas de type d'event séléctionné => l'afficher sur la page html qe c'est requis
+            console.log("choisisez un type d'événement")
         }
 
     }
@@ -725,7 +827,7 @@ class MyForm extends React.Component {
                                 sonorisation :</label>
                         </div>
                         <div className="col-auto">
-                            <input onChange={this.handleChange} type="number"
+                            <input onChange={this.handleChange} onClick={}   type="number"
                                    className="form-control form-control-sm" id="superficie" name="tailleSalle" min="1"
                                    max="1000"/>
                         </div>
