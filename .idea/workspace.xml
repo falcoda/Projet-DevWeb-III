@@ -19,21 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8dff3ea-25ff-44d1-9507-021b20555276" name="Default Changelist" comment="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;backend/.idea/workspace.xml&#10;#&#9;backend/package-lock.json&#10;#&#9;backend/package.json&#10;#&#9;backend/server.js">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/falc_ohm/app/public/css/accueil.css" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/public/css/accueil.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/falc_ohm/app/public/css/navbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/public/css/navbar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/falc_ohm/app/public/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/public/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/falc_ohm/app/views/pages/accueil.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/views/pages/accueil.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/falc_ohm/app/views/pages/contact.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/views/pages/contact.ejs" afterDir="false" />
-    </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="b8dff3ea-25ff-44d1-9507-021b20555276" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-
   <component name="ComposerSettings">
     <execution>
       <executable />
@@ -53,33 +44,33 @@
     <expand>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MySQL for 5.1 - @localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MySQL for 5.1 - @localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MySQL for 5.1 - @localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="falcohm: schema" type="76f4a085:MysqlImplModel$Schema" />
       </path>
     </expand>
     <select />
   </component>
-
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_CHANGES_POLICY" value="SHELVE" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -100,6 +91,7 @@
     <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/Edit As Language" value="SQL" />
+    <property name="database.data.extractors.current.id" value="SQL Inserts" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/node_modules/eslint" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -113,12 +105,8 @@
     <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
-
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
-
     <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
-
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -140,7 +128,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.test">
     <configuration name="start" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/falc_ohm/app/package.json" />
       <command value="run" />
@@ -151,6 +139,20 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="test" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/falc_ohm/app/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="test" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="npm.start" />
+      <item itemvalue="npm.test" />
+    </list>
   </component>
   <component name="ServiceViewManager">
     <option name="allServicesViewState">
@@ -159,12 +161,22 @@
           <expand>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@7291fb8b" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@75f74ffe" type="7427dc5b:ServiceModel$ServiceGroupNode" />
             </path>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@7291fb8b" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@60bf9a85" type="9fbbdea:ServiceModel$ServiceNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@75f74ffe" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@67620a40" type="9fbbdea:ServiceModel$ServiceNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@75f74ffe" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@28f6770f" type="9fbbdea:ServiceModel$ServiceNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@75f74ffe" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@77bdd702" type="9fbbdea:ServiceModel$ServiceNode" />
             </path>
           </expand>
           <select />
@@ -186,13 +198,11 @@
       <workItem from="1616347406413" duration="1905000" />
       <workItem from="1616349487991" duration="8258000" />
       <workItem from="1616496077823" duration="637000" />
-
       <workItem from="1617112045336" duration="3090000" />
       <workItem from="1617805216375" duration="4022000" />
       <workItem from="1617809257113" duration="3548000" />
       <workItem from="1617895515661" duration="11677000" />
       <workItem from="1618068009736" duration="1340000" />
-
       <workItem from="1617112045336" duration="3440000" />
       <workItem from="1617113609791" duration="2355000" />
       <workItem from="1617188860497" duration="8605000" />
@@ -203,7 +213,10 @@
       <workItem from="1617968869156" duration="4898000" />
       <workItem from="1617981639096" duration="6048000" />
       <workItem from="1618054733407" duration="4224000" />
-
+      <workItem from="1618325502664" duration="6676000" />
+      <workItem from="1618241130549" duration="2790000" />
+      <workItem from="1618755927534" duration="16069000" />
+      <workItem from="1619529680473" duration="4187000" />
     </task>
     <task id="LOCAL-00001" summary="ajout bootstrap">
       <created>1616347354449</created>
@@ -223,7 +236,7 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -244,109 +257,57 @@
     <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;backend/.idea/workspace.xml&#10;#&#9;backend/package-lock.json&#10;#&#9;backend/package.json&#10;#&#9;backend/server.js" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2334" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1617900246521">
-      <screen x="1920" y="0" width="1920" height="1030" />
-    </state>
-    <state x="2334" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1617900246521" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1618069374173">
-      <screen x="1920" y="0" width="1920" height="1030" />
-    </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1618069374173" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1618069374173">
-      <screen x="1920" y="0" width="1920" height="1030" />
-    </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1618069374173" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1618069374173">
-      <screen x="1920" y="0" width="1920" height="1030" />
-    </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1618069374173" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1618069374173">
-      <screen x="1920" y="0" width="1920" height="1030" />
-    </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1618069374173" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1617907280424">
-      <screen x="1920" y="0" width="1920" height="1030" />
-    </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1617907280424" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1617907280424">
-      <screen x="1920" y="0" width="1920" height="1030" />
-    </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.center/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1617907280424" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1617907280424">
-      <screen x="1920" y="0" width="1920" height="1030" />
-    </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.left/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1617907280424" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1617907280424">
-      <screen x="1920" y="0" width="1920" height="1030" />
-    </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.right/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1617907280424" />
-    <state width="1877" height="348" key="GridCell.Tab.2.bottom" timestamp="1617907280424">
-      <screen x="1920" y="0" width="1920" height="1030" />
-    </state>
-    <state width="1877" height="348" key="GridCell.Tab.2.bottom/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1617907280424" />
-    <state width="1877" height="348" key="GridCell.Tab.2.center" timestamp="1617907280424">
-      <screen x="1920" y="0" width="1920" height="1030" />
-    </state>
-    <state width="1877" height="348" key="GridCell.Tab.2.center/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1617907280424" />
-    <state width="1877" height="348" key="GridCell.Tab.2.left" timestamp="1617907280424">
-      <screen x="1920" y="0" width="1920" height="1030" />
-    </state>
-    <state width="1877" height="348" key="GridCell.Tab.2.left/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1617907280424" />
-    <state width="1877" height="348" key="GridCell.Tab.2.right" timestamp="1617907280424">
-      <screen x="1920" y="0" width="1920" height="1030" />
-    </state>
-    <state width="1877" height="348" key="GridCell.Tab.2.right/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1617907280424" />
-    <state width="1877" height="348" key="GridCell.Tab.3.bottom" timestamp="1617907280424">
-      <screen x="1920" y="0" width="1920" height="1030" />
-    </state>
-    <state width="1877" height="348" key="GridCell.Tab.3.bottom/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1617907280424" />
-    <state width="1877" height="348" key="GridCell.Tab.3.center" timestamp="1617907280424">
-      <screen x="1920" y="0" width="1920" height="1030" />
-    </state>
-    <state width="1877" height="348" key="GridCell.Tab.3.center/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1617907280424" />
-    <state width="1877" height="348" key="GridCell.Tab.3.left" timestamp="1617907280424">
-      <screen x="1920" y="0" width="1920" height="1030" />
-    </state>
-    <state width="1877" height="348" key="GridCell.Tab.3.left/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1617907280424" />
-    <state width="1877" height="348" key="GridCell.Tab.3.right" timestamp="1617907280424">
-      <screen x="1920" y="0" width="1920" height="1030" />
-    </state>
-
-    <state width="1877" height="348" key="GridCell.Tab.3.right/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1617907280424" />
-    <state x="2381" y="164" key="SettingsEditor" timestamp="1617809246872">
-      <screen x="1920" y="0" width="1920" height="1030" />
-    </state>
-    <state x="2381" y="164" key="SettingsEditor/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1617809246872" />
-    <state x="2779" y="396" key="com.intellij.database.actions.DdlActions$CreateObject$1" timestamp="1617899893471">
-      <screen x="1920" y="0" width="1920" height="1030" />
-    </state>
-    <state x="2779" y="396" key="com.intellij.database.actions.DdlActions$CreateObject$1/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1617899893471" />
-    <state x="2610" y="324" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog" timestamp="1617810119711">
-      <screen x="1920" y="0" width="1920" height="1030" />
-    </state>
-    <state x="2610" y="324" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1617810119711" />
-    <state x="2404" y="227" width="983" height="666" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1617899307885">
-      <screen x="1920" y="0" width="1920" height="1030" />
-    </state>
-    <state x="2404" y="227" width="983" height="666" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1617899307885" />
-
-    <state x="2334" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1617113026429" />
-    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1617115473498">
-      <screen x="1920" y="0" width="1920" height="1030" />
-    </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.bottom/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1617115473498" />
-    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1617115473497">
-      <screen x="1920" y="0" width="1920" height="1030" />
-    </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.center/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1617115473497" />
-    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1617115473497">
-      <screen x="1920" y="0" width="1920" height="1030" />
-    </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.left/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1617115473497" />
-    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1617115473497">
-      <screen x="1920" y="0" width="1920" height="1030" />
-    </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.right/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1617115473497" />
-
+    <state x="2334" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" />
+    <state x="2334" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" />
+    <state width="723" height="210" key="GridCell.Tab.0.bottom" />
+    <state width="723" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" />
+    <state width="1493" height="282" key="GridCell.Tab.0.bottom/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" />
+    <state width="723" height="210" key="GridCell.Tab.0.center" />
+    <state width="723" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" />
+    <state width="1493" height="282" key="GridCell.Tab.0.center/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" />
+    <state width="723" height="210" key="GridCell.Tab.0.left" />
+    <state width="723" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" />
+    <state width="1493" height="282" key="GridCell.Tab.0.left/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" />
+    <state width="723" height="210" key="GridCell.Tab.0.right" />
+    <state width="723" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" />
+    <state width="1493" height="282" key="GridCell.Tab.0.right/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" />
+    <state width="1877" height="348" key="GridCell.Tab.2.bottom" />
+    <state width="1877" height="348" key="GridCell.Tab.2.bottom/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" />
+    <state width="1877" height="348" key="GridCell.Tab.2.center" />
+    <state width="1877" height="348" key="GridCell.Tab.2.center/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" />
+    <state width="1877" height="348" key="GridCell.Tab.2.left" />
+    <state width="1877" height="348" key="GridCell.Tab.2.left/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" />
+    <state width="1877" height="348" key="GridCell.Tab.2.right" />
+    <state width="1877" height="348" key="GridCell.Tab.2.right/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" />
+    <state width="1877" height="348" key="GridCell.Tab.3.bottom" />
+    <state width="1877" height="348" key="GridCell.Tab.3.bottom/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" />
+    <state width="1877" height="348" key="GridCell.Tab.3.center" />
+    <state width="1877" height="348" key="GridCell.Tab.3.center/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" />
+    <state width="1877" height="348" key="GridCell.Tab.3.left" />
+    <state width="1877" height="348" key="GridCell.Tab.3.left/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" />
+    <state width="1877" height="348" key="GridCell.Tab.3.right" />
+    <state width="1877" height="348" key="GridCell.Tab.3.right/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" />
+    <state x="2381" y="164" key="SettingsEditor" />
+    <state x="2381" y="164" key="SettingsEditor/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" />
+    <state x="2779" y="396" key="com.intellij.database.actions.DdlActions$CreateObject$1" />
+    <state x="2779" y="396" key="com.intellij.database.actions.DdlActions$CreateObject$1/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" />
+    <state x="2610" y="324" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog" />
+    <state x="2610" y="324" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" />
+    <state x="2404" y="227" width="983" height="666" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" />
+    <state x="2404" y="227" width="983" height="666" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" />
+    <state x="755" y="62" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" />
+    <state x="755" y="62" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" />
   </component>
 </project>

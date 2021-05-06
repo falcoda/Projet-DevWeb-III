@@ -1,5 +1,4 @@
 body{
-    display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
@@ -12,21 +11,20 @@ body{
 }
 
 #materielsTable{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 #typeSelect{
-    background-color: darkgrey;
+    background-color: lightslategray;
     padding: 1%;
     border-radius: 15px;
     width: 20%;
 }
 
 .card_container{
-    width: 20%;
+    width: 60%;
     margin-left: 0;
     margin: 5%;
     box-shadow: 0.1em 0.2em 0.5em 0.1em;
@@ -92,4 +90,20 @@ body{
 .photo {
     width: 100%;
     height: 100%;
+}
+
+@media screen and (max-width: 420px){
+
+    #materielsTable{
+        grid-template-columns: 1fr;
+    }
+
+    .card_container{
+        width: 85%;
+    }
+
+    #typeSelect{
+          width: 99%;
+          padding: 3%;
+      }
 }
