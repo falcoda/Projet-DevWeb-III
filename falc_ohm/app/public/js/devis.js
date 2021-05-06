@@ -827,7 +827,7 @@ class MyForm extends React.Component {
                                 sonorisation :</label>
                         </div>
                         <div className="col-auto">
-                            <input onChange={this.handleChange} onClick={}   type="number"
+                            <input onChange={this.handleChange}  type="number"
                                    className="form-control form-control-sm" id="superficie" name="tailleSalle" min="1"
                                    max="1000"/>
                         </div>
