@@ -41,7 +41,7 @@ class FormsPage extends React.Component {
 		xhr.onload = function () {
 			console.log(xhr.responseText);
 			console.log("coucou");
-			if(xhr.responseText == "success") {
+			if(xhr.responseText === "success") {
 				alert("Mail envoyé avec success");
 				document.getElementById("prenom").classList.remove("is-invalid");
 				document.getElementById("nom").classList.remove("is-invalid");
@@ -56,6 +56,10 @@ class FormsPage extends React.Component {
 
 
 			else{
+                document.getElementById("prenom").classList.remove("is-invalid");
+                document.getElementById("nom").classList.remove("is-invalid");
+                document.getElementById("email").classList.remove("is-invalid");
+                document.getElementById("commentaire").classList.remove("is-invalid");
 				let isInvalid = xhr.responseText.split("-") ;
 				console.log(isInvalid);
 				for(let i of isInvalid){
@@ -90,10 +94,9 @@ class FormsPage extends React.Component {
 					<fieldset>
 						<legend>Pour tout renseignement supplémentaire, veuillez nous contacter</legend>
 
-						<div className="form-group">
+						<div className="form-group nom" >
 							<label htmlFor="nom">Entrez votre nom</label>
 							<input value={this.state.value} onChange={this.handleChange} type="text" className="form-control w-25" id="nom" placeholder="Nom" />
-							<div className="valid-feedback">Looks good!</div>
 						</div>
 						<div className="form-group">
 							<label htmlFor="prenom">Entrez votre prenom</label>
