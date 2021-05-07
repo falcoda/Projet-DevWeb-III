@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="falcohm@localhost" uuid="fbc53eff-1ad9-4957-85e1-6e739e6efd6b">
-      <driver-ref>mysql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/falcohm</jdbc-url>
-    </data-source>
-    <data-source source="LOCAL" name="@localhost" uuid="a7a60b58-da51-460a-a9d5-32a38f875fa9">
+    <data-source source="LOCAL" name="@localhost" uuid="941ae874-e486-42c0-8429-ce2d0d215ac5">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>

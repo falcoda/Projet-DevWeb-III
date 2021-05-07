@@ -21,13 +21,6 @@ html{
 
 }
 
-#soundNoirBlanc{ /*photo de couverture */
-    position: relative;
-    width:75% ;
-    height:75% ;
-
-}
-
 #content{ /* contenu*/
 
     margin-top: 11%;
@@ -89,4 +82,9 @@ div.collection {
 #mapid {
     height: 200px;
     width: 200px;
+}
+
+.contact{
+    color: black;
+    margin-right: 5px;
 }
