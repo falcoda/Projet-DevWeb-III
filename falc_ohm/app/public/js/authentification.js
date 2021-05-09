@@ -150,7 +150,6 @@ class Connexion extends React.Component {
 		xhr.open("GET", "http://localhost/utilisateurs");
 		xhr.setRequestHeader("content-type", "application/json");
 		xhr.onload = function () {
-			console.log(xhr.responseText);
 			tableUtilisateurs =  JSON.parse(xhr.responseText);
 			let compteur = 0;
 			for (let i of tableUtilisateurs) {
@@ -161,8 +160,10 @@ class Connexion extends React.Component {
 					expiration.setTime(expiration.getTime() + (duree_cookie * 24*60*60*1000));
 					// => on peut utiliser la variable "expiration"
 					SetCookie ("connexion",data1.adressemail1,expiration,null,null,false);
+					SetCookie ("motdepasse",data1.motdepasse1,expiration,null,null,false);
 					// eslint-disable-next-line no-undef
 					utilisateurConnecte = GetCookie("connexion");
+					motdepasse = GetCookie("motdepasse");
 					console.log("succès");
 					break;
 				}
@@ -272,8 +273,10 @@ class Inscription extends React.Component {
 						expiration.setTime(expiration.getTime() + (duree_cookie * 24*60*60*1000));
 						// => on peut utiliser la variable "expiration"
 						SetCookie ("connexion",data2.adressemail2,expiration,null,null,false);
+						SetCookie ("motdepasse",data2.motdepasse2,expiration,null,null,false);
 						// eslint-disable-next-line no-undef
 						utilisateurConnecte = GetCookie("connexion");
+						motdepasse = GetCookie("motdepasse");
 						// eslint-disable-next-line no-undef
 						if (utilisateurConnecte != 0){
 							console.log("le cookie est bien sur " + GetCookie("connexion"));

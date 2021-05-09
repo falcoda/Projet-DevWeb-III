@@ -1,4 +1,5 @@
 let utilisateurConnecte = GetCookie("connexion");
+let motdepasse = GetCookie("motdepasse");
 console.log("session sur " +utilisateurConnecte);
 
 function GetCookie (name) {

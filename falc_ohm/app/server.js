@@ -9,6 +9,28 @@ let app = express();
 /*const bootstrap = require('bootstrap');
 >>>>>>> 86bb03ddd7877e17cedca3d0eadb0465ea7e9483*/
 
+function getCookieVal (offset) {
+	var endstr = document.cookie.indexOf (";", offset);
+	if (endstr == -1)
+		endstr = document.cookie.length;
+	return unescape(document.cookie.substring(offset, endstr));
+}
+
+function GetCookie (name) {
+	var arg = name + "=";
+	var alen = arg.length;
+	var clen = document.cookie.length;
+	var i = 0;
+	while (i < clen) {
+		var j = i + alen;
+		if (document.cookie.substring(i, j) == arg)
+			return getCookieVal (j);
+		i = document.cookie.indexOf(" ", i) + 1;
+		if (i == 0) break;
+	}
+	return null;
+}
+
 function validateEmail(email) {
 	const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	return re.test(String(email).toLowerCase());
@@ -126,36 +148,21 @@ app.get("/profil", (request, response)=> {
 });
 
 app.get("/utilisateurs", (request, response)=> {
-    let con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "root",
-        database : "falcohm"
-    });
-    con.connect(function(err) {
-        if (err) throw err;
-        con.query("SELECT utilisateurs.id_utilisateurs, utilisateurs.adressemail, utilisateurs.motdepasse, utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone, utilisateurs.admin from utilisateurs", function (err, result) {
-            response.send(JSON.stringify(result));
-        });
-    });
+	let con = mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "root",
+		database : "falcohm"
+	});
+	con.connect(function(err) {
+		if (err) throw err;
+		con.query("SELECT utilisateurs.id_utilisateurs, utilisateurs.adressemail, utilisateurs.motdepasse, utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone, utilisateurs.admin from utilisateurs", function (err, result) {
+			response.send(JSON.stringify(result));
+		});
+	});
 });
 
 app.post("/inscription", (request, response)=> {
-    let con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "root",
-        database : "falcohm"
-    });
-    con.connect(function(err) {
-        if (err) throw err;
-        con.query("INSERT INTO utilisateurs (nom, prenom, numerotelephone, adressemail, motdepasse) VALUES (?, ?, ?, ?, ?)", [request.body.nom, request.body.prenom, request.body.numerotel, request.body.adressemail2, request.body.motdepasse2], function (err, result) {
-            response.send("succes");
-        });
-    });
-});
-
-app.post("/ajouterMateriel", (request, response)=> {
 	let con = mysql.createConnection({
 		host: "localhost",
 		user: "root",
@@ -164,7 +171,7 @@ app.post("/ajouterMateriel", (request, response)=> {
 	});
 	con.connect(function(err) {
 		if (err) throw err;
-		con.query("INSERT INTO materiels (nom, id_categorie, prix, nombre, description) VALUES (?, ?, ?, ?, ?)", [request.body.nom, request.body.categorie, request.body.prix, request.body.nombre, request.body.description], function (err, result) {
+		con.query("INSERT INTO utilisateurs (nom, prenom, numerotelephone, adressemail, motdepasse) VALUES (?, ?, ?, ?, ?)", [request.body.nom, request.body.prenom, request.body.numerotel, request.body.adressemail2, request.body.motdepasse2], function (err, result) {
 			response.send("succes");
 		});
 	});
@@ -180,12 +187,10 @@ app.post("/ajouterMateriel", (request, response)=> {
 	con.connect(function(err) {
 		if (err) throw err;
 		con.query("INSERT INTO materiels (nom, id_categorie, prix, nombre, description) VALUES (?, ?, ?, ?, ?)", [request.body.nom, request.body.categorie, request.body.prix, request.body.nombre, request.body.description], function (err, result) {
-			response.send("succes");
+			response.send("success");
 		});
 	});
 });
-
-
 
 /*
 var mysql = require('mysql');
@@ -211,23 +216,28 @@ con.connect(function(err) {
 
 
 
-app.get("/administration", (request, response)=> {
+app.get("/administration",  (request, response)=> {
 	response.render("pages/administration");
 });
 
 
 app.get("/liste_utilisateur", (request, response)=> {
-	let con = mysql.createConnection({
-		host: "localhost",
-		user: "root",
-		password: "root",
-		database : "falcohm"
-	});
-	con.connect(function(err) {
-		if (err) throw err;
-		con.query("SELECT utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone as numero, utilisateurs.adressemail as mail from utilisateurs", function (err, result) {
-			response.send(JSON.stringify(result));
-		});
+	verifieAdmin(request.query.connexion, request.query.motdepasse).then((value) => {
+		if (value === true) {
+			console.log("on est 1");
+			let con = mysql.createConnection({
+				host: "localhost",
+				user: "root",
+				password: "root",
+				database: "falcohm"
+			});
+			con.connect(function (err) {
+				if (err) throw err;
+				con.query("SELECT utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone as numero, utilisateurs.adressemail as mail from utilisateurs", function (err, result) {
+					response.send(JSON.stringify(result));
+				});
+			});
+		}
 	});
 });
 
@@ -250,7 +260,7 @@ app.post("/nombre_materiel", (request, response)=> {
 					con.query("UPDATE materiels SET nombre = '"+Number(request.body[item.nom])+"' WHERE nom ='" + item.nom+"'"
 					);
 				}
-			})
+			});
 
 		});
 
@@ -259,5 +269,28 @@ app.post("/nombre_materiel", (request, response)=> {
 
 	});
 });
+
+function verifieAdmin(connexion, motdepasse) {
+	return new Promise((resolve, reject)=>{
+		let con = mysql.createConnection({
+			host: "localhost",
+			user: "root",
+			password: "root",
+			database : "falcohm"
+		});
+		con.connect(function (err) {
+			if (err) throw err;
+			console.log(connexion);
+			console.log(motdepasse);
+			con.query("SELECT utilisateurs.adressemail, utilisateurs.motdepasse, utilisateurs.admin from utilisateurs", function (err, result) {
+				for (let i of result) {
+					if (connexion == i.adressemail && motdepasse == i.motdepasse && i.admin == 1) {
+						resolve(true);
+					}
+				}
+			});
+		});
+	});
+}
 
 app.listen(80);

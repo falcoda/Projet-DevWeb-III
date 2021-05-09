@@ -2,12 +2,10 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react/jsx-no-undef */
-
 let materiel;
 let users;
-
 let xhr = new XMLHttpRequest();
-xhr.open("GET", "http://localhost/liste_utilisateur");
+xhr.open("GET", "http://localhost/liste_utilisateur?connexion="+GetCookie("connexion")+"&motdepasse="+GetCookie("motdepasse"));
 xhr.onload = function() {
 	users=xhr.responseText;
 	class Bouttons extends React.Component {
