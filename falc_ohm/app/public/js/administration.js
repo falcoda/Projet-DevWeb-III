@@ -15,7 +15,7 @@ xhr.onload = function() {
 				<React.Fragment>
 					<button onClick={afficherUtilis}>Liste utilisateurs</button>
 					<button onClick={nombreMateriel}> Nombre matériel </button>
-					<button onClick={ajoutMateriel}> Nombre matériel </button>
+					<button onClick={ajoutMateriel}> Ajouter du matériel </button>
 				</React.Fragment>);
 		}
 	}
@@ -29,7 +29,7 @@ xhr.send();
 
 //permet d'enregistrer le matériel
 let xhr_materiel = new XMLHttpRequest();
-xhr_materiel.open("GET", "http://localhost/materiel/json");
+xhr_materiel.open("GET", "http://localhost/materiel/json?connexion="+GetCookie("connexion")+"&motdepasse="+GetCookie("motdepasse"));
 xhr_materiel.onload = function() {
 	materiel=xhr_materiel.responseText;
 
@@ -193,7 +193,7 @@ function sendNumber() {
 
 	let xhr = new XMLHttpRequest();
 
-	xhr.open("POST", "/nombre_materiel");
+	xhr.open("POST", "/nombre_materiel?connexion="+GetCookie("connexion")+"&motdepasse="+GetCookie("motdepasse"));
 	xhr.setRequestHeader("content-type", "application/json");
 	xhr.onload = function () {
 
@@ -240,7 +240,7 @@ class AjoutMateriel extends React.Component {
 		let tableMateriel = [];
 
 		let xhr = new XMLHttpRequest();
-		xhr.open("GET", "http://localhost/materiel/json");
+		xhr.open("GET", "http://localhost/materiel/json?connexion="+GetCookie("connexion")+"&motdepasse="+GetCookie("motdepasse"));
 		xhr.setRequestHeader("content-type", "application/json");
 		xhr.onload = function () {
 			tableMateriel = JSON.parse(xhr.responseText);
@@ -248,7 +248,7 @@ class AjoutMateriel extends React.Component {
 		xhr.send();
 
 		let xhr2 = new XMLHttpRequest();
-		xhr2.open("POST", "http://localhost/ajouterMateriel");
+		xhr2.open("POST", "http://localhost/ajouterMateriel?connexion="+GetCookie("connexion")+"&motdepasse="+GetCookie("motdepasse"));
 		xhr2.setRequestHeader("content-type", "application/json");
 		xhr2.onload = function () {
 			console.log(xhr2.responseText);
