@@ -48,9 +48,9 @@ class Connexion extends React.Component {
 					utilisateurConnecte = GetCookie("connexion");
 					motdepasse = GetCookie("motdepasse");
 					console.log("succès");
+					document.location.href="profil"
 					break;
 				}
-				// eslint-disable-next-line no-cond-assign
 				else if (compteur == tableUtilisateurs.length) {
 					// MESSAGE D'ERREUR
 				}
@@ -63,6 +63,7 @@ class Connexion extends React.Component {
 	render() {
 		return (
 			<form id="formConnexion" onSubmit={this.handleSubmit}>
+				<h1>Authentification</h1>
 				<fieldset>
 					<legend>Connexion</legend>
 					<div className="form-group">
@@ -75,7 +76,7 @@ class Connexion extends React.Component {
 						<input type="password" className="form-control w-25" id="motdepasse1"
 							   placeholder="Mot de passe" required/>
 					</div>
-					<input type="submit" value="Connexion"/>
+					<input type="submit" className="btn btn-light" id="buttonSubmit" value={"Connexion"}/>
 				</fieldset>
 			</form>
 		);
@@ -193,12 +194,14 @@ class Inscription extends React.Component {
 					</div>
 					<div className="form-group">
 						<label htmlFor="adressemail2">Entrez votre adresse mail</label>
-						<input type="email" className="form-control w-25" id="adressemail2" placeholder="Adresse mail"
+						<input type="email" className="form-control w-25" id="adressemail2"
+							   placeholder="Adresse mail"
 							   required/>
 					</div>
 					<div className="form-group">
 						<label htmlFor="motdepasse2">Entrez votre mot de passe</label>
-						<input type="password" className="form-control w-25" id="motdepasse2" placeholder="Mot de passe"
+						<input type="password" className="form-control w-25" id="motdepasse2"
+							   placeholder="Mot de passe"
 							   required/>
 					</div>
 					<div className="form-group">
@@ -206,7 +209,7 @@ class Inscription extends React.Component {
 						<input type="password" className="form-control w-25" id="confirmation"
 							   placeholder="Confirmation du mot de passe" required/>
 					</div>
-					<input type="submit" value="Inscription"/>
+					<input type="submit" className="btn btn-light" id="buttonSubmit2" value={"Inscription"}/>
 				</fieldset>
 			</form>
 		);
@@ -226,15 +229,23 @@ class PageAuthentification extends React.Component {
 	}
 
 	render() {
-		return (
-			<div id="content" className="m-auto px-2">
-				<h1>Authentification</h1>
-				<React.Fragment>
-					<Connexion/>
-					<Inscription/>
-				</React.Fragment>
-			</div>
-		);
+		if (utilisateurConnecte == null) {
+			return (
+				<div id="content" className="m-auto px-2">
+					<React.Fragment>
+						<Connexion/>
+						<Inscription/>
+					</React.Fragment>
+				</div>
+			);
+		}
+		else {
+			return (
+				<div id="content" className="m-auto px-2">
+					<h3>Vous êtes déjà connecté.</h3>
+				</div>
+			)
+		}
 	}
 }
 

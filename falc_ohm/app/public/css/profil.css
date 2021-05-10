@@ -6,18 +6,20 @@ html{
     text-align: center;
 }
 
-#content{ /* contenu*/
-
-    margin-top: 11%;
-    padding-bottom: 8px;
-    background-color: lightslategray;
-    width: 65%;
-
-
-
+#body{ /* balise avec tout le bas de la page */
+    margin-top: 140px;
+    z-index: 2;
+    background-color: whitesmoke;
 }
 
-#nom, #categorie, #prix, #nombre, #description{
+#content{ /* contenu*/
+    margin-top: 11%;
+    background-color: lightslategray;
+    width: 65%;
+    padding-bottom: 8px;
+}
+
+#adressemail1, #motdepasse1{
     color:grey;
     margin-bottom:10px ;
     border-radius: 5px;
