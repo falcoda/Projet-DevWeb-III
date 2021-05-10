@@ -32,21 +32,21 @@ xhr.send(JSON.stringify({mail :utilisateurConnecte}));
 class Panier extends React.Component {
 
 
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        return(
-            <React.Fragment>
-                <tr>
-                    <th scope="row">{this.props.nombre +1}</th>
-                    <td>{this.props.panierElem.nom}</td>
-                    <td>{this.props.panierElem.nombre}</td>
-                </tr>
-            </React.Fragment>
-        );
+	constructor(props) {
+		super(props);
+	}
+	render() {
+		return(
+			<React.Fragment>
+				<tr>
+					<th scope="row">{this.props.nombre +1}</th>
+					<td>{this.props.panierElem.nom}</td>
+					<td>{this.props.panierElem.nombre}</td>
+				</tr>
+			</React.Fragment>
+		);
 
-    }
+	}
 }
 
 
@@ -70,20 +70,20 @@ class PanierUtilis extends React.Component {
 		return (
 			<div id={"utilisateurs"} className="overflow utilis">
 
-                <table className="table table-striped">
-                    <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nom</th>
-                        <th scope="col">Nombre</th>
+				<table className="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Nom</th>
+							<th scope="col">Nombre</th>
 
-                    </tr>
-                    </thead>
-                    <tbody>
-                        {rows}
+						</tr>
+					</thead>
+					<tbody>
+						{rows}
 
-                    </tbody>
-                </table>
+					</tbody>
+				</table>
 			</div>
 		);
 	}
@@ -98,7 +98,7 @@ function afficherPanier() {
 }
 
 function afficherInfos() {
-    console.log(JSON.parse(panier_utilis));
+	console.log(JSON.parse(panier_utilis));
 }
 
 function afficherCommande() {
