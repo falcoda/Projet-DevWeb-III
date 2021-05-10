@@ -20,11 +20,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8dff3ea-25ff-44d1-9507-021b20555276" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/falc_ohm/app/public/css/contacts.css" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/public/css/contacts.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/falc_ohm/app/public/js/contact.js" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/public/js/contact.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/falc_ohm/app/views/pages/contact.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/views/pages/contact.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/falc_ohm/app/public/css/administration.css" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/public/css/administration.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/falc_ohm/app/public/css/profil.css" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/public/css/profil.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/falc_ohm/app/public/img/falcNoirB.png" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/public/img/falcNoirB.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/falc_ohm/app/public/img/falcohm_logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/public/img/falcohm_logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/falc_ohm/app/public/img/falcohm_stem_final_couleur_min.png" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/public/img/falcohm_stem_final_couleur_min.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/falc_ohm/app/public/js/administration.js" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/public/js/administration.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/falc_ohm/app/public/js/profil.js" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/public/js/profil.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/falc_ohm/app/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/falc_ohm/app/views/pages/administration.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/views/pages/administration.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/falc_ohm/app/views/pages/profil.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/views/pages/profil.ejs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +56,65 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="falcohm: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="falcohm: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="commande: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="falcohm: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="commande_elem: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="falcohm: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="materiels: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="falcohm: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="panier: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="falcohm: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="panier_elem: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="falcohm: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="utilisateurs: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+    </expand>
     <select />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -60,6 +126,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="page-utilisateurs" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="JsFlowSettings">
@@ -94,9 +165,8 @@
     <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -137,12 +207,12 @@
           <expand>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@7291fb8b" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@8ecb98ff" type="7427dc5b:ServiceModel$ServiceGroupNode" />
             </path>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@7291fb8b" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@60bf9a85" type="9fbbdea:ServiceModel$ServiceNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@8ecb98ff" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@1313d516" type="9fbbdea:ServiceModel$ServiceNode" />
             </path>
           </expand>
           <select />
@@ -179,6 +249,7 @@
       <workItem from="1617968869156" duration="4898000" />
       <workItem from="1617981639096" duration="6048000" />
       <workItem from="1618054733407" duration="4224000" />
+      <workItem from="1620469823232" duration="26205000" />
     </task>
     <task id="LOCAL-00001" summary="ajout bootstrap">
       <created>1616347354449</created>
