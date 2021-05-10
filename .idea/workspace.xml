@@ -19,21 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8dff3ea-25ff-44d1-9507-021b20555276" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/falc_ohm/app/public/css/administration.css" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/public/css/administration.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/falc_ohm/app/public/css/profil.css" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/public/css/profil.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/falc_ohm/app/public/img/falcNoirB.png" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/public/img/falcNoirB.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/falc_ohm/app/public/img/falcohm_logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/public/img/falcohm_logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/falc_ohm/app/public/img/falcohm_stem_final_couleur_min.png" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/public/img/falcohm_stem_final_couleur_min.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/falc_ohm/app/public/js/administration.js" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/public/js/administration.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/falc_ohm/app/public/js/profil.js" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/public/js/profil.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/falc_ohm/app/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/falc_ohm/app/views/pages/administration.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/views/pages/administration.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/falc_ohm/app/views/pages/profil.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/falc_ohm/app/views/pages/profil.ejs" afterDir="false" />
-    </list>
+    <list default="true" id="b8dff3ea-25ff-44d1-9507-021b20555276" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,65 +42,7 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="falcohm: schema" type="76f4a085:MysqlImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="falcohm: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="commande: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="falcohm: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="commande_elem: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="falcohm: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="materiels: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="falcohm: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="panier: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="falcohm: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="panier_elem: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="falcohm: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="utilisateurs: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
-    </expand>
+    <expand />
     <select />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -152,6 +80,7 @@
     <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/Edit As Language" value="SQL" />
+    <property name="database.data.extractors.current.id" value="SQL Inserts" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/node_modules/eslint" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -208,11 +137,6 @@
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
               <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@8ecb98ff" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-            </path>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@8ecb98ff" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@1313d516" type="9fbbdea:ServiceModel$ServiceNode" />
             </path>
           </expand>
           <select />
