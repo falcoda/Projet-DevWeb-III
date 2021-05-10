@@ -92,4 +92,25 @@ create table panier_elem
         foreign key (id_panier) references panier (id_panier)
 );
 
+create table commande
+(
+    id_commande     int auto_increment
+        primary key,
+    id_utilisateurs int  null,
+    date            date not null,
+    constraint commande_utilisateurs_id_utilisateurs_fk
+        foreign key (id_utilisateurs) references utilisateurs (id_utilisateurs)
+);
+
+create table commande_elem
+(
+    id_commande int not null,
+    id_materiel int not null,
+    nombre      int not null,
+    constraint commande_elem_commande_id_commande_fk
+        foreign key (id_commande) references commande (id_commande),
+    constraint commande_elem_materiels_id_materiel_fk
+        foreign key (id_materiel) references materiels (id_materiel)
+);
+
 
