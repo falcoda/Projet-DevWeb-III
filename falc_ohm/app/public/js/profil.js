@@ -92,7 +92,9 @@ class PanierUtilis extends React.Component {
 
 					</tbody>
 				</table>
+
 				<button onClick={passerCommande} className="btn btn-secondary">Commander </button>
+
 			</div>
 		);
 	}
