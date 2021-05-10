@@ -279,7 +279,7 @@ app.post("/nombre_materiel", (request, response)=> {
 					con.query("UPDATE materiels SET nombre = '"+Number(request.body[item.nom])+"' WHERE nom ='" + item.nom+"'"
 					);
 				}
-			})
+			});
 
 		});
 
@@ -288,6 +288,152 @@ app.post("/nombre_materiel", (request, response)=> {
 
 	});
 });
+
+app.get("/commande", (request, response)=> {
+	let con = mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "root",
+		database : "falcohm"
+	});
+	con.connect(function(err) {
+		if (err) throw err;
+		con.query(`select commande.id_commande, utilisateurs.adressemail, materiels.nom,commande_elem.nombre , (materiels.prix*commande_elem.nombre) as prix, commande.date from commande
+			    join commande_elem  on commande.id_commande = commande_elem.id_commande
+			    join materiels on materiels.id_materiel = commande_elem.id_materiel
+			    join utilisateurs on utilisateurs.id_utilisateurs = commande.id_utilisateurs`, function (err, result) {
+			response.send(JSON.stringify(result));
+		});
+	});
+});
+app.post("/commande-utilisateur", (request, response)=> {
+
+	let mail = request.body.mail;
+	console.log(mail);
+
+	let today = new Date();
+	let dd = String(today.getDate()).padStart(2, '0');
+	let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+	let yyyy = today.getFullYear();
+
+	today = yyyy + "-" + mm + "-" + dd;
+
+
+	let con = mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "root",
+		database: "falcohm",
+		multipleStatements: true
+	});
+	con.connect(function (err) {
+		if (err) throw err;
+
+
+		con.query("select utilisateurs.id_utilisateurs from utilisateurs where utilisateurs.adressemail = ?" , [mail],function (err, result) {
+			if (err) throw err;
+			let utilis = JSON.parse(JSON.stringify(result[0].id_utilisateurs));
+
+			con.query("insert into commande(id_utilisateurs,date) values (?,?)",[utilis,today], function (err, result) {
+				con.query(`select materiels.id_materiel, panier_elem.nombre,materiels.prix*panier_elem.nombre as prix from panier_elem
+								join materiels on materiels.id_materiel = panier_elem.id_materiel
+								join panier on panier.id_panier = panier_elem.id_panier
+								join utilisateurs on utilisateurs.id_utilisateurs = panier.id_utilisateurs
+
+								where utilisateurs.adressemail =?; select commande.id_commande from commande where id_utilisateurs=?`, [mail,utilis],function (err, result) {
+
+
+					let id_com =JSON.parse(JSON.stringify(result[1])).pop();
+					let donnee = JSON.parse(JSON.stringify(result[0]));
+					console.log(donnee);
+					for(let item of donnee){
+						con.query("insert into commande_elem(id_commande,id_materiel,nombre) values (?,?,?)",[id_com.id_commande,item.id_materiel,item.nombre], function (err, result) {
+						});
+					}
+					con.query("select id_panier from panier where id_utilisateurs =? ; ",[utilis], function (err, result) {
+						console.log(JSON.parse(JSON.stringify(result)));
+						con.query("delete from panier_elem where id_panier = ? ; delete from panier where id_utilisateurs = ? ",[JSON.parse(JSON.stringify(result))[0].id_panier,utilis],function (err, result) {
+							envoyerCommandeMail(id_com.id_commande);
+						});
+					});
+				});
+			});
+		});
+	});
+
+});
+
+function envoyerCommandeMail(idCom){
+	let con = mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "root",
+		database : "falcohm"
+	});
+	con.connect(function(err) {
+		if (err) throw err;
+		con.query(`select commande.date, materiels.nom,commande_elem.nombre , (materiels.prix*commande_elem.nombre) as prix, utilisateurs.adressemail as mail from commande
+			    join commande_elem  on commande.id_commande = commande_elem.id_commande
+			    join materiels on materiels.id_materiel = commande_elem.id_materiel
+			    join utilisateurs on utilisateurs.id_utilisateurs = commande.id_utilisateurs
+			    where commande.id_commande = ?`,[idCom], function (err, result) {
+			let materiel = "" ;
+			let resultat = JSON.parse(JSON.stringify(result));
+			let total = 0;
+			for(let i  of resultat){
+				materiel += "<tr style='border: 1px solid black;padding: 5px;text-align: center;'><td>"+i.nom+"</td><td>"+i.nombre+"</td><td>"+i.prix+"</td></tr>";
+				total += i.prix;
+			}
+
+
+			let mailAEnvoyer = `<div style="margin-left: auto;
+    margin-right: auto;
+    width: 50%">
+		<h1>Récapitulatif de votre commande</h1>
+		<h2>Commande du `+new Date(resultat[0].date).toLocaleDateString()+` </h2>
+
+		<table className="table" style="border:1px gray solid;border-radius:5px;width :100%; ">
+			<thead>
+			<tr>
+				<th scope="col">Article</th>
+				<th scope="col">Nombre</th>
+				<th scope="col">Prix /€</th>
+			</tr>
+			</thead>
+			<tbody>`+materiel+`
+			
+			</tbody>
+			<tfoot style="color:red; padding: 15%;"> <tr><th>prix total : </th><th></th> <th>`+total+`</th></tr></tfoot>
+		</table>
+		<p>Merci pour votre commande. Nous vous contacterons très bientôt afin d\'étudier au mieux votre projet.</p>
+	</div>`;
+
+			const transporter = nodemailer.createTransport({
+				host: "ssl0.ovh.net",
+				port: 587,
+				secure: false,
+				auth: {
+					user: "corentin@4x4vert.be",
+					pass: "??ProjetDev33"
+				}
+			});
+			const mailOptions = {
+				from: "falcohm6tm@hotmail.com",
+				to: resultat[0].mail,
+				subject: "Récapitulatif de commande" ,
+				html: mailAEnvoyer
+			};
+			transporter.sendMail(mailOptions);
+		});
+	});
+
+
+
+
+}
+
+
+
 
 app.listen(80);
 
