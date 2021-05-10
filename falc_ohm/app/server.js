@@ -84,7 +84,8 @@ app.post("/mail", (request, response)=>{
 			});
 		});
 		response.send("success");
-	} else {
+	}
+	else {
 		response.send(isValid);
 	}
 });
@@ -139,21 +140,9 @@ app.get("/utilisateurs", (request, response)=> {
 });
 
 app.post("/inscription", (request, response)=> {
-    let con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "root",
-        database : "falcohm"
-    });
-    con.connect(function(err) {
-        if (err) throw err;
-        con.query("INSERT INTO utilisateurs (nom, prenom, numerotelephone, adressemail, motdepasse) VALUES (?, ?, ?, ?, ?)", [request.body.nom, request.body.prenom, request.body.numerotel, request.body.adressemail2, request.body.motdepasse2], function (err, result) {
-            response.send("succes");
-        });
-    });
-});
+	let reponses = Object.entries(request.body);
+	let isValid = "";
 
-app.post("/ajouterMateriel", (request, response)=> {
 	let con = mysql.createConnection({
 		host: "localhost",
 		user: "root",
@@ -162,10 +151,38 @@ app.post("/ajouterMateriel", (request, response)=> {
 	});
 	con.connect(function(err) {
 		if (err) throw err;
-		con.query("INSERT INTO materiels (nom, id_categorie, prix, nombre, description) VALUES (?, ?, ?, ?, ?)", [request.body.nom, request.body.categorie, request.body.prix, request.body.nombre, request.body.description], function (err, result) {
-			response.send("succes");
+		con.query("SELECT utilisateurs.adressemail from utilisateurs", function (err, result) {
+			response.send(JSON.stringify(result));
+			for (let i of reponses) {
+				for (let x of result) {
+					if (i[1] === x) {
+						if (i[0] === "adressemail2") {
+							isValid += "-adressemail2Invalid";
+						}
+					}
+				}
+			}
 		});
 	});
+
+
+	if (request.body.adressemail2 !== "") {
+		let con = mysql.createConnection({
+			host: "localhost",
+			user: "root",
+			password: "root",
+			database : "falcohm"
+		});
+		con.connect(function(err) {
+			if (err) throw err;
+			con.query("INSERT INTO utilisateurs (nom, prenom, numerotelephone, adressemail, motdepasse) VALUES (?, ?, ?, ?, ?)", [request.body.nom, request.body.prenom, request.body.numerotel, request.body.adressemail2, request.body.motdepasse2], function (err, result) {
+			});
+		});
+		response.send("success");
+	}
+	else {
+		response.send(isValid);
+	}
 });
 
 app.post("/ajouterMateriel", (request, response)=> {
@@ -178,7 +195,7 @@ app.post("/ajouterMateriel", (request, response)=> {
 	con.connect(function(err) {
 		if (err) throw err;
 		con.query("INSERT INTO materiels (nom, id_categorie, prix, nombre, description) VALUES (?, ?, ?, ?, ?)", [request.body.nom, request.body.categorie, request.body.prix, request.body.nombre, request.body.description], function (err, result) {
-			response.send("succes");
+			response.send("success");
 		});
 	});
 });

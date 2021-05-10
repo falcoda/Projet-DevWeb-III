@@ -7,5 +7,11 @@
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/falcohm</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="falcohm@localhost [2]" uuid="09fafa5b-8c71-4229-b7cc-5201b8990ef7">
+      <driver-ref>mysql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/falcohm</jdbc-url>
+    </data-source>
   </component>
 </project>
