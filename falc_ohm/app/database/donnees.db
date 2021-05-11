@@ -21,6 +21,7 @@ INSERT INTO falcohm.materiels (id_categorie, nom, prix, en_location,description,
 INSERT INTO falcohm.materiels (id_categorie, nom, prix, en_location, description, nombre) VALUES (4, 'Quadro 500DSP', 30, 0, 'Amplificateur pour les mth30/turbotop', 1);
 INSERT INTO falcohm.materiels (id_categorie, nom, prix, en_location, description, nombre) VALUES (5, 'blacklight', 15, 0, 'lumière noir pour éclairer le fluorescent ', 2);
 INSERT INTO falcohm.materiels (id_categorie, nom, prix, en_location, description, nombre) VALUES (5, 'showtec pixelbar Q4', 50, DEFAULT, 'Bar led horizontal multicolor', 1);
+INSERT INTO falcohm.materiels (id_categorie, nom, prix, en_location, description, nombre) VALUES (6, 'Avolite pearl 2004', 100, 0, 'console lumière', 1);
 
 
 
