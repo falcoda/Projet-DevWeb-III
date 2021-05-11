@@ -72,25 +72,6 @@ create table messages
     message  longtext     not null
 );
 
-create table panier
-(
-    id_panier       int auto_increment
-        primary key,
-    id_utilisateurs int not null,
-    constraint panier_utilisateurs_id_utilisateurs_fk
-        foreign key (id_utilisateurs) references utilisateurs (id_utilisateurs)
-);
-
-create table panier_elem
-(
-    id_panier   int not null,
-    id_materiel int not null,
-    nombre      int not null,
-    constraint panier_elem_materiels_id_materiel_fk
-        foreign key (id_materiel) references materiels (id_materiel),
-    constraint panier_elem_panier_id_panier_fk
-        foreign key (id_panier) references panier (id_panier)
-);
 
 create table commande
 (

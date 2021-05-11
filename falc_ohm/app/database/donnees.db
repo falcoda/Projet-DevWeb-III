@@ -2,17 +2,22 @@ INSERT INTO falcohm.categories (id_categorie, nom_categorie) VALUES (1, 'caisson
 INSERT INTO falcohm.categories (id_categorie, nom_categorie) VALUES (2, 'top 2 voies');
 INSERT INTO falcohm.categories (id_categorie, nom_categorie) VALUES (3, 'ampli');
 INSERT INTO falcohm.categories (id_categorie, nom_categorie) VALUES (4, 'processeur');
+INSERT INTO `falcohm`.`categories` (`nom_categorie`) VALUES ('console')
 
 
-INSERT INTO falcohm.materiels (id_materiel, id_categorie, nom, prix, en_location, description, nombre) VALUES (1, 1, 'mth30', 9999, 0, 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l''imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n''a pas fait que survivre cinq siècles, mais s''est aussi adapté à la bureautique informatique, sans que son contenu n''en soit modifié.', 1);
-INSERT INTO falcohm.materiels (id_materiel, id_categorie, nom, prix, en_location, description, nombre) VALUES (2, 2, 'nexo', 9999, 0, 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l''imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n''a pas fait que survivre cinq siècles, mais s''est aussi adapté à la bureautique informatique, sans que son contenu n''en soit modifié.', 1);
-INSERT INTO falcohm.materiels (id_materiel, id_categorie, nom, prix, en_location, description, nombre) VALUES (3, 2, 'turbotop', 9999, 0, 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l''imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n''a pas fait que survivre cinq siècles, mais s''est aussi adapté à la bureautique informatique, sans que son contenu n''en soit modifié.', 1);
-INSERT INTO falcohm.materiels (id_materiel, id_categorie, nom, prix, en_location, description, nombre) VALUES (4, 3, 'qscRmx2450', 9999, 0, 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l''imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n''a pas fait que survivre cinq siècles, mais s''est aussi adapté à la bureautique informatique, sans que son contenu n''en soit modifié.', 1);
-INSERT INTO falcohm.materiels (id_materiel, id_categorie, nom, prix, en_location, description, nombre) VALUES (5, 3, 'cvrD3002', 9999, 0, 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l''imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n''a pas fait que survivre cinq siècles, mais s''est aussi adapté à la bureautique informatique, sans que son contenu n''en soit modifié.', 1);
-INSERT INTO falcohm.materiels (id_materiel, id_categorie, nom, prix, en_location, description, nombre) VALUES (6, 4, 'tdController', 9999, 0, 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l''imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n''a pas fait que survivre cinq siècles, mais s''est aussi adapté à la bureautique informatique, sans que son contenu n''en soit modifié.', 1);
-INSERT INTO falcohm.materiels (id_materiel, id_categorie, nom, prix, en_location, description, nombre) VALUES (7, 4, 'dsp206', 9999, 0, 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l''imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n''a pas fait que survivre cinq siècles, mais s''est aussi adapté à la bureautique informatique, sans que son contenu n''en soit modifié.', 1);
-INSERT INTO falcohm.materiels (id_materiel, id_categorie, nom, prix, en_location, description, nombre) VALUES (8, 1, 'mth4654', 9999, 0, 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l''imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n''a pas fait que survivre cinq siècles, mais s''est aussi adapté à la bureautique informatique, sans que son contenu n''en soit modifié.', 1);
 
+INSERT INTO falcohm.materiels (id_materiel, id_categorie, nom, prix, en_location, description, nombre) VALUES (1, 1, 'mth30', 20, 0, 'Petit caisson de basses 12" de 300W', 1);
+INSERT INTO falcohm.materiels (id_materiel, id_categorie, nom, prix, en_location, description, nombre) VALUES (2, 2, 'nexo SI 2000', 40, 0, 'Paire d''nceintes 3 voies de 4400W', 1);
+INSERT INTO falcohm.materiels (id_materiel, id_categorie, nom, prix, en_location, description, nombre) VALUES (3, 2, 'turbotop', 30, 0, 'Enceinte 2 voies de 350W', 1);
+INSERT INTO falcohm.materiels (id_materiel, id_categorie, nom, prix, en_location, description, nombre) VALUES (4, 3, 'qscRmx2450', 30, 0, 'amplificateur de 2x 350W sous 8 ohms', 1);
+INSERT INTO falcohm.materiels (id_materiel, id_categorie, nom, prix, en_location, description, nombre) VALUES (5, 3, 'cvrD3002', 60, 0, 'Amplificateur de 2x3000W sous 8 ohms', 1);
+INSERT INTO falcohm.materiels (id_materiel, id_categorie, nom, prix, en_location, description, nombre) VALUES (6, 4, 'tdController', 10, 0, 'Il s''agit d''un processeur analogique fonctionnant avec les nexo si2000', 1);
+INSERT INTO falcohm.materiels (id_materiel, id_categorie, nom, prix, en_location, description, nombre) VALUES (7, 4, 'dsp206', 30, 0, 'Il s''agit d''un processeur numérique nécéssaire au bon fonctionnement de la sono', 1);
+INSERT INTO falcohm.materiels (id_materiel, id_categorie, nom, prix, en_location, description, nombre) VALUES (8, 1, 'mth4654', 40, 0, 'il s''agit d''un caisson de 1500W en 21". ', 1);
+INSERT INTO falcohm.materiels (id_materiel, id_categorie, nom, prix, en_location, description, nombre) VALUES (9, 5, 'showtec saber 60', 25, 0, 'Il s''agit d''une lumière bougeant en x et y à l''infini', 1);
+INSERT INTO falcohm.materiels (id_materiel, id_categorie, nom, prix, en_location, description, nombre) VALUES (10, 5, 'showtec phantom 50', 20, 0, 'Il s''agit d''une beam', 1);
+INSERT INTO falcohm.materiels (id_materiel, id_categorie, nom, prix, en_location, description, nombre) VALUES (11, 1, 'pars led', 10, 0, 'un spot lumineux fixe', 8);
+INSERT INTO `falcohm`.`materiels` (`id_categorie`, `nom`, `prix`, `en_location`, `description`, `nombre`) VALUES (6, 'AlienHead Z14', 100, 0, 'Console son 10 entrées', 1)
 
 INSERT INTO falcohm.utilisateurs (id_utilisateurs, adressemail, motdepasse, nom, prenom, numerotelephone, admin) VALUES (1, 'corent@rgrg.ege', '12345678', 'bfb', 'fbbfb', '042042424', 0);
 INSERT INTO falcohm.utilisateurs (id_utilisateurs, adressemail, motdepasse, nom, prenom, numerotelephone, admin) VALUES (2, 'michelt@rgrg.ege', '12345678', 'lolol', 'lolol', '123456', 0);
@@ -33,7 +38,7 @@ INSERT INTO falcohm.commande (id_commande, id_utilisateurs, date) VALUES (62, 2,
 INSERT INTO falcohm.commande (id_commande, id_utilisateurs, date) VALUES (63, 2, '2021-05-08');
 INSERT INTO falcohm.commande (id_commande, id_utilisateurs, date) VALUES (64, 2, '2021-05-09');
 INSERT INTO falcohm.commande (id_commande, id_utilisateurs, date) VALUES (65, 2, '2021-05-09');
-INSERT INTO falcohm.commande (id_commande, id_utilisateurs, date) VALUES (66, 3, '2021-05-09');
+
 
 INSERT INTO falcohm.commande_elem (id_commande, id_materiel, nombre) VALUES (1, 1, 4);
 INSERT INTO falcohm.commande_elem (id_commande, id_materiel, nombre) VALUES (1, 2, 6);
@@ -46,6 +51,7 @@ INSERT INTO falcohm.commande_elem (id_commande, id_materiel, nombre) VALUES (2, 
 INSERT INTO falcohm.commande_elem (id_commande, id_materiel, nombre) VALUES (62, 5, 6);
 INSERT INTO falcohm.commande_elem (id_commande, id_materiel, nombre) VALUES (62, 6, 2);
 INSERT INTO falcohm.commande_elem (id_commande, id_materiel, nombre) VALUES (63, 8, 53);
-INSERT INTO falcohm.commande_elem (id_commande, id_materiel, nombre) VALUES (66, 1, 20);
-INSERT INTO falcohm.commande_elem (id_commande, id_materiel, nombre) VALUES (66, 5, 40);
-INSERT INTO falcohm.commande_elem (id_commande, id_materiel, nombre) VALUES (66, 3, 25);
+
+
+INSERT INTO falcohm.categories (id_categorie, nom_categorie) VALUES (5, 'lumière');
+
