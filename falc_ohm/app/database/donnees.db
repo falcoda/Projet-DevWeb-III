@@ -19,6 +19,9 @@ INSERT INTO falcohm.materiels (id_materiel, id_categorie, nom, prix, en_location
 INSERT INTO falcohm.materiels (id_materiel, id_categorie, nom, prix, en_location, description, nombre) VALUES (11, 1, 'pars led', 10, 0, 'un spot lumineux fixe', 8);
 INSERT INTO falcohm.materiels (id_categorie, nom, prix, en_location,description, nombre) VALUES (6, 'AlienHead Z14', 100, 0, 'Console son 10 entrées', 1);
 INSERT INTO falcohm.materiels (id_categorie, nom, prix, en_location, description, nombre) VALUES (4, 'Quadro 500DSP', 30, 0, 'Amplificateur pour les mth30/turbotop', 1);
+INSERT INTO falcohm.materiels (id_categorie, nom, prix, en_location, description, nombre) VALUES (5, 'blacklight', 15, 0, 'lumière noir pour éclairer le fluorescent ', 2);
+INSERT INTO falcohm.materiels (id_categorie, nom, prix, en_location, description, nombre) VALUES (5, 'showtec pixelbar Q4', 50, DEFAULT, 'Bar led horizontal multicolor', 1);
+
 
 
 INSERT INTO falcohm.utilisateurs (id_utilisateurs, adressemail, motdepasse, nom, prenom, numerotelephone, admin) VALUES (1, 'corent@rgrg.ege', '12345678', 'bfb', 'fbbfb', '042042424', 0);
