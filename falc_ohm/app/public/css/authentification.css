@@ -14,13 +14,16 @@ html{
 }
 
 #content{ /* contenu*/
+
     margin-top: 11%;
     background-color: lightslategray;
     width: 65%;
-    padding-bottom: 8px;
+
+
+
 }
 
-#adressemail1, #motdepasse1, #nom, #prenom, #numerotel, #adressemail2, #motdepasse1{
+#adressemail1, #motdepasse1, #nom, #prenom, #numerotel, adressemail2, #motdepasse1{
     color:grey;
     margin-bottom:10px ;
     border-radius: 5px;

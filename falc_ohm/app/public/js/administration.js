@@ -2,12 +2,13 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react/jsx-no-undef */
+
 let materiel;
 let users;
 let commandes;
 
 let xhr = new XMLHttpRequest();
-xhr.open("GET", "http://localhost/liste_utilisateur?connexion="+GetCookie("connexion")+"&motdepasse="+GetCookie("motdepasse"));
+xhr.open("GET", "http://localhost/liste_utilisateur");
 xhr.onload = function() {
 	users=xhr.responseText;
 	class Bouttons extends React.Component {
@@ -19,7 +20,6 @@ xhr.onload = function() {
 					<button onClick={nombreMateriel}> Nombre matériel </button>
 					<button onClick={ajoutMateriel}> Ajouter matériel </button>
 					<button onClick={afficherCommande}> Commandes effectuées </button>
-					<button onClick={ajoutMateriel}> Ajouter du matériel </button>
 				</React.Fragment>);
 		}
 	}
@@ -33,7 +33,7 @@ xhr.send();
 
 //permet d'enregistrer le matériel
 let xhr_materiel = new XMLHttpRequest();
-xhr_materiel.open("GET", "http://localhost/materiel/json?connexion="+GetCookie("connexion")+"&motdepasse="+GetCookie("motdepasse"));
+xhr_materiel.open("GET", "http://localhost/materiel/json");
 xhr_materiel.onload = function() {
 	materiel=xhr_materiel.responseText;
 
@@ -203,7 +203,7 @@ function sendNumber() {
 
 	let xhr = new XMLHttpRequest();
 
-	xhr.open("POST", "/nombre_materiel?connexion="+GetCookie("connexion")+"&motdepasse="+GetCookie("motdepasse"));
+	xhr.open("POST", "/nombre_materiel");
 	xhr.setRequestHeader("content-type", "application/json");
 	xhr.onload = function () {
 
@@ -250,7 +250,7 @@ class AjoutMateriel extends React.Component {
 		let tableMateriel = [];
 
 		let xhr = new XMLHttpRequest();
-		xhr.open("GET", "http://localhost/materiel/json?connexion="+GetCookie("connexion")+"&motdepasse="+GetCookie("motdepasse"));
+		xhr.open("GET", "http://localhost/materiel/json");
 		xhr.setRequestHeader("content-type", "application/json");
 		xhr.onload = function () {
 			tableMateriel = JSON.parse(xhr.responseText);
@@ -258,7 +258,7 @@ class AjoutMateriel extends React.Component {
 		xhr.send();
 
 		let xhr2 = new XMLHttpRequest();
-		xhr2.open("POST", "http://localhost/ajouterMateriel?connexion="+GetCookie("connexion")+"&motdepasse="+GetCookie("motdepasse"));
+		xhr2.open("POST", "http://localhost/ajouterMateriel");
 		xhr2.setRequestHeader("content-type", "application/json");
 		xhr2.onload = function () {
 			console.log(xhr2.responseText);
