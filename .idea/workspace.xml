@@ -31,6 +31,9 @@
       <executable />
     </execution>
   </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="429" />
+  </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
     <option name="GROUP_DATA_SOURCES" value="true" />
@@ -65,6 +68,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
+        <option value="tsconfig.json" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -97,7 +101,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/Edit As Language" value="SQL" />
     <property name="database.data.extractors.current.id" value="SQL Inserts" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/node_modules/eslint" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/falc_ohm/app" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.jscs" value="true" />
@@ -108,6 +112,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.jscs" value="" />
     <property name="node.js.selected.package.standard" value="" />
+    <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/node_modules/jest" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
@@ -133,7 +138,17 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.start">
+    <configuration name="All Tests" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
+      <node-interpreter value="C:/Program Files/nodejs/node" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$/falc_ohm/app" />
+      <jest-options value="--verbose ./tests" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method v="2" />
+    </configuration>
     <configuration name="start" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/falc_ohm/app/package.json" />
       <command value="run" />
@@ -144,6 +159,21 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="test_cypress" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/falc_ohm/app/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="test" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Jest.All Tests" />
+      <item itemvalue="npm.test_cypress" />
+      <item itemvalue="npm.start" />
+    </list>
   </component>
   <component name="ServiceViewManager">
     <option name="allServicesViewState">
@@ -209,6 +239,8 @@
       <workItem from="1617981639096" duration="6048000" />
       <workItem from="1618054733407" duration="4224000" />
       <workItem from="1620469823232" duration="26205000" />
+      <workItem from="1620654806246" duration="16045000" />
+      <workItem from="1620731995246" duration="7501000" />
     </task>
     <task id="LOCAL-00001" summary="ajout bootstrap">
       <created>1616347354449</created>
@@ -291,5 +323,10 @@
     <state x="2610" y="324" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" />
     <state x="2404" y="227" width="983" height="666" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" />
     <state x="2404" y="227" width="983" height="666" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Projet_DevWeb_III$materiel_test_js.info" NAME="materiel.test.js Coverage Results" MODIFIED="1620662752041" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Projet_DevWeb_III$render_de_la_class_PageMateriels__1_.info" NAME="render de la class PageMateriels (1) Coverage Results" MODIFIED="1620663077132" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Projet_DevWeb_III$All_Tests.info" NAME="All Tests Coverage Results" MODIFIED="1620678184533" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

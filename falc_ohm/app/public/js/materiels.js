@@ -1,4 +1,5 @@
-"use strict";
+import React from "react"
+import ReactDOM from "react-dom";
 
 /* eslint-disable no-undef */
 /* eslint-disable react/prop-types */

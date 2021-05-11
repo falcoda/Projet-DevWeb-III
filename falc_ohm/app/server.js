@@ -1,9 +1,14 @@
-let mysql = require("mysql");
+import mysql from "mysql";
+import nodemailer from "nodemailer";
+import express from "express";
+import cors from "cors";
+import React from "react";
+/*
 let nodemailer = require("nodemailer");
 let express = require("express");
 let cors = require("cors");
+*/
 let app = express();
-
 
 function validateEmail(email) {
 	const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -99,7 +104,7 @@ app.get("/materiel/:format?", (request, response)=> {
 		});
 		con.connect(function (err) {
 			if (err) throw err;
-			con.query("SELECT m.nom,m.prix,m.description,m.nombre,m.en_location,c.nom_categorie from materiels as m JOIN categories c on m.id_categorie = c.id_categorie GROUP BY nom_categorie", function (err, result) {
+			con.query("SELECT m.nom,m.prix,m.description,m.nombre,m.en_location,c.nom_categorie from materiels as m JOIN categories c on m.id_categorie = c.id_categorie", function (err, result) {
 				response.send(JSON.stringify(result));
 			});
 		});
