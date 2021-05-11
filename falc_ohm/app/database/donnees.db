@@ -33,7 +33,7 @@ INSERT INTO falcohm.commande (id_commande, id_utilisateurs, date) VALUES (62, 2,
 INSERT INTO falcohm.commande (id_commande, id_utilisateurs, date) VALUES (63, 2, '2021-05-08');
 INSERT INTO falcohm.commande (id_commande, id_utilisateurs, date) VALUES (64, 2, '2021-05-09');
 INSERT INTO falcohm.commande (id_commande, id_utilisateurs, date) VALUES (65, 2, '2021-05-09');
-INSERT INTO falcohm.commande (id_commande, id_utilisateurs, date) VALUES (66, 3, '2021-05-09');
+
 
 INSERT INTO falcohm.commande_elem (id_commande, id_materiel, nombre) VALUES (1, 1, 4);
 INSERT INTO falcohm.commande_elem (id_commande, id_materiel, nombre) VALUES (1, 2, 6);
@@ -46,6 +46,9 @@ INSERT INTO falcohm.commande_elem (id_commande, id_materiel, nombre) VALUES (2, 
 INSERT INTO falcohm.commande_elem (id_commande, id_materiel, nombre) VALUES (62, 5, 6);
 INSERT INTO falcohm.commande_elem (id_commande, id_materiel, nombre) VALUES (62, 6, 2);
 INSERT INTO falcohm.commande_elem (id_commande, id_materiel, nombre) VALUES (63, 8, 53);
-INSERT INTO falcohm.commande_elem (id_commande, id_materiel, nombre) VALUES (66, 1, 20);
-INSERT INTO falcohm.commande_elem (id_commande, id_materiel, nombre) VALUES (66, 5, 40);
-INSERT INTO falcohm.commande_elem (id_commande, id_materiel, nombre) VALUES (66, 3, 25);
+
+
+INSERT INTO falcohm.categories (id_categorie, nom_categorie) VALUES (5, 'lumière');
+INSERT INTO falcohm.materiels (id_materiel, id_categorie, nom, prix, en_location, description, nombre) VALUES (9, 5, 'showtec saber 60', 25, 0, 'Il s''agit d''une lumière bougeant en x et y à l''infini', 1);
+INSERT INTO falcohm.materiels (id_materiel, id_categorie, nom, prix, en_location, description, nombre) VALUES (10, 5, 'showtec phantom 50', 20, 0, 'Il s''agit d''une beam', 1);
+INSERT INTO falcohm.materiels (id_materiel, id_categorie, nom, prix, en_location, description, nombre) VALUES (11, 1, 'pars led', 10, 0, 'un spot lumineux fixe', 8);
