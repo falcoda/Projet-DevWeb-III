@@ -166,11 +166,12 @@ app.post("/ajouterMateriel", (request, response)=> {
 	});
 	con.connect(function(err) {
 		if (err) throw err;
-		con.query("SELECT utilisateurs.id_utilisateurs, utilisateurs.adressemail, utilisateurs.motdepasse, utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone, utilisateurs.admin from utilisateurs", function (err, result) {
-			response.send(JSON.stringify(result));
+		con.query("INSERT INTO materiels (nom, id_categorie, prix, nombre, description) VALUES (?, ?, ?, ?, ?)", [request.body.nom, request.body.categorie, request.body.prix, request.body.nombre, request.body.description], function (err, result) {
+			response.send("succes");
 		});
 	});
 });
+
 
 
 
@@ -180,7 +181,6 @@ app.get("/administration", (request, response)=> {
 
 
 app.get("/liste_utilisateur", (request, response)=> {
-app.post("/inscription", (request, response)=> {
 	let con = mysql.createConnection({
 		host: "localhost",
 		user: "root",
@@ -191,11 +191,10 @@ app.post("/inscription", (request, response)=> {
 		if (err) throw err;
 		con.query("SELECT utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone as numero, utilisateurs.adressemail as mail from utilisateurs", function (err, result) {
 			response.send(JSON.stringify(result));
-		con.query("INSERT INTO utilisateurs (nom, prenom, numerotelephone, adressemail, motdepasse) VALUES (?, ?, ?, ?, ?)", [request.body.nom, request.body.prenom, request.body.numerotel, request.body.adressemail2, request.body.motdepasse2], function (err, result) {
-			response.send("succes");
 		});
 	});
 });
+
 
 app.post("/nombre_materiel", (request, response)=> {
 	let con = mysql.createConnection({
@@ -204,24 +203,6 @@ app.post("/nombre_materiel", (request, response)=> {
 		password: "root",
 		database : "falcohm"
 	});
-app.post("/ajouterMateriel", (request, response)=> {
-	verifieAdmin(request.query.connexion, request.query.motdepasse).then((value) => {
-		if (value === true) {
-			let con = mysql.createConnection({
-				host: "localhost",
-				user: "root",
-				password: "root",
-				database: "falcohm"
-			});
-			con.connect(function (err) {
-				if (err) throw err;
-				con.query("INSERT INTO materiels (nom, id_categorie, prix, nombre, description) VALUES (?, ?, ?, ?, ?)", [request.body.nom, request.body.categorie, request.body.prix, request.body.nombre, request.body.description], function (err, result) {
-					response.send("success");
-				});
-			});
-		};
-	});
-});
 
 	con.connect(function(err) {
 		if (err) throw err;
@@ -264,47 +245,41 @@ app.post("/panier", (request, response)=> {
 
 
 
-app.get("/administration",  (request, response)=> {
+app.get("/administration", (request, response)=> {
 	response.render("pages/administration");
 });
 
 
 app.get("/liste_utilisateur", (request, response)=> {
-	verifieAdmin(request.query.connexion, request.query.motdepasse).then((value) => {
-		if (value === true) {
-			let con = mysql.createConnection({
-				host: "localhost",
-				user: "root",
-				password: "root",
-				database: "falcohm"
-			});
-			con.connect(function (err) {
-				if (err) throw err;
-				con.query("SELECT utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone as numero, utilisateurs.adressemail as mail from utilisateurs", function (err, result) {
-					response.send(JSON.stringify(result));
-				});
-			});
-		}
+	let con = mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "root",
+		database : "falcohm"
+	});
+	con.connect(function(err) {
+		if (err) throw err;
+		con.query("SELECT utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone as numero, utilisateurs.adressemail as mail from utilisateurs", function (err, result) {
+			response.send(JSON.stringify(result));
+		});
 	});
 });
 
 
 app.post("/nombre_materiel", (request, response)=> {
-	verifieAdmin(request.query.connexion, request.query.motdepasse).then((value) => {
-		if (value === true) {
-			let con = mysql.createConnection({
-				host: "localhost",
-				user: "root",
-				password: "root",
-				database : "falcohm"
-			});
+	let con = mysql.createConnection({
+		host: "localhost",
+		user: "root",
+		password: "root",
+		database : "falcohm"
+	});
 
-			con.connect(function(err) {
-				if (err) throw err;
-				con.query("SELECT m.nom,m.nombre from materiels as m ", function (err, result) {
-					result.forEach(function (item) {
+	con.connect(function(err) {
+		if (err) throw err;
+		con.query("SELECT m.nom,m.nombre from materiels as m ", function (err, result) {
+			result.forEach(function(item){
 
-						if (item.nombre !== Number(request.body[item.nom]) && request.body[item.nom] !== undefined) {
+				if(item.nombre !== Number(request.body[item.nom]) && request.body[item.nom] !== undefined){
 
 					con.query("UPDATE materiels SET nombre = '"+Number(request.body[item.nom])+"' WHERE nom ='" + item.nom+"'"
 					);
@@ -392,36 +367,6 @@ app.post("/commande-utilisateur", (request, response)=> {
 	});
 
 });
-							con.query("UPDATE materiels SET nombre = '" + Number(request.body[item.nom]) + "' WHERE nom ='" + item.nom + "'"
-							);
-						};
-					});
-				});
-			});
-		};
-	});
-});
-
-function verifieAdmin(connexion, motdepasse) {
-	return new Promise((resolve, reject)=>{
-		let con = mysql.createConnection({
-			host: "localhost",
-			user: "root",
-			password: "root",
-			database : "falcohm"
-		});
-		con.connect(function (err) {
-			if (err) throw err;
-			con.query("SELECT utilisateurs.adressemail, utilisateurs.motdepasse, utilisateurs.admin from utilisateurs", function (err, result) {
-				for (let i of result) {
-					if (connexion == i.adressemail && motdepasse == i.motdepasse && i.admin == 1) {
-						resolve(true);
-					}
-				}
-			});
-		});
-	});
-}
 
 function envoyerCommandeMail(idCom){
 	let con = mysql.createConnection({
