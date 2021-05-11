@@ -158,17 +158,21 @@ app.post("/inscription", (request, response)=> {
 
 
 app.post("/ajouterMateriel", (request, response)=> {
-	let con = mysql.createConnection({
-		host: "localhost",
-		user: "root",
-		password: "root",
-		database : "falcohm"
-	});
-	con.connect(function(err) {
-		if (err) throw err;
-		con.query("INSERT INTO materiels (nom, id_categorie, prix, nombre, description) VALUES (?, ?, ?, ?, ?)", [request.body.nom, request.body.categorie, request.body.prix, request.body.nombre, request.body.description], function (err, result) {
-			response.send("succes");
-		});
+	verifieAdmin(request.query.connexion, request.query.motdepasse).then((value) => {
+		if (value === true) {
+			let con = mysql.createConnection({
+				host: "localhost",
+				user: "root",
+				password: "root",
+				database: "falcohm"
+			});
+			con.connect(function (err) {
+				if (err) throw err;
+				con.query("INSERT INTO materiels (nom, id_categorie, prix, nombre, description) VALUES (?, ?, ?, ?, ?)", [request.body.nom, request.body.categorie, request.body.prix, request.body.nombre, request.body.description], function (err, result) {
+					response.send("success");
+				});
+			});
+		};
 	});
 });
 
@@ -181,46 +185,49 @@ app.get("/administration", (request, response)=> {
 
 
 app.get("/liste_utilisateur", (request, response)=> {
-	let con = mysql.createConnection({
-		host: "localhost",
-		user: "root",
-		password: "root",
-		database : "falcohm"
-	});
-	con.connect(function(err) {
-		if (err) throw err;
-		con.query("SELECT utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone as numero, utilisateurs.adressemail as mail from utilisateurs", function (err, result) {
-			response.send(JSON.stringify(result));
-		});
+	verifieAdmin(request.query.connexion, request.query.motdepasse).then((value) => {
+		if (value === true) {
+			let con = mysql.createConnection({
+				host: "localhost",
+				user: "root",
+				password: "root",
+				database: "falcohm"
+			});
+			con.connect(function (err) {
+				if (err) throw err;
+				con.query("SELECT utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone as numero, utilisateurs.adressemail as mail from utilisateurs", function (err, result) {
+					response.send(JSON.stringify(result));
+				});
+			});
+		}
 	});
 });
 
 
 app.post("/nombre_materiel", (request, response)=> {
-	let con = mysql.createConnection({
-		host: "localhost",
-		user: "root",
-		password: "root",
-		database : "falcohm"
-	});
-
-	con.connect(function(err) {
-		if (err) throw err;
-		con.query("SELECT m.nom,m.nombre from materiels as m ", function (err, result) {
-			result.forEach(function(item){
-
-				if(item.nombre !== Number(request.body[item.nom]) && request.body[item.nom] !== undefined){
-
-					con.query("UPDATE materiels SET nombre = '"+Number(request.body[item.nom])+"' WHERE nom ='" + item.nom+"'"
-					);
-				}
+	verifieAdmin(request.query.connexion, request.query.motdepasse).then((value) => {
+		if (value === true) {
+			let con = mysql.createConnection({
+				host: "localhost",
+				user: "root",
+				password: "root",
+				database : "falcohm"
 			});
 
-		});
+			con.connect(function(err) {
+				if (err) throw err;
+				con.query("SELECT m.nom,m.nombre from materiels as m ", function (err, result) {
+					result.forEach(function (item) {
 
+						if (item.nombre !== Number(request.body[item.nom]) && request.body[item.nom] !== undefined) {
 
-
-
+							con.query("UPDATE materiels SET nombre = '" + Number(request.body[item.nom]) + "' WHERE nom ='" + item.nom + "'"
+							);
+						};
+					});
+				});
+			});
+		};
 	});
 });
 
@@ -431,14 +438,28 @@ function envoyerCommandeMail(idCom){
 			transporter.sendMail(mailOptions);
 		});
 	});
-
-
-
-
 }
 
-
-
+function verifieAdmin(connexion, motdepasse) {
+	return new Promise((resolve, reject)=>{
+		let con = mysql.createConnection({
+			host: "localhost",
+			user: "root",
+			password: "root",
+			database : "falcohm"
+		});
+		con.connect(function (err) {
+			if (err) throw err;
+			con.query("SELECT utilisateurs.adressemail, utilisateurs.motdepasse, utilisateurs.admin from utilisateurs", function (err, result) {
+				for (let i of result) {
+					if (connexion == i.adressemail && motdepasse == i.motdepasse && i.admin == 1) {
+						resolve(true);
+					}
+				}
+			});
+		});
+	});
+}
 
 app.listen(80);
 

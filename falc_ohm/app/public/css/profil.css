@@ -17,7 +17,7 @@ html{
 
 }
 
-#nom, #categorie, #prix, #nombre, #description{
+#nom, #categorie, #prix, #nombre, #description, #adressemail1, #motdepasse1{
     color:grey;
     margin-bottom:10px ;
     border-radius: 5px;
