@@ -142,6 +142,8 @@ class Connexion extends React.Component {
 			motdepasse1: motdepasse1.value,
 		};
 
+		console.log(data1);
+
 		let tableUtilisateurs =[];
 		let xhr = new XMLHttpRequest();
 
@@ -235,6 +237,20 @@ class Inscription extends React.Component {
 			confirmation: confirmation.value
 		};
 
+		console.log(data2);
+
+		let tableUtilisateurs = [];
+
+		let xhr = new XMLHttpRequest();
+
+		xhr.open("GET", "http://localhost/utilisateurs");
+		xhr.setRequestHeader("content-type", "application/json");
+		xhr.onload = function () {
+			console.log(xhr.responseText);
+			tableUtilisateurs =  JSON.parse(xhr.responseText);
+		};
+		xhr.send();
+
 		if (data2.motdepasse2.length >= 8 && data2.motdepasse2 == data2.confirmation) {
 			let xhr = new XMLHttpRequest();
 			xhr.open("POST", "http://localhost/inscription");
@@ -261,32 +277,10 @@ class Inscription extends React.Component {
 						// eslint-disable-next-line no-undef
 						if (utilisateurConnecte != 0){
 							console.log("le cookie est bien sur " + GetCookie("connexion"));
-				if(xhr.responseText == "success") {
-					document.getElementById("adressemail2").classList.remove("is-invalid");
-					adressemail2.value = "";
-				}
-				else{
-					let isInvalid = xhr.responseText.split("-") ;
-					console.log(isInvalid);
-					for(let i of isInvalid) {
-						if (i === "adressemail2Invalid") {
-							document.getElementById("adressemail2").classList.add("is-invalid");
 						}
+						console.log("utilisateur bien créé");
 					}
 				}
-
-				let duree_cookie = 100;         // durée de vie du cookie en jours
-				let expiration = new Date();    // date et heure courante en format texte
-				expiration.setTime(expiration.getTime() + (duree_cookie * 24*60*60*1000));
-				// => on peut utiliser la variable "expiration"
-				SetCookie ("connexion",data2.adressemail2,expiration,null,null,false);
-				// eslint-disable-next-line no-undef
-				utilisateurConnecte = GetCookie("connexion");
-				// eslint-disable-next-line no-undef
-				if (utilisateurConnecte != 0){
-					console.log("le cookie est bien sur " + GetCookie("connexion"));
-				}
-				console.log("utilisateur bien créé");
 			};
 			xhr.send(JSON.stringify(data2));
 			event.preventDefault();
@@ -308,8 +302,8 @@ class Inscription extends React.Component {
 					</div>
 					<div className="form-group">
 						<label htmlFor="numerotel">Entrez votre numéro de téléphone</label>
-						<input type="tel" className="form-control w-25" id="numerotel" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$"
-							   placeholder="(+32)499 999999" required/>
+						<input type="text" className="form-control w-25" id="numerotel"
+							   placeholder="Numéro de téléphone" required/>
 					</div>
 					<div className="form-group">
 						<label htmlFor="adressemail2">Entrez votre adresse mail</label>
@@ -318,10 +312,7 @@ class Inscription extends React.Component {
 					</div>
 					<div className="form-group">
 						<label htmlFor="motdepasse2">Entrez votre mot de passe</label>
-						<input type="password" className="form-control w-25" id="motdepasse2"
-							   placeholder="Mot de passe"
-						<input type="password" className="form-control w-25" id="motdepasse2" placeholder="Min. 8 caractères" min="8"
-							   required/>
+						<input type="password" className="form-control w-25" id="motdepasse2" placeholder="Min. 8 caractères" min="8" required/>
 					</div>
 					<div className="form-group">
 						<label htmlFor="confirmation">Veuillez confirmer votre mot de passe</label>

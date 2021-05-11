@@ -3,7 +3,6 @@ let nodemailer = require("nodemailer");
 let express = require("express");
 let cors = require("cors");
 let app = express();
-//let bootstrap = require('bootstrap');
 
 function validateEmail(email) {
 	const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -82,8 +81,7 @@ app.post("/mail", (request, response)=>{
 			});
 		});
 		response.send("success");
-	}
-	else {
+	} else {
 		response.send(isValid);
 	}
 });
@@ -123,24 +121,6 @@ app.get("/profil", (request, response)=> {
 });
 
 app.get("/utilisateurs", (request, response)=> {
-    let con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "root",
-        database : "falcohm"
-    });
-    con.connect(function(err) {
-        if (err) throw err;
-        con.query("SELECT utilisateurs.id_utilisateurs, utilisateurs.adressemail, utilisateurs.motdepasse, utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone, utilisateurs.admin from utilisateurs", function (err, result) {
-            response.send(JSON.stringify(result));
-        });
-    });
-});
-
-app.post("/inscription", (request, response)=> {
-	let reponses = Object.entries(request.body);
-	let isValid = "";
-
 	let con = mysql.createConnection({
 		host: "localhost",
 		user: "root",
@@ -151,19 +131,11 @@ app.post("/inscription", (request, response)=> {
 		if (err) throw err;
 		con.query("SELECT utilisateurs.id_utilisateurs, utilisateurs.adressemail, utilisateurs.motdepasse, utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone, utilisateurs.admin from utilisateurs", function (err, result) {
 			response.send(JSON.stringify(result));
-		con.query("SELECT utilisateurs.adressemail from utilisateurs", function (err, result) {
-			response.send(JSON.stringify(result));
-			for (let i of reponses) {
-				for (let x of result) {
-					if (i[1] === x) {
-						if (i[0] === "adressemail2") {
-							isValid += "-adressemail2Invalid";
-						}
-					}
-				}
-			}
 		});
 	});
+});
+
+app.post("/inscription", (request, response)=> {
 	if (request.body.adressemail2 !== "") {
 		let con = mysql.createConnection({
 			host: "localhost",
@@ -176,7 +148,7 @@ app.post("/inscription", (request, response)=> {
 			con.query("INSERT INTO utilisateurs (nom, prenom, numerotelephone, adressemail, motdepasse) VALUES (?, ?, ?, ?, ?)", [request.body.nom, request.body.prenom, request.body.numerotel, request.body.adressemail2, request.body.motdepasse2], function (err, result) {
 			});
 		});
-		response.send("success");
+	response.send("success");
 	}
 	else {
 		response.send(isValid);
