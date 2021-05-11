@@ -1,0 +1,97 @@
+create database falcohm;
+
+
+create table categories
+(
+    id_categorie  int auto_increment
+        primary key,
+    nom_categorie varchar(50) not null
+);
+
+
+
+create table materiels
+(
+    id_materiel  int auto_increment
+        primary key,
+    id_categorie int           not null,
+    nom          varchar(50)   not null,
+    prix         int           not null,
+    en_location  int default 0 not null,
+    description  text          not null,
+    nombre       int default 1 not null,
+    constraint materiels_categories_id_categorie_fk
+        foreign key (id_categorie) references categories (id_categorie)
+);
+
+
+
+
+create table utilisateurs
+(
+    id_utilisateurs int auto_increment
+        primary key,
+    adressemail     tinytext             not null,
+    motdepasse      tinytext             not null,
+    nom             tinytext             not null,
+    prenom          tinytext             not null,
+    numerotelephone tinytext             not null,
+    admin           tinyint(1) default 0 not null
+);
+
+
+create table panier
+(
+    id_panier       int auto_increment
+        primary key,
+    id_utilisateurs int not null,
+    constraint panier_utilisateurs_id_utilisateurs_fk
+        foreign key (id_utilisateurs) references utilisateurs (id_utilisateurs)
+);
+
+
+create table panier_elem
+(
+    id_panier   int not null,
+    id_materiel int not null,
+    nombre      int not null,
+    constraint panier_elem_materiels_id_materiel_fk
+        foreign key (id_materiel) references materiels (id_materiel),
+    constraint panier_elem_panier_id_panier_fk
+        foreign key (id_panier) references panier (id_panier)
+);
+
+
+
+create table messages
+(
+    id       int auto_increment
+        primary key,
+    identite varchar(200) not null,
+    mail     varchar(200) not null,
+    message  longtext     not null
+);
+
+
+create table commande
+(
+    id_commande     int auto_increment
+        primary key,
+    id_utilisateurs int  null,
+    date            date not null,
+    constraint commande_utilisateurs_id_utilisateurs_fk
+        foreign key (id_utilisateurs) references utilisateurs (id_utilisateurs)
+);
+
+create table commande_elem
+(
+    id_commande int not null,
+    id_materiel int not null,
+    nombre      int not null,
+    constraint commande_elem_commande_id_commande_fk
+        foreign key (id_commande) references commande (id_commande),
+    constraint commande_elem_materiels_id_materiel_fk
+        foreign key (id_materiel) references materiels (id_materiel)
+);
+
+

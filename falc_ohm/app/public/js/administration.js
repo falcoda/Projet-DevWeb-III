@@ -4,6 +4,8 @@
 /* eslint-disable react/jsx-no-undef */
 let materiel;
 let users;
+let commandes;
+
 let xhr = new XMLHttpRequest();
 xhr.open("GET", "http://localhost/liste_utilisateur?connexion="+GetCookie("connexion")+"&motdepasse="+GetCookie("motdepasse"));
 xhr.onload = function() {
@@ -15,6 +17,8 @@ xhr.onload = function() {
 				<React.Fragment>
 					<button onClick={afficherUtilis}>Liste utilisateurs</button>
 					<button onClick={nombreMateriel}> Nombre matériel </button>
+					<button onClick={ajoutMateriel}> Ajouter matériel </button>
+					<button onClick={afficherCommande}> Commandes effectuées </button>
 					<button onClick={ajoutMateriel}> Ajouter du matériel </button>
 				</React.Fragment>);
 		}
@@ -36,7 +40,13 @@ xhr_materiel.onload = function() {
 };
 xhr_materiel.send();
 
+let xhr_commande = new XMLHttpRequest();
+xhr_commande.open("GET", "http://localhost/commande");
+xhr_commande.onload = function() {
+	commandes=xhr_commande.responseText;
 
+};
+xhr_commande.send();
 
 
 class User extends React.Component {
@@ -327,3 +337,116 @@ class AjoutMateriel extends React.Component {
 function ajoutMateriel() {
 	ReactDOM.render(<AjoutMateriel/>,document.getElementById("conteneur"));
 }
+
+
+class Commande extends React.Component {
+    constructor(props) {
+        super(props);
+        this.creerCommande = this.creerCommande.bind(this);
+    }
+
+    creerCommande(mail){
+        let commandeUtilis = "";
+        console.log(typeof mail.target.value);
+
+        JSON.parse(commandes).forEach((item)=>{
+			console.log(typeof item.id_commande);
+            if(Number(mail.target.value)  === item.id_commande){
+				console.log("toto");
+                commandeUtilis+= "<tr><td scope='row'>"+item.nom+"</td><td>"+item.nombre+"</td><td>"+item.prix+"</td> </tr>";
+            }
+
+        });
+
+        document.getElementById("recapCommande"+mail.target.value).innerHTML = commandeUtilis;
+
+    }
+    render() {
+        return(
+            <React.Fragment>
+                <tr>
+
+                    <td>{this.props.commande[1]}</td>
+                    <td scope="row">{this.props.commande[0]}</td>
+                    <td>{this.props.prix}</td>
+                    <td>
+                        <button className="btn btn-primary" type="button" data-toggle="collapse" onClick={this.creerCommande} value={this.props.commande[0]}
+                                data-target={"#"+this.props.commande[0]} aria-expanded="false" aria-controls="collapseExample" >
+                            V
+                        </button></td>
+                </tr>
+                <tr className="collapse infoC" id={this.props.commande[0]} >
+                    <td colSpan="4" className="infoCommande" >
+                        <table className="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Matériel</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Prix</th>
+                                <th scope="col"></th>
+                            </tr>
+                            </thead>
+                            <tbody id={"recapCommande"+this.props.commande[0]}>
+
+                            </tbody>
+                        </table>
+                    </td>
+
+                </tr>
+            </React.Fragment>
+        );
+
+    }
+}
+
+class AfficherCommande extends React.Component {
+    constructor(props){
+        super(props);
+
+    }
+
+    render() {
+        const rows = [];
+        for(let key in this.props.commande){
+            rows.push(
+                <Commande key={key} commande = {[key,this.props.commande[key][0]]} prix = {this.props.commande[key][1]}/>
+            );
+        }
+
+
+        return (
+            <div  className="overflow">
+
+                <table className="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Mail</th>
+                        <th scope="col">ID commande</th>
+                        <th scope="col">prix</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {rows}
+                    </tbody>
+                </table>
+
+            </div>
+        );
+    }
+}
+function afficherCommande() {
+	let commandeDiff = {};
+	console.log(JSON.parse(commandes));
+	JSON.parse(commandes).forEach((item)=>{
+		if(!(item.id_commande  in commandeDiff)){
+			commandeDiff[item.id_commande] = [item.adressemail, item.prix ];
+		}
+		else{
+			commandeDiff[item.id_commande][1] += item.prix;
+		}
+	});
+	console.log(commandeDiff);
+	ReactDOM.render(<AfficherCommande commande={commandeDiff}/>,document.getElementById("conteneur"));
+}
+

@@ -1,3 +1,6 @@
+//import React from "react"
+//import ReactDOM from "react-dom";
+
 class FormsPage extends React.Component {
 	state = {
 		nom: "",
@@ -41,7 +44,7 @@ class FormsPage extends React.Component {
 		xhr.onload = function () {
 			console.log(xhr.responseText);
 			console.log("coucou");
-			if(xhr.responseText == "success") {
+			if(xhr.responseText === "success") {
 				alert("Mail envoyé avec success");
 				document.getElementById("prenom").classList.remove("is-invalid");
 				document.getElementById("nom").classList.remove("is-invalid");
@@ -56,6 +59,10 @@ class FormsPage extends React.Component {
 
 
 			else{
+                document.getElementById("prenom").classList.remove("is-invalid");
+                document.getElementById("nom").classList.remove("is-invalid");
+                document.getElementById("email").classList.remove("is-invalid");
+                document.getElementById("commentaire").classList.remove("is-invalid");
 				let isInvalid = xhr.responseText.split("-") ;
 				console.log(isInvalid);
 				for(let i of isInvalid){
@@ -90,10 +97,9 @@ class FormsPage extends React.Component {
 					<fieldset>
 						<legend>Pour tout renseignement supplémentaire, veuillez nous contacter</legend>
 
-						<div className="form-group">
+						<div className="form-group nom" >
 							<label htmlFor="nom">Entrez votre nom</label>
 							<input value={this.state.value} onChange={this.handleChange} type="text" className="form-control w-25" id="nom" placeholder="Nom" />
-							<div className="valid-feedback">Looks good!</div>
 						</div>
 						<div className="form-group">
 							<label htmlFor="prenom">Entrez votre prenom</label>
@@ -122,21 +128,23 @@ class FormsPage extends React.Component {
 	}
 }
 
+function chargement() {
 
-ReactDOM.render(<FormsPage/>,document.getElementById("FormsPage"));
+	ReactDOM.render(<FormsPage/>,document.getElementById("FormsPage"));
 
+	let mymap = L.map('mapid').setView([50.627339, 4.451884], 13);
+	L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+		maxZoom: 20,
+		id: 'mapbox/streets-v11',
+		tileSize: 512,
+		zoomOffset: -1
+	}).addTo(mymap);
 
-let mymap = L.map('mapid').setView([50.627339, 4.451884], 13);
-L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-	maxZoom: 20,
-	id: 'mapbox/streets-v11',
-	tileSize: 512,
-	zoomOffset: -1
-}).addTo(mymap);
+	var circle = L.circle([50.627339, 4.451884], {
+		color: 'red',
+		fillColor: '#f03',
+		fillOpacity: 0.5,
+		radius: 500
+	}).addTo(mymap);
+}
 
-var circle = L.circle([50.627339, 4.451884], {
-	color: 'red',
-	fillColor: '#f03',
-	fillOpacity: 0.5,
-	radius: 500
-}).addTo(mymap);
