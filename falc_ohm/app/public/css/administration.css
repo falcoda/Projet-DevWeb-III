@@ -1,7 +1,4 @@
-.utilis{
-    height: 45em;
 
-}
 #content{ /* contenu*/
 
     margin-top: 11%;
@@ -14,3 +11,10 @@
     width:30%;
 }
 
+.infoCommande{
+    background-color: whitesmoke;
+    padding: 5%;
+    color: black;
+    border-inline:solid grey 1px ;
+
+}
