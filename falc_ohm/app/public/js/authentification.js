@@ -131,7 +131,6 @@ class Inscription extends React.Component {
 		xhr.open("GET", "http://localhost/utilisateurs");
 		xhr.setRequestHeader("content-type", "application/json");
 		xhr.onload = function () {
-			console.log(xhr.responseText);
 			tableUtilisateurs =  JSON.parse(xhr.responseText);
 		};
 		xhr.send();

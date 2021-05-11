@@ -256,6 +256,10 @@ app.get("/administration", (request, response)=> {
 	response.render("pages/administration");
 });
 
+app.get("/mentionslegales", (request, response)=> {
+	response.render("pages/mentionslegales");
+});
+
 app.get("/commande", (request, response)=> {
 	let con = mysql.createConnection({
 		host: "localhost",
