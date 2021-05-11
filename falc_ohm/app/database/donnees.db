@@ -2,6 +2,8 @@ INSERT INTO falcohm.categories (id_categorie, nom_categorie) VALUES (1, 'caisson
 INSERT INTO falcohm.categories (id_categorie, nom_categorie) VALUES (2, 'top 2 voies');
 INSERT INTO falcohm.categories (id_categorie, nom_categorie) VALUES (3, 'ampli');
 INSERT INTO falcohm.categories (id_categorie, nom_categorie) VALUES (4, 'processeur');
+INSERT INTO `falcohm`.`categories` (`nom_categorie`) VALUES ('console')
+
 
 
 INSERT INTO falcohm.materiels (id_materiel, id_categorie, nom, prix, en_location, description, nombre) VALUES (1, 1, 'mth30', 20, 0, 'Petit caisson de basses 12" de 300W', 1);
@@ -15,6 +17,7 @@ INSERT INTO falcohm.materiels (id_materiel, id_categorie, nom, prix, en_location
 INSERT INTO falcohm.materiels (id_materiel, id_categorie, nom, prix, en_location, description, nombre) VALUES (9, 5, 'showtec saber 60', 25, 0, 'Il s''agit d''une lumière bougeant en x et y à l''infini', 1);
 INSERT INTO falcohm.materiels (id_materiel, id_categorie, nom, prix, en_location, description, nombre) VALUES (10, 5, 'showtec phantom 50', 20, 0, 'Il s''agit d''une beam', 1);
 INSERT INTO falcohm.materiels (id_materiel, id_categorie, nom, prix, en_location, description, nombre) VALUES (11, 1, 'pars led', 10, 0, 'un spot lumineux fixe', 8);
+INSERT INTO `falcohm`.`materiels` (`id_categorie`, `nom`, `prix`, `en_location`, `description`, `nombre`) VALUES (6, 'AlienHead Z14', 100, 0, 'Console son 10 entrées', 1)
 
 INSERT INTO falcohm.utilisateurs (id_utilisateurs, adressemail, motdepasse, nom, prenom, numerotelephone, admin) VALUES (1, 'corent@rgrg.ege', '12345678', 'bfb', 'fbbfb', '042042424', 0);
 INSERT INTO falcohm.utilisateurs (id_utilisateurs, adressemail, motdepasse, nom, prenom, numerotelephone, admin) VALUES (2, 'michelt@rgrg.ege', '12345678', 'lolol', 'lolol', '123456', 0);
