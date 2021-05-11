@@ -1,11 +1,21 @@
 function generationDevis(objet) {
-    var sizeTableau = Object.keys(objet).length; //récuperer la taille du tableau pour la boucle
-    var tableauValue = Object.values(objet);
-    var tableauKeys = Object.keys(objet);
+    let elem = document.getElementById("devis");
+    let writing = "";
+    let totalPrix = 0;
+    writing += "<table> <tr><th>Matériel</th><th>Nombre</th><th>Prix</th></tr>";
+    for (let i = 0 ; i < objet.length ; i++){
+        writing += "<tr><td>" + objet[i].denom + "</td><td>" + objet[i].nombre + "</td><td>" + objet[i].prix + "</td></tr>"
+        totalPrix += objet[i].prix;
+    }
+    writing += "<tr><td>Prix total</td><td></td><td>" + totalPrix + "</td></tr><table>";
+    elem.innerHTML += writing;   //BUG
+    /* let elem = "<table> <tr><th>Matériel</th><th>Nombre</th><th>Prix</th></tr>"
+    for (let i = 0 ; i < objet.length ; i++){
+        elem += "<tr><td>" + objet[i].denom + "</td><td>" + objet[i].nombre + "</td><td>" + objet[i].prix + "</td></tr>"
+    }
+    console.log(elem);
+    ReactDOM.render(elem, document.getElementById('devis')) */
 
-    /* for (let i = 0 ; i <= sizeTableau ; i++ ){
-        console.log(tableauValue[i]);
-    } */
 }
 let materiel;
 let xhr_materiel = new XMLHttpRequest();
@@ -18,7 +28,6 @@ xhr_materiel.onload = function() {
 xhr_materiel.send();
 
 function boucle(tableau, name , number) {
-    console.log(tableau[0]['nom']);
     let retour = {
         denom : '',
         prix : 0,
@@ -35,37 +44,98 @@ function boucle(tableau, name , number) {
     return retour;
 }
 
-function ecritureDevis (data){
+
+function lightDevis (param){  //param = big,small
+    let obj = {};
+    let tableobj = [];
+    let bdd = JSON.parse(materiel);
+    if (param == "big"){
+        obj = boucle(bdd,'showtec saber 60', 10);
+        tableobj.push(obj);
+        obj = boucle(bdd,'showtec phantom 50', 4);
+        tableobj.push(obj);
+        obj = boucle(bdd,'pars led', 8);
+        tableobj.push(obj);
+        obj = boucle(bdd,'blacklight', 2);
+        tableobj.push(obj);
+        obj = boucle(bdd,'showtec pixelbar Q4', 1);
+        tableobj.push(obj);
+        obj = boucle(bdd,'Avolite pearl 2004', 1);
+        tableobj.push(obj);
+    }else if (param == "small"){
+        obj = boucle(bdd,'showtec saber 60', 4);
+        tableobj.push(obj);
+        obj = boucle(bdd,'showtec phantom 50', 2);
+        tableobj.push(obj);
+        obj = boucle(bdd,'pars led', 4);
+        tableobj.push(obj);
+        obj = boucle(bdd,'showtec pixelbar Q4', 1);
+        tableobj.push(obj);
+        obj = boucle(bdd,'Avolite pearl 2004', 1);
+        tableobj.push(obj);
+
+    }else {
+        console.log("noshow")
+    }
+    return tableobj;
+
 
 }
 
-function basicMaterial(objet) {
-    var tableauValue = Object.values(objet);
-    console.log(panier);
-    //if (tableauValue[]
-    //matériel de base pour chaque préstation (ne variant pas avec les param)
-}
+/* function basicMaterial(tableau) {  //pas du tout fait
+
+} */
 
 function prefLightAndSound(objet) {
-    var donnees = JSON.parse(materiel)
+    let obj = {};
+    let tableobj = [];
+    var bdd = JSON.parse(materiel);
     var tableauValue = Object.values(objet);
     if(tableauValue[1] == "sound1"){ //preference sonorisation
-        console.log("force grosSound");
+        obj = boucle(bdd,'nexo SI 2000', 4);
+        tableobj.push(obj);
+        obj = boucle(bdd,'mth4654', 10);
+        tableobj.push(obj);
+        obj = boucle(bdd,'cvrD3002', 1);
+        tableobj.push(obj);
+        obj = boucle(bdd,'dsp206', 1);
+        tableobj.push(obj);
+        obj = boucle(bdd,'tdController', 1);
+        tableobj.push(obj);
+        obj = boucle(bdd,'qscRmx2450', 1);
+        tableobj.push(obj);
+        generationDevis(tableobj);
         if (tableauValue[2] == "light1"){ //preferences show light
-            console.log("force biglight");
+            tableobj = lightDevis('big');
+            generationDevis(tableobj);
         }else if (tableauValue[2] == "light2"){
-            console.log("force legerLight");
+            tableobj = lightDevis('small');
+            generationDevis(tableobj);
         }else if (tableauValue[2] == "light3"){
             console.log("force pasdelight");
         }else{
             console.log("pas de pref light")
         }
     }else if(tableauValue[1] == "sound2"){
-        console.log("force moyenSound")
+        obj = boucle(bdd,'nexo SI 2000', 2);
+        tableobj.push(obj);
+        obj = boucle(bdd,'mth4654', 6);
+        tableobj.push(obj);
+        obj = boucle(bdd,'cvrD3002', 1);
+        tableobj.push(obj);
+        obj = boucle(bdd,'dsp206', 1);
+        tableobj.push(obj);
+        obj = boucle(bdd,'tdController', 1);
+        tableobj.push(obj);
+        obj = boucle(bdd,'qscRmx2450', 1);
+        tableobj.push(obj);
+        generationDevis(tableobj);
         if (tableauValue[2] == "light1"){ //preferences show light
-            console.log("force biglight");
+            tableobj = lightDevis('big');
+            generationDevis(tableobj);
         }else if (tableauValue[2] == "light2"){
-            console.log("force legerLight");
+            tableobj = lightDevis('small');
+            generationDevis(tableobj);
         }else if (tableauValue[2] == "light3"){
             console.log("force pasdelight");
         }else{
@@ -73,11 +143,19 @@ function prefLightAndSound(objet) {
         }
 
     }else if(tableauValue[1] == "sound3"){
-        console.log("force petitSound")
+        obj = boucle(bdd,'mth30', 4);
+        tableobj.push(obj);
+        obj = boucle(bdd,'turbotop', 4);
+        tableobj.push(obj);
+        obj = boucle(bdd, 'Quadro 500DSP', 1);
+        tableobj.push(obj);
+        generationDevis(tableobj);
         if (tableauValue[2] == "light1"){ //preferences show light
-            console.log("force biglight");
+            tableobj = lightDevis('big');
+            generationDevis(tableobj);
         }else if (tableauValue[2] == "light2"){
-            console.log("force legerLight");
+            tableobj = lightDevis('small');
+            generationDevis(tableobj);
         }else if (tableauValue[2] == "light3"){
             console.log("force pasdelight");
         }else{
@@ -87,9 +165,11 @@ function prefLightAndSound(objet) {
     }else {
         console.log("pas de pref du coup " + tableauValue[1])
         if (tableauValue[2] == "light1"){ //preferences show light
-            console.log("force biglight");
+            tableobj = lightDevis('big');
+            generationDevis(tableobj);
         }else if (tableauValue[2] == "light2"){
-            console.log("force legerLight");
+            tableobj = lightDevis('small');
+            generationDevis(tableobj);
         }else if (tableauValue[2] == "light3"){
             console.log("force pasdelight");
         }else{
@@ -121,7 +201,6 @@ class MyForm extends React.Component {
         const name = e.target.name;
         //console.log(e.target.name)
         //console.log(Object.keys(this.state).length);
-        generationDevis(this.state);
         this.setState({
             [name]: e.target.value   //changer les valeur dans state
         })
@@ -130,86 +209,161 @@ class MyForm extends React.Component {
         e.preventDefault()
         const data = JSON.stringify(this.state)
         console.log(data);
-        let tableobjet = [];
+        let tableobj = [];
         let obj = {};
         let bdd = JSON.parse(materiel);
         //console.log(this.state.typeSound) //soundauto si rien choisi;
         if (this.state.typeEvenement == "event1"){ //soiree dansante
+            obj = boucle(bdd,'AlienHead Z14', 1);  //materiel par defaut
+            tableobj.push(obj);
             if (parseInt(this.state.tailleSalle) <= 100) { //nombre de personnes
-
                 if (this.state.typeSound != "soundAuto" || this.state.typeLight != "lightAuto") {
                     prefLightAndSound(this.state);
                 }else {
                     //ajout du matériel spécifique a cette config
                     obj = boucle(bdd,'mth30', 2);
-                    tableobjet.push(obj);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'turbotop', 2);
+                    tableobj.push(obj);
+                    obj = boucle(bdd, 'Quadro 500DSP', 1);
+                    tableobj.push(obj);
+                    console.log(tableobj);
+                    generationDevis(tableobj);
                 }
             }else if (parseInt(this.state.tailleSalle) > 100 && parseInt(this.state.tailleSalle) <= 200){
                 if (this.state.typeSound != "soundAuto" || this.state.typeLight != "lightAuto") {
                     prefLightAndSound(this.state);
                 }else {
                     //ajout du matériel spécifique a cette config
-                    console.log("pas de pref");
-                    console.log("du coup petit sound");
+                    obj = boucle(bdd,'mth30', 4);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'turbotop', 4);
+                    tableobj.push(obj);
+                    obj = boucle(bdd, 'Quadro 500DSP', 1);
+                    tableobj.push(obj);
+                    generationDevis(tableobj);
                 }
             }else if (parseInt(this.state.tailleSalle) > 200 && parseInt(this.state.tailleSalle) <= 300){
                 if (this.state.typeSound != "soundAuto" || this.state.typeLight != "lightAuto") {
                     prefLightAndSound(this.state);
                 }else {
                     //ajout du matériel spécifique a cette config
-                    console.log("pas de pref");
-                    console.log("du coup 2 mth 1 nexos");
+                    obj = boucle(bdd,'nexo SI 2000', 1);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'mth4654', 4);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'cvrD3002', 1);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'dsp206', 1);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'tdController', 1);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'qscRmx2450', 1);
+                    tableobj.push(obj);
+                    generationDevis(tableobj);
                 }
             }else if (parseInt(this.state.tailleSalle) > 300 && parseInt(this.state.tailleSalle) <= 500){
                 if (this.state.typeSound != "soundAuto" || this.state.typeLight != "lightAuto") {
                     prefLightAndSound(this.state);
                 }else {
                     //ajout du matériel spécifique a cette config
-                    console.log("pas de pref");
-                    console.log("du coup 4mth 2 nexos");
+                    obj = boucle(bdd,'nexo SI 2000', 2);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'mth4654', 4);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'cvrD3002', 1);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'dsp206', 1);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'tdController', 1);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'qscRmx2450', 1);
+                    tableobj.push(obj);
+                    generationDevis(tableobj);
                 }
             }else if (parseInt(this.state.tailleSalle) > 500 && parseInt(this.state.tailleSalle) <= 1000){
                 if (this.state.typeSound != "soundAuto" || this.state.typeLight != "lightAuto") {
                     prefLightAndSound(this.state);
                 }else {
                     //ajout du matériel spécifique a cette config
-                    console.log("pas de pref");
-                    console.log("du coup 6 mth 2 nexos");
+                    obj = boucle(bdd,'nexo SI 2000', 2);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'mth4654', 6);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'cvrD3002', 1);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'dsp206', 1);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'tdController', 1);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'qscRmx2450', 1);
+                    tableobj.push(obj);
+                    generationDevis(tableobj);
                 }
             }else{
                 if (this.state.typeSound != "soundAuto" || this.state.typeLight != "lightAuto") {
                     prefLightAndSound(this.state);
                 }else {
                     //ajout du matériel spécifique a cette config
-                    console.log("pas de pref");
-                    console.log("du coup 10mth 4 nexos");
+                    obj = boucle(bdd,'nexo SI 2000', 4);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'mth4654', 10);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'cvrD3002', 1);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'dsp206', 1);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'tdController', 1);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'qscRmx2450', 1);
+                    tableobj.push(obj);
+                    generationDevis(tableobj);
                 }
             }
         }
         else if(this.state.typeEvenement == "event2"){ //mariage
+            obj = boucle(bdd,'AlienHead Z14', 1);
+            tableobj.push(obj);
             if (parseInt(this.state.tailleSalle) <= 100){ //nombre de personnes
                 if (this.state.typeSound != "soundAuto" || this.state.typeLight != "lightAuto") {
                     prefLightAndSound(this.state);
                 }else {
                     //ajout du matériel spécifique a cette config
-                    console.log("pas de pref");
-                    console.log("du coup petit sound");
+                    obj = boucle(bdd,'mth30', 2);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'turbotop', 2);
+                    tableobj.push(obj);
+                    obj = boucle(bdd, 'Quadro 500DSP', 1);
+                    tableobj.push(obj);
+                    generationDevis(tableobj);
                 }
             }else if (parseInt(this.state.tailleSalle) > 100 && parseInt(this.state.tailleSalle) <= 200){
                 if (this.state.typeSound != "soundAuto" || this.state.typeLight != "lightAuto") {
                     prefLightAndSound(this.state);
                 }else {
                     //ajout du matériel spécifique a cette config
-                    console.log("pas de pref");
-                    console.log("du coup petit sound complet ");
+                    obj = boucle(bdd,'mth30', 4);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'turbotop', 4);
+                    tableobj.push(obj);
+                    obj = boucle(bdd, 'Quadro 500DSP', 1);
+                    tableobj.push(obj);
+                    generationDevis(tableobj);
                 }
             }else if (parseInt(this.state.tailleSalle) > 200 && parseInt(this.state.tailleSalle) <= 500){
                 if (this.state.typeSound != "soundAuto" || this.state.typeLight != "lightAuto") {
                     prefLightAndSound(this.state);
                 }else {
                     //ajout du matériel spécifique a cette config
-                    console.log("pas de pref");
-                    console.log("du coup 2mth 6top 2 voie");
+                    obj = boucle(bdd,'mth4654', 2);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'turbotop', 6);
+                    tableobj.push(obj);
+                    obj = boucle(bdd, 'Quadro 500DSP', 1);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'cvrD3002', 1);
+                    tableobj.push(obj);
+                    generationDevis(tableobj);
                 }
             }else if (parseInt(this.state.tailleSalle) > 500){
                 console.log("Nous somme pas en mesure de fournir une telle préstation, veuillez nous contacter pour plus d'info")
@@ -219,37 +373,77 @@ class MyForm extends React.Component {
 
         }
         else if(this.state.typeEvenement == "event3" || this.state.typeEvenement == "event4"){ //festival ou festival car mêmes valeurs
+            obj = boucle(bdd,'AlienHead Z14', 1);
+            tableobj.push(obj);
             if (parseInt(this.state.tailleSalle) <= 100){ //nombre de personnes
                 if (this.state.typeSound != "soundAuto" || this.state.typeLight != "lightAuto") {
                     prefLightAndSound(this.state);
                 }else {
                     //ajout du matériel spécifique a cette config
-                    console.log("pas de pref");
-                    console.log("du coup petit sound complet");
+                    obj = boucle(bdd,'mth30', 4);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'turbotop', 4);
+                    tableobj.push(obj);
+                    obj = boucle(bdd, 'Quadro 500DSP', 1);
+                    tableobj.push(obj);
+                    generationDevis(tableobj);
                 }
             }else if (parseInt(this.state.tailleSalle) > 100 && parseInt(this.state.tailleSalle) <= 200){
                 if (this.state.typeSound != "soundAuto" || this.state.typeLight != "lightAuto") {
                     prefLightAndSound(this.state);
                 }else {
                     //ajout du matériel spécifique a cette config
-                    console.log("pas de pref");
-                    console.log("du coup 4 mth 2 nexos");
+                    obj = boucle(bdd,'nexo SI 2000', 2);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'mth4654', 4);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'cvrD3002', 1);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'dsp206', 1);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'tdController', 1);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'qscRmx2450', 1);
+                    tableobj.push(obj);
+                    generationDevis(tableobj);
                 }
             }else if (parseInt(this.state.tailleSalle) > 200 && parseInt(this.state.tailleSalle) <= 500){
                 if (this.state.typeSound != "soundAuto" || this.state.typeLight != "lightAuto") {
                     prefLightAndSound(this.state);
                 }else {
                     //ajout du matériel spécifique a cette config
-                    console.log("pas de pref");
-                    console.log("du coup 6 mth 2 nexos");
+                    obj = boucle(bdd,'nexo SI 2000', 2);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'mth4654', 6);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'cvrD3002', 1);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'dsp206', 1);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'tdController', 1);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'qscRmx2450', 1);
+                    tableobj.push(obj);
+                    generationDevis(tableobj);
                 }
             }else if (parseInt(this.state.tailleSalle) > 500){
                 if (this.state.typeSound != "soundAuto" || this.state.typeLight != "lightAuto") {
                     prefLightAndSound(this.state);
                 }else {
                     //ajout du matériel spécifique a cette config
-                    console.log("pas de pref");
-                    console.log("du coup 10 mth 4 nexos");
+                    obj = boucle(bdd,'nexo SI 2000', 4);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'mth4654', 10);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'cvrD3002', 1);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'dsp206', 1);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'tdController', 1);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'qscRmx2450', 1);
+                    tableobj.push(obj);
+                    generationDevis(tableobj);
                 }
             }else {
                 console.log("error holder")
@@ -257,21 +451,35 @@ class MyForm extends React.Component {
         //}else if(this.state.typeEvenement == "event4"){ //teuf
         }
         else if(this.state.typeEvenement == "event5"){ //conference ou seminaire
+            obj = boucle(bdd,'AlienHead Z14', 1);
+            tableobj.push(obj);
             if (parseInt(this.state.tailleSalle) <= 200 ){ //nombre de personnes  (ici 0-200 = meme sono)
                 if (this.state.typeSound != "soundAuto" || this.state.typeLight != "lightAuto") {
                     prefLightAndSound(this.state);
                 }else {
                     //ajout du matériel spécifique a cette config
-                    console.log("pas de pref");
-                    console.log("du coup petit sound complet");
+                    obj = boucle(bdd,'mth30', 4);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'turbotop', 4);
+                    tableobj.push(obj);
+                    obj = boucle(bdd, 'Quadro 500DSP', 1);
+                    tableobj.push(obj);
+                    generationDevis(tableobj);
                 }
             }else if (parseInt(this.state.tailleSalle) > 200 && parseInt(this.state.tailleSalle) <= 500){
                 if (this.state.typeSound != "soundAuto" || this.state.typeLight != "lightAuto") {
                     prefLightAndSound(this.state);
                 }else {
                     //ajout du matériel spécifique a cette config
-                    console.log("pas de pref");
-                    console.log("du coup 2mth 6 top 2 voie");
+                    obj = boucle(bdd,'mth4654', 2);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'turbotop', 6);
+                    tableobj.push(obj);
+                    obj = boucle(bdd, 'Quadro 500DSP', 1);
+                    tableobj.push(obj);
+                    obj = boucle(bdd,'cvrD3002', 1);
+                    tableobj.push(obj);
+                    generationDevis(tableobj);
                 }
             }else {
                 console.log("Nous somme pas en mesure de fournir une telle préstation, veuillez nous contacter pour plus d'info")
@@ -291,7 +499,7 @@ class MyForm extends React.Component {
             <div id = "content">
             <form onSubmit={this.handleSubmit}>
                 <fieldset>
-                    <div className="row align-items-center">
+                    <div className="m-auto" id="content">
                         {/* Entrée type d'événement */}
                         <div className="col-12">
                             <label htmlFor="typeEvent">Type d'évenement : </label>
@@ -313,7 +521,7 @@ class MyForm extends React.Component {
                     </div>
 
                     {/* Entrée taille de la salle */}
-                    <div className="form-group">
+                    <div className="form-group m-auto">
                         <div className="col-auto">
                             <label htmlFor="tailleSalle" className="form-label">Taille de votre salle qui acceuilera la
                                 sonorisation :</label>
@@ -330,7 +538,7 @@ class MyForm extends React.Component {
                         </div>
                     </div>
                     {/* Entrée nombre de personnes */}
-                    <div className="form-group">
+                    <div className="form-group m-auto">
                         <div className="col-auto">
                             <label htmlFor="nombrePersonne" className="form-label">Nombre de personnes maximale
                                 attendues à l'événement :</label>
@@ -376,10 +584,9 @@ class MyForm extends React.Component {
             </form>
                 <div className="m-auto" id = "content">
                     <h5> Voici le devis associé à la simulation 2D et à vos choix : </h5>
-                    <form>
+                    <div id="devis"></div>
                         <input type="submit" className="btn btn-primary" value="Télécharger le devis au format PDF"/>
-                            <input type="submit" className="btn btn-primary" value="Envoyer un mail avec le devis"/>
-                    </form>
+                        <input type="submit" className="btn btn-primary" value="Envoyer un mail avec le devis"/>
                 </div>
             </div>
         );
