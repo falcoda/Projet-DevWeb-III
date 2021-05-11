@@ -7,12 +7,47 @@ function generationDevis(objet) {
         console.log(tableauValue[i]);
     } */
 }
+let materiel;
+let xhr_materiel = new XMLHttpRequest();
+xhr_materiel.open("GET", "http://localhost/materiel/json");
+xhr_materiel.onload = function() {
+    materiel=xhr_materiel.responseText;
+    console.log(JSON.parse(materiel));
+
+};
+xhr_materiel.send();
+
+function boucle(tableau, name , number) {
+    console.log(tableau[0]['nom']);
+    let retour = {
+        denom : '',
+        prix : 0,
+        nombre : 0,
+    };
+    for (let i = 0 ; i < tableau.length ; i++ ){
+        if (tableau[i]['nom'] == name){
+            console.log(tableau[i]['nom']);
+            retour.denom = tableau[i]['nom'];
+            retour.prix = tableau[i].prix;
+            retour.nombre = number;
+        }
+    }
+    return retour;
+}
+
+function ecritureDevis (data){
+
+}
 
 function basicMaterial(objet) {
+    var tableauValue = Object.values(objet);
+    console.log(panier);
+    //if (tableauValue[]
     //matériel de base pour chaque préstation (ne variant pas avec les param)
 }
 
 function prefLightAndSound(objet) {
+    var donnees = JSON.parse(materiel)
     var tableauValue = Object.values(objet);
     if(tableauValue[1] == "sound1"){ //preference sonorisation
         console.log("force grosSound");
@@ -64,17 +99,6 @@ function prefLightAndSound(objet) {
 
 
 }
-/* let panier ;
-let xhr = new XMLHttpRequest();
-xhr.open("POST", "http://localhost/materiel/json");
-xhr.setRequestHeader("content-type", "application/json");
-xhr.onload = function() {
-    panier = xhr.responseText;
-};
-
-//xhr.send(JSON.stringify({mail :utilisateurConnecte}));
-var materielDB  = JSON.parse(panier);
-console.log(materielDB); */
 class MyForm extends React.Component {
     state = {
         typeEvenement : '',   //valeur par défaut
@@ -105,16 +129,20 @@ class MyForm extends React.Component {
     handleSubmit(e){
         e.preventDefault()
         const data = JSON.stringify(this.state)
-        console.log(data)
+        console.log(data);
+        let tableobjet = [];
+        let obj = {};
+        let bdd = JSON.parse(materiel);
         //console.log(this.state.typeSound) //soundauto si rien choisi;
         if (this.state.typeEvenement == "event1"){ //soiree dansante
             if (parseInt(this.state.tailleSalle) <= 100) { //nombre de personnes
+
                 if (this.state.typeSound != "soundAuto" || this.state.typeLight != "lightAuto") {
                     prefLightAndSound(this.state);
                 }else {
                     //ajout du matériel spécifique a cette config
-                    console.log("pas de pref");
-                    console.log("du coup petit sound 1/2");
+                    obj = boucle(bdd,'mth30', 2);
+                    tableobjet.push(obj);
                 }
             }else if (parseInt(this.state.tailleSalle) > 100 && parseInt(this.state.tailleSalle) <= 200){
                 if (this.state.typeSound != "soundAuto" || this.state.typeLight != "lightAuto") {
@@ -328,33 +356,6 @@ class MyForm extends React.Component {
                             <option value="sound3">Petit soundsystem</option>
                         </select>
                     </div>
-                    {/*
-                        <div className="col-auto form-check">
-                            <span className="form-text">Si vous avez une préférence de la type de sonorisation que vous voulez : </span>
-                            <div className="form-check">
-                                <input type="radio" className="form-check-input" id="grossound" name="typedesound"
-                                       value="Gros sound"/>
-                                    <label className="form-check-label" htmlFor="grossound">Soundsystem complet (link or
-                                        list)</label>
-                            </div>
-                            <div className="form-check">
-                                <input type="radio" className="form-check-input" id="petitsound" name="typedesound"
-                                       value="Petit sound"/>
-                                    <label className="form-check-label" htmlFor="petitsound">Soundsystem de taille
-                                        moyenne</label>
-                            </div>
-                            <div className="form-check">
-                                <input type="radio" className="form-check-input" id="sound3" name="typedesound"
-                                       value="Mini sound"/>
-                                    <label className="form-check-label" htmlFor="sound3">Petit soundsystem </label>
-                            </div>
-                            <div className="form-check">
-                                <input type="radio" className="form-check-input" id="nopref1" name="typedesound"
-                                       value="nopref1" checked />
-                                    <label className="form-check-label" htmlFor="nopref1">Pas de préférences (génération
-                                        automatique en fct des paramètres)</label>
-                            </div>
-                        </div> */}
                     {/* Entrée radio lights */}
                     <div className="col-auto form-check">
                         <label htmlFor="typeLight">Show light voulu : </label>
@@ -365,30 +366,6 @@ class MyForm extends React.Component {
                             <option value="light3">Pas de show light</option>
                         </select>
                     </div>
-                        {/*
-                        <span
-                            className="form-text">Si vous avez une préférence pour le showlight que vous voulez :  </span>
-                        <div className="form-check">
-                            <input type="radio" className="form-check-input" id="grosLum" name="typedelumiere"
-                                   value="Grosse lum"/>
-                                <label className="form-check-label" htmlFor="grosLum">Show lumineux complet</label>
-                        </div>
-                        <div className="form-check">
-                            <input type="radio" className="form-check-input" id="moyenLum" name="typedelumiere"
-                                   value="Moyenne lum"/>
-                                <label className="form-check-label" htmlFor="moyenLum">Show lumineux léger</label>
-                        </div>
-                        <div className="form-check">
-                            <input type="radio" className="form-check-input" id="pasDeLum" name="typedelumiere"
-                                   value="No lum"/>
-                                <label className="form-check-label" htmlFor="pasDeLum">Pas de show lumineux</label>
-                        </div>
-                        <div className="form-check">
-                            <input type="radio" className="form-check-input" id="nopref" name="typedesound"
-                                   value="nopref" checked />
-                                <label className="form-check-label" htmlFor="nopref">Pas de préférences (génération
-                                    automatique en fct des paramètres)</label>
-                        </div> */}
                     <input type="submit" className="btn btn-primary" value="Génération de la simulation"/>
                         <input type="submit" className="btn btn-primary" value="Resimuler"/>
                             <input type="submit" className="btn btn-primary" value="Enregister la simulation"/>
@@ -397,6 +374,13 @@ class MyForm extends React.Component {
                     {JSON.stringify(this.state)}
                 </fieldset>
             </form>
+                <div className="m-auto" id = "content">
+                    <h5> Voici le devis associé à la simulation 2D et à vos choix : </h5>
+                    <form>
+                        <input type="submit" className="btn btn-primary" value="Télécharger le devis au format PDF"/>
+                            <input type="submit" className="btn btn-primary" value="Envoyer un mail avec le devis"/>
+                    </form>
+                </div>
             </div>
         );
     }
