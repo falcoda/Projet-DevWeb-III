@@ -8,6 +8,15 @@ let nodemailer = require("nodemailer");
 let express = require("express");
 let cors = require("cors");
 */
+
+let con = mysql.createConnection({
+	host: "localhost",
+	user: "5dj5Es8T",
+	password: "U6snnC36",
+	database: "falcohm",
+	multipleStatements: true
+});
+
 let app = express();
 
 function validateEmail(email) {
@@ -75,12 +84,6 @@ app.post("/mail", (request, response)=>{
 
 	if (request.body.commentaire !== "" && request.body.nom !== "" && request.body.prenom !== "" && validateEmail(request.body.mail)) {
 		transporter.sendMail(mailOptions);
-		let con = mysql.createConnection({
-			host: "localhost",
-			user: "root",
-			password: "root",
-			database: "falcohm"
-		});
 		con.connect(function (err) {
 			if (err) throw err;
 			con.query("INSERT INTO messages (identite, mail, message) VALUES (?, ?, ?)", [request.body.nom + " " + request.body.prenom, request.body.mail, request.body.commentaire], function (err, result) {
@@ -96,12 +99,6 @@ app.get("/materiel/:format?", (request, response)=> {
 
 	if (request.params.format == "json") {
 
-		let con = mysql.createConnection({
-			host: "localhost",
-			user: "root",
-			password: "root",
-			database: "falcohm"
-		});
 		con.connect(function (err) {
 			if (err) throw err;
 			con.query("SELECT m.nom,m.prix,m.description,m.nombre,m.en_location,c.nom_categorie from materiels as m JOIN categories c on m.id_categorie = c.id_categorie", function (err, result) {
@@ -127,12 +124,6 @@ app.get("/profil", (request, response)=> {
 });
 
 app.get("/utilisateurs", (request, response)=> {
-	let con = mysql.createConnection({
-		host: "localhost",
-		user: "root",
-		password: "root",
-		database : "falcohm"
-	});
 	con.connect(function(err) {
 		if (err) throw err;
 		con.query("SELECT utilisateurs.id_utilisateurs, utilisateurs.adressemail, utilisateurs.motdepasse, utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone, utilisateurs.admin from utilisateurs", function (err, result) {
@@ -142,12 +133,6 @@ app.get("/utilisateurs", (request, response)=> {
 });
 
 app.post("/inscription", (request, response)=> {
-	let con = mysql.createConnection({
-		host: "localhost",
-		user: "root",
-		password: "root",
-		database : "falcohm"
-	});
 	con.connect(function(err) {
 		if (err) throw err;
 		con.query("INSERT INTO utilisateurs (nom, prenom, numerotelephone, adressemail, motdepasse) VALUES (?, ?, ?, ?, ?)", [request.body.nom, request.body.prenom, request.body.numerotel, request.body.adressemail2, request.body.motdepasse2], function (err, result) {
@@ -160,12 +145,6 @@ app.post("/inscription", (request, response)=> {
 app.post("/ajouterMateriel", (request, response)=> {
 	verifieAdmin(request.query.connexion, request.query.motdepasse).then((value) => {
 		if (value === true) {
-			let con = mysql.createConnection({
-				host: "localhost",
-				user: "root",
-				password: "root",
-				database: "falcohm"
-			});
 			con.connect(function (err) {
 				if (err) throw err;
 				con.query("INSERT INTO materiels (nom, id_categorie, prix, nombre, description) VALUES (?, ?, ?, ?, ?)", [request.body.nom, request.body.categorie, request.body.prix, request.body.nombre, request.body.description], function (err, result) {
@@ -187,12 +166,6 @@ app.get("/administration", (request, response)=> {
 app.get("/liste_utilisateur", (request, response)=> {
 	verifieAdmin(request.query.connexion, request.query.motdepasse).then((value) => {
 		if (value === true) {
-			let con = mysql.createConnection({
-				host: "localhost",
-				user: "root",
-				password: "root",
-				database: "falcohm"
-			});
 			con.connect(function (err) {
 				if (err) throw err;
 				con.query("SELECT utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone as numero, utilisateurs.adressemail as mail from utilisateurs", function (err, result) {
@@ -207,13 +180,6 @@ app.get("/liste_utilisateur", (request, response)=> {
 app.post("/nombre_materiel", (request, response)=> {
 	verifieAdmin(request.query.connexion, request.query.motdepasse).then((value) => {
 		if (value === true) {
-			let con = mysql.createConnection({
-				host: "localhost",
-				user: "root",
-				password: "root",
-				database : "falcohm"
-			});
-
 			con.connect(function(err) {
 				if (err) throw err;
 				con.query("SELECT m.nom,m.nombre from materiels as m ", function (err, result) {
@@ -235,12 +201,6 @@ app.post("/nombre_materiel", (request, response)=> {
 
 app.post("/panier", (request, response)=> {
 	let mail= request.body.mail;
-	let con = mysql.createConnection({
-		host: "localhost",
-		user: "root",
-		password: "root",
-		database : "falcohm"
-	});
 	con.connect(function(err) {
 		if (err) throw err;
 		con.query("select materiels.nom, panier_elem.nombre from panier_elem join materiels on materiels.id_materiel = panier_elem.id_materiel join panier on panier.id_panier = panier_elem.id_panier join utilisateurs on utilisateurs.id_utilisateurs = panier.id_utilisateurs where utilisateurs.adressemail ='" +mail +"'", function (err, result) {
@@ -261,12 +221,6 @@ app.get("/mentionslegales", (request, response)=> {
 });
 
 app.get("/commande", (request, response)=> {
-	let con = mysql.createConnection({
-		host: "localhost",
-		user: "root",
-		password: "root",
-		database : "falcohm"
-	});
 	con.connect(function(err) {
 		if (err) throw err;
 		con.query(`select commande.id_commande, utilisateurs.adressemail, materiels.nom,commande_elem.nombre , (materiels.prix*commande_elem.nombre) as prix, commande.date from commande
@@ -289,14 +243,6 @@ app.post("/commande-utilisateur", (request, response)=> {
 
 	today = yyyy + "-" + mm + "-" + dd;
 
-
-	let con = mysql.createConnection({
-		host: "localhost",
-		user: "root",
-		password: "root",
-		database: "falcohm",
-		multipleStatements: true
-	});
 	con.connect(function (err) {
 		if (err) throw err;
 
@@ -335,12 +281,6 @@ app.post("/commande-utilisateur", (request, response)=> {
 });
 
 function envoyerCommandeMail(idCom){
-	let con = mysql.createConnection({
-		host: "localhost",
-		user: "root",
-		password: "root",
-		database : "falcohm"
-	});
 	con.connect(function(err) {
 		if (err) throw err;
 		con.query(`select commande.date, materiels.nom,commande_elem.nombre , (materiels.prix*commande_elem.nombre) as prix, utilisateurs.adressemail as mail from commande
@@ -401,12 +341,6 @@ function envoyerCommandeMail(idCom){
 
 function verifieAdmin(connexion, motdepasse) {
 	return new Promise((resolve, reject)=>{
-		let con = mysql.createConnection({
-			host: "localhost",
-			user: "root",
-			password: "root",
-			database : "falcohm"
-		});
 		con.connect(function (err) {
 			if (err) throw err;
 			con.query("SELECT utilisateurs.adressemail, utilisateurs.motdepasse, utilisateurs.admin from utilisateurs", function (err, result) {
