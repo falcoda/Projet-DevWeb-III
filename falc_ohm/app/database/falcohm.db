@@ -94,4 +94,10 @@ create table commande_elem
         foreign key (id_materiel) references materiels (id_materiel)
 );
 
-
+CREATE USER '5dj5Es8T'@'localhost' IDENTIFIED BY 'U6snnC36';
+ALTER USER '5dj5Es8T'@'localhost' IDENTIFIED WITH mysql_native_password BY 'U6snnC36';
+FLUSH PRIVILEGES;
+GRANT SELECT on * TO '5dj5Es8T'@'localhost';
+GRANT UPDATE on * TO '5dj5Es8T'@'localhost';
+GRANT INSERT on * TO '5dj5Es8T'@'localhost';
+GRANT DELETE on * TO '5dj5Es8T'@'localhost';
