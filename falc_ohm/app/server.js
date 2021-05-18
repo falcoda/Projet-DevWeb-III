@@ -146,7 +146,6 @@ app.get("/administration", (request, response)=> {
 app.get("/liste_utilisateur", (request, response)=> {
 	verifieAdmin(request.query.connexion, request.query.motdepasse).then((value) => {
 		if (value === true) {
-			if (err) throw err;
 			con.query("SELECT utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone as numero, utilisateurs.adressemail as mail from utilisateurs", function (err, result) {
 				response.send(JSON.stringify(result));
 			});
@@ -158,7 +157,7 @@ app.get("/liste_utilisateur", (request, response)=> {
 app.post("/nombre_materiel", (request, response)=> {
 	verifieAdmin(request.query.connexion, request.query.motdepasse).then((value) => {
 		if (value === true) {
-			if (err) throw err;
+
 			con.query("SELECT m.nom,m.nombre from materiels as m ", function (err, result) {
 				result.forEach(function (item) {
 
