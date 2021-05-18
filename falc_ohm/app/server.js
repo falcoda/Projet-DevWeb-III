@@ -55,7 +55,7 @@ app.post("/mail", (request, response)=>{
 		secure: false,
 		auth: {
 			user: "corentin@4x4vert.be",
-			pass: "??ProjetDev33"
+			pass: "?projetDev420"
 		}
 	});
 	const mailOptions = {
@@ -98,7 +98,7 @@ app.post("/mail", (request, response)=>{
 
 app.get("/materiel/:format?", (request, response)=> {
 	if (request.params.format == "json") {
-		con.query("SELECT m.nom,m.prix,m.description,m.nombre,m.en_location,c.nom_categorie from materiels as m JOIN categories c on m.id_categorie = c.id_categorie", function (err, result) {
+		con.query("SELECT m.nom,m.id_materiel,m.prix,m.description,m.nombre,m.en_location,c.nom_categorie from materiels as m JOIN categories c on m.id_categorie = c.id_categorie", function (err, result) {
 			response.send(JSON.stringify(result));
 		});
 	}
@@ -312,7 +312,7 @@ width: 50%">
 			secure: false,
 			auth: {
 				user: "corentin@4x4vert.be",
-				pass: "??ProjetDev33"
+				pass: "?projetDev420"
 			}
 		});
 		const mailOptions = {
@@ -337,4 +337,51 @@ function verifieAdmin(connexion, motdepasse) {
 	});
 }
 
+app.post("/nouveau-panier", (request, response)=> {
+	let panier = request.body;
+	console.log(request.body);
+	let mail = request.body.mail;
+	con.query("select id_utilisateurs from utilisateurs where utilisateurs.adressemail = ?",[mail], function (err, result) {
+		let id_utilisateurs = result[0].id_utilisateurs;
+		con.query("select id_panier from panier where id_utilisateurs = ? ", [id_utilisateurs], function(err, result) {
+			console.log(result);
+			if (result.length === 0) {
+				console.log("cc")
+				con.query("INSERT INTO falcohm.panier (id_utilisateurs) VALUES (?);", [id_utilisateurs], function (err, result) {
+					if (result !== []) {
+						con.query("select id_panier from panier where id_utilisateurs = ? ", [id_utilisateurs], function (err, result) {
+							let id_panier = result[0].id_panier;
+							request.body.data.forEach((item) => {
+								console.log(result);
+								con.query("INSERT INTO falcohm.panier_elem (id_panier, id_materiel, nombre) VALUES (? , ? , ?);", [id_panier, item.id, item.nombre], function (err, result) {
+								})
+							})
+						})
+					}
+				})
+			}else {
+				response.send("error");
+			}
+		})
+	})
+});
+
+
+app.post("/reset-panier", (request, response) =>{
+	let mail = request.body.mail;
+	con.query("select id_utilisateurs from utilisateurs where utilisateurs.adressemail = ?",[mail], function (err, result) {
+		let id_utilisateurs = result[0].id_utilisateurs;
+		con.query("select id_panier from panier where id_utilisateurs = ? ", [id_utilisateurs], function(err, result) {
+			if (result.length !== 0 ){
+				con.query("DELETE FROM panier_elem WHERE id_panier = ?", [result[0].id_panier], function (err, result) {
+				})
+				con.query("DELETE FROM panier WHERE id_panier = ?", [result[0].id_panier], function (err, result) {
+				})
+			}else {
+				response.send('error');
+			}
+		})
+	});
+
+});
 app.listen(80);
