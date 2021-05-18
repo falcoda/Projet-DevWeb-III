@@ -193,13 +193,25 @@ app.get("/mentionslegales", (request, response)=> {
 	response.render("pages/mentionslegales");
 });
 
-app.get("/commande", (request, response)=> {
+app.get("/all-commande", (request, response)=> {
 		con.query(`select commande.id_commande, utilisateurs.adressemail, materiels.nom,commande_elem.nombre , (materiels.prix*commande_elem.nombre) as prix, commande.date from commande
 			    join commande_elem  on commande.id_commande = commande_elem.id_commande
 			    join materiels on materiels.id_materiel = commande_elem.id_materiel
 			    join utilisateurs on utilisateurs.id_utilisateurs = commande.id_utilisateurs`, function (err, result) {
 			response.send(JSON.stringify(result));
 		});
+});
+
+app.get("/commande", (request, response)=> {
+	let user = request.body.mail;
+	console.log(request.body);
+	con.query(`select commande.id_commande, utilisateurs.adressemail, materiels.nom,commande_elem.nombre , (materiels.prix*commande_elem.nombre) as prix, commande.date from commande
+			    join commande_elem  on commande.id_commande = commande_elem.id_commande
+			    join materiels on materiels.id_materiel = commande_elem.id_materiel
+			    join utilisateurs on utilisateurs.id_utilisateurs = commande.id_utilisateurs
+				where utilisateurs.adressemail = ?`,[user], function (err, result) {
+		response.send(JSON.stringify(result));
+	});
 });
 app.post("/commande-utilisateur", (request, response)=> {
 

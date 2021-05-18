@@ -1,7 +1,7 @@
-//import React from "react"
-//import ReactDOM from "react-dom";
+import React from "react";
+import ReactDOM from "react-dom";
 
-class FormsPage extends React.Component {
+export default class FormsPage extends React.Component {
 	state = {
 		nom: "",
 		prenom: "",

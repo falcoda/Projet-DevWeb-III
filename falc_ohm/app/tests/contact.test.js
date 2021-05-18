@@ -4,5 +4,5 @@ import FormsPage from "../public/js/contact";
 
 test("render de la class PageMateriels", () => {
     const div = document.createElement("div");
-    ReactDOM.render(`<FormsPage/>`, div);
+    ReactDOM.render(<FormsPage/>, div);
 });

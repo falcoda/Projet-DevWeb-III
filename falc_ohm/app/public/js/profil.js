@@ -45,9 +45,8 @@ let xhr_commande = new XMLHttpRequest();
 xhr_commande.open("GET", "http://localhost/commande");
 xhr_commande.onload = function() {
 	commandes=xhr_commande.responseText;
-
 };
-xhr_commande.send();
+xhr_commande.send(JSON.stringify({mail :utilisateurConnecte}));
 
 class Panier extends React.Component {
 
