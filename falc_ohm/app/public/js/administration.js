@@ -7,7 +7,7 @@ let users;
 let commandes;
 
 let xhr = new XMLHttpRequest();
-xhr.open("GET", "http://localhost/liste_utilisateur?connexion="+GetCookie("connexion")+"&motdepasse="+GetCookie("motdepasse"));
+xhr.open("GET", "http://localhost/liste-utilisateur?connexion="+GetCookie("connexion")+"&motdepasse="+GetCookie("motdepasse"));
 xhr.onload = function() {
 	users=xhr.responseText;
 	class Bouttons extends React.Component {
@@ -202,7 +202,7 @@ function sendNumber() {
 
 	let xhr = new XMLHttpRequest();
 
-	xhr.open("POST", "/nombre_materiel?connexion="+GetCookie("connexion")+"&motdepasse="+GetCookie("motdepasse"));
+	xhr.open("POST", "/nombre-materiel?connexion="+GetCookie("connexion")+"&motdepasse="+GetCookie("motdepasse"));
 	xhr.setRequestHeader("content-type", "application/json");
 	xhr.onload = function () {
 
