@@ -106,6 +106,7 @@ class PanierUtilis extends React.Component {
 				</table>
 
 				<button onClick={passerCommande} className="btn btn-secondary">Commander </button>
+				<button onClick={viderPanier} className="btn btn-secondary">Vider le panier </button>
 
 			</div>
 		);
@@ -132,6 +133,21 @@ function passerCommande() {
 	xhr.onload = function() {};
 
 	xhr.send(JSON.stringify({mail :utilisateurConnecte}));
+
+}
+
+function viderPanier(){
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", "http://localhost/reset-panier");
+	xhr.setRequestHeader("content-type", "application/json");
+	xhr.onload = function() {
+		if (xhr.responseText === "error"){
+			alert("Vous possédez aucun panier, veuillez en créer un");
+		}
+	};
+
+	xhr.send(JSON.stringify({mail :utilisateurConnecte}));
+	location.reload();
 
 }
 class Commande extends React.Component {
