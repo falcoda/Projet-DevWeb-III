@@ -40,7 +40,7 @@ xhr_materiel.onload = function() {
 xhr_materiel.send();
 
 let xhr_commande = new XMLHttpRequest();
-xhr_commande.open("GET", "http://localhost/commande");
+xhr_commande.open("GET", "http://localhost/all-commande");
 xhr_commande.onload = function() {
 	commandes=xhr_commande.responseText;
 

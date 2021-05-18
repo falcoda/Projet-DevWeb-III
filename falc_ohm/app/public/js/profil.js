@@ -42,7 +42,8 @@ xhr.send(JSON.stringify({mail :utilisateurConnecte}));
 
 let commandes;
 let xhr_commande = new XMLHttpRequest();
-xhr_commande.open("GET", "http://localhost/commande");
+xhr_commande.open("POST", "http://localhost/commande");
+xhr_commande.setRequestHeader("content-type", "application/json");
 xhr_commande.onload = function() {
 	commandes=xhr_commande.responseText;
 };

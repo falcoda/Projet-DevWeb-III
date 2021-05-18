@@ -202,7 +202,7 @@ app.get("/all-commande", (request, response)=> {
 		});
 });
 
-app.get("/commande", (request, response)=> {
+app.post("/commande", (request, response)=> {
 	let user = request.body.mail;
 	console.log(request.body);
 	con.query(`select commande.id_commande, utilisateurs.adressemail, materiels.nom,commande_elem.nombre , (materiels.prix*commande_elem.nombre) as prix, commande.date from commande
