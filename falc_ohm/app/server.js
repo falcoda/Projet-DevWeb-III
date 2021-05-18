@@ -3,6 +3,7 @@ import nodemailer from "nodemailer";
 import express from "express";
 import cors from "cors";
 import React from "react";
+import rateLimit from "express-rate-limit";
 
 let con = mysql.createConnection({
 	host: "localhost",
@@ -13,6 +14,11 @@ let con = mysql.createConnection({
 });
 con.connect();
 
+const limiter = rateLimit({
+	windowMs: 60 * 1000,
+	max: 250
+});
+
 let app = express();
 
 function validateEmail(email) {
@@ -22,6 +28,7 @@ function validateEmail(email) {
 
 app.set("view engine", "ejs");
 
+app.use(limiter);
 app.use(express.static("public"));
 app.use(express.json());
 app.use(cors());
@@ -157,7 +164,6 @@ app.get("/liste_utilisateur", (request, response)=> {
 app.post("/nombre_materiel", (request, response)=> {
 	verifieAdmin(request.query.connexion, request.query.motdepasse).then((value) => {
 		if (value === true) {
-
 			con.query("SELECT m.nom,m.nombre from materiels as m ", function (err, result) {
 				result.forEach(function (item) {
 
@@ -240,16 +246,18 @@ app.post("/commande-utilisateur", (request, response)=> {
 				let id_com =JSON.parse(JSON.stringify(result[1])).pop();
 				let donnee = JSON.parse(JSON.stringify(result[0]));
 				console.log(donnee);
-				for(let item of donnee){
-					con.query("insert into commande_elem(id_commande,id_materiel,nombre) values (?,?,?)",[id_com.id_commande,item.id_materiel,item.nombre], function (err, result) {
+				if (donnee.length != 0){
+					for(let item of donnee){
+						con.query("insert into commande_elem(id_commande,id_materiel,nombre) values (?,?,?)",[id_com.id_commande,item.id_materiel,item.nombre], function (err, result) {
+						});
+					}
+					con.query("select id_panier from panier where id_utilisateurs =? ; ",[utilis], function (err, result) {
+						console.log(JSON.parse(JSON.stringify(result)));
+						con.query("delete from panier_elem where id_panier = ? ; delete from panier where id_utilisateurs = ? ",[JSON.parse(JSON.stringify(result))[0].id_panier,utilis],function (err, result) {
+							envoyerCommandeMail(id_com.id_commande);
+						});
 					});
 				}
-				con.query("select id_panier from panier where id_utilisateurs =? ; ",[utilis], function (err, result) {
-					console.log(JSON.parse(JSON.stringify(result)));
-					con.query("delete from panier_elem where id_panier = ? ; delete from panier where id_utilisateurs = ? ",[JSON.parse(JSON.stringify(result))[0].id_panier,utilis],function (err, result) {
-						envoyerCommandeMail(id_com.id_commande);
-					});
-				});
 			});
 		});
 	});
