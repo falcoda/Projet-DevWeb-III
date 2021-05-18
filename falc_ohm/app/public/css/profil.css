@@ -1,0 +1,36 @@
+html{
+    width: 100%;
+    color: white;
+    background-color: whitesmoke;
+    font-family:Gadugi, cursive ;
+    text-align: center;
+}
+
+#content{ /* contenu*/
+
+    margin-top: 11%;
+    padding-bottom: 8px;
+    background-color: lightslategray;
+    width: 65%;
+
+
+
+}
+
+#nom, #categorie, #prix, #nombre, #description, #adressemail1, #motdepasse1{
+    color:grey;
+    margin-bottom:10px ;
+    border-radius: 5px;
+    padding: 2px;
+}
+.colNumber{
+    width:30%;
+}
+
+.infoCommande{
+    background-color: whitesmoke;
+    padding: 5%;
+    color: black;
+    border-inline:solid grey 1px ;
+
+}

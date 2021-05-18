@@ -6,19 +6,27 @@ html{
     text-align: center;
 }
 
-#content{ /* contenu*/
-
-    margin-top: 11%;
-    background-color: lightslategray;
-    width: 65%;
-
-
+#body{ /* balise avec tout le bas de la page */
+    margin-top: 140px;
+    z-index: 2;
+    background-color: whitesmoke;
 
 }
 
-#adressemail1, #motdepasse1, #nom, #prenom, #numerotel, adressemail2, #motdepasse1{
+#content{ /* contenu*/
+    margin-top: 11%;
+    background-color: lightslategray;
+    width: 65%;
+    padding-bottom: 8px;
+}
+
+#adressemail1, #motdepasse1, #nom, #prenom, #numerotel, #adressemail2, #motdepasse1{
     color:grey;
     margin-bottom:10px ;
     border-radius: 5px;
     padding: 2px;
+}
+
+#formInscription {
+    margin-top: 15px;
 }
