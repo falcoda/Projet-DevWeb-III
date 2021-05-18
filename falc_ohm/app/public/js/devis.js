@@ -1,3 +1,5 @@
+let tableauGeneral = [];
+let utilisateurConnecte = GetCookie("connexion");
 function generationDevis(objet) {
     let elem = document.getElementById("devis");
     let writing = "";
@@ -29,18 +31,20 @@ xhr_materiel.send();
 
 function boucle(tableau, name , number) {
     let retour = {
+        id : 0,
         denom : '',
         prix : 0,
         nombre : 0,
     };
     for (let i = 0 ; i < tableau.length ; i++ ){
         if (tableau[i]['nom'] == name){
-            console.log(tableau[i]['nom']);
+            retour.id = tableau[i]['id_materiel'];
             retour.denom = tableau[i]['nom'];
             retour.prix = tableau[i].prix;
             retour.nombre = number;
         }
     }
+    tableauGeneral.push(retour);   //ajout dans un tableau général
     return retour;
 }
 
@@ -81,10 +85,6 @@ function lightDevis (param){  //param = big,small
 
 
 }
-
-/* function basicMaterial(tableau) {  //pas du tout fait
-
-} */
 
 function prefLightAndSound(objet, pref) {
     let obj = {};
@@ -183,12 +183,29 @@ function prefLightAndSound(objet, pref) {
 
 
 }
+
+
+function auPanier(){
+    let panier;
+    let xhr_panier = new XMLHttpRequest();
+    xhr_panier.open("POST", "http://localhost/nouveau-panier");
+    xhr_panier.setRequestHeader("content-type", "application/json");
+    xhr_panier.onload = function() {
+        if (xhr_panier.responseText === "error"){
+            alert('Vous possédez déjà un panier')
+        }
+    };
+    console.log(tableauGeneral);
+    xhr_panier.send(JSON.stringify({data : tableauGeneral, mail :utilisateurConnecte}));
+}
+
+
 class MyForm extends React.Component {
     state = {
         typeEvenement : '',   //valeur par défaut
         typeSound : 'soundAuto',
         typeLight : 'lightAuto',
-    }
+    };
     constructor(props) {
         super(props);
         this.state = {
@@ -210,8 +227,8 @@ class MyForm extends React.Component {
         })
     }
     handleSubmit(e){
-        e.preventDefault()
-        const data = JSON.stringify(this.state)
+        e.preventDefault();
+        const data = JSON.stringify(this.state);
         console.log(data);
         let tableobj = [];
         let obj = {};
@@ -516,9 +533,16 @@ class MyForm extends React.Component {
 
     //ici on crée le html qui sera la simulation
     render() {
-
         return (
-            <div id = "content">
+            <React.Fragment>
+            <div className="container m-auto" id = "content">
+                <h1 className="display-4">Votre devis personnalisé</h1>
+                <p>En remplissant les différents le formulaire de paramétrage, nous allons pouvoir générer
+                    automatiquement un
+                    devis personnalisé en fonctions de vos paramètres. </p>
+                <p>Le devis est proposé en fonction de vos besoins et de nos disponiblités matérielles.</p>
+                <p>Si vous avez besoin de plus amples informations suite au devis, vous pouvez nous envoyer un mail
+                    automatiquement</p>
             <form onSubmit={this.handleSubmit}>
                 <fieldset>
                     <div className="m-auto" id="content">
@@ -607,10 +631,10 @@ class MyForm extends React.Component {
                 <div className="m-auto" id = "content">
                     <h5> Voici le devis associé à la simulation 2D et à vos choix : </h5>
                     <div id="devis"></div>
-                        <input type="submit" className="btn btn-primary" value="Télécharger le devis au format PDF"/>
-                        <input type="submit" className="btn btn-primary" value="Envoyer un mail avec le devis"/>
+                        <input onClick={auPanier} type="submit" className="btn btn-primary" value="Rajouter au panier"/>
                 </div>
             </div>
+            </React.Fragment>
         );
     }
 }
