@@ -135,14 +135,6 @@ app.post("/ajouterMateriel", (request, response)=> {
 	});
 });
 
-
-
-
-app.get("/administration", (request, response)=> {
-	response.render("pages/administration");
-});
-
-
 app.get("/liste_utilisateur", (request, response)=> {
 	verifieAdmin(request.query.connexion, request.query.motdepasse).then((value) => {
 		if (value === true) {
@@ -176,17 +168,16 @@ app.post("/nombre_materiel", (request, response)=> {
 
 
 app.post("/panier", (request, response)=> {
-	let mail= request.body.mail;
-	con.query("select materiels.nom, panier_elem.nombre from panier_elem join materiels on materiels.id_materiel = panier_elem.id_materiel join panier on panier.id_panier = panier_elem.id_panier join utilisateurs on utilisateurs.id_utilisateurs = panier.id_utilisateurs where utilisateurs.adressemail ='" +mail +"'", function (err, result) {
-		response.send(JSON.stringify(result));
-	});
+	verifieUtilisateur(request.query.connexion, request.query.motdepasse).then((value) => {
+		let mail = request.body.mail;
+		con.query("select materiels.nom, panier_elem.nombre from panier_elem join materiels on materiels.id_materiel = panier_elem.id_materiel join panier on panier.id_panier = panier_elem.id_panier join utilisateurs on utilisateurs.id_utilisateurs = panier.id_utilisateurs where utilisateurs.adressemail ='" + mail + "'", function (err, result) {
+			response.send(JSON.stringify(result));
+		});
+	})
 });
 
-
-
-
 app.get("/administration", (request, response)=> {
-	response.render("pages/administration");
+		response.render("pages/administration");
 });
 
 app.get("/mentionslegales", (request, response)=> {
@@ -194,61 +185,66 @@ app.get("/mentionslegales", (request, response)=> {
 });
 
 app.get("/all-commande", (request, response)=> {
+	verifieAdmin(request.query.connexion, request.query.motdepasse).then((value) => {
 		con.query(`select commande.id_commande, utilisateurs.adressemail, materiels.nom,commande_elem.nombre , (materiels.prix*commande_elem.nombre) as prix, commande.date from commande
 			    join commande_elem  on commande.id_commande = commande_elem.id_commande
 			    join materiels on materiels.id_materiel = commande_elem.id_materiel
 			    join utilisateurs on utilisateurs.id_utilisateurs = commande.id_utilisateurs`, function (err, result) {
 			response.send(JSON.stringify(result));
 		});
+	});
 });
 
 app.get("/commande", (request, response)=> {
-	let user = request.body.mail;
-	console.log(request.body);
-	con.query(`select commande.id_commande, utilisateurs.adressemail, materiels.nom,commande_elem.nombre , (materiels.prix*commande_elem.nombre) as prix, commande.date from commande
-			    join commande_elem  on commande.id_commande = commande_elem.id_commande
-			    join materiels on materiels.id_materiel = commande_elem.id_materiel
-			    join utilisateurs on utilisateurs.id_utilisateurs = commande.id_utilisateurs
-				where utilisateurs.adressemail = ?`,[user], function (err, result) {
-		response.send(JSON.stringify(result));
+	verifieUtilisateur(request.query.connexion, request.query.motdepasse).then((value) => {
+		let user = request.body.mail;
+		console.log(request.body);
+		con.query(`select commande.id_commande, utilisateurs.adressemail, materiels.nom,commande_elem.nombre , (materiels.prix*commande_elem.nombre) as prix, commande.date from commande
+					join commande_elem  on commande.id_commande = commande_elem.id_commande
+					join materiels on materiels.id_materiel = commande_elem.id_materiel
+					join utilisateurs on utilisateurs.id_utilisateurs = commande.id_utilisateurs
+					where utilisateurs.adressemail = ?`, [user], function (err, result) {
+			response.send(JSON.stringify(result));
+		});
 	});
 });
 app.post("/commande-utilisateur", (request, response)=> {
+	verifieUtilisateur(request.query.connexion, request.query.motdepasse).then((value) => {
+		let mail = request.body.mail;
+		console.log(mail);
 
-	let mail = request.body.mail;
-	console.log(mail);
+		let today = new Date();
+		let dd = String(today.getDate()).padStart(2, '0');
+		let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+		let yyyy = today.getFullYear();
 
-	let today = new Date();
-	let dd = String(today.getDate()).padStart(2, '0');
-	let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-	let yyyy = today.getFullYear();
+		today = yyyy + "-" + mm + "-" + dd;
 
-	today = yyyy + "-" + mm + "-" + dd;
+		con.query("select utilisateurs.id_utilisateurs from utilisateurs where utilisateurs.adressemail = ?", [mail], function (err, result) {
+			if (err) throw err;
+			let utilis = JSON.parse(JSON.stringify(result[0].id_utilisateurs));
 
-	con.query("select utilisateurs.id_utilisateurs from utilisateurs where utilisateurs.adressemail = ?" , [mail],function (err, result) {
-		if (err) throw err;
-		let utilis = JSON.parse(JSON.stringify(result[0].id_utilisateurs));
-
-		con.query("insert into commande(id_utilisateurs,date) values (?,?)",[utilis,today], function (err, result) {
-			con.query(`select materiels.id_materiel, panier_elem.nombre,materiels.prix*panier_elem.nombre as prix from panier_elem
-							join materiels on materiels.id_materiel = panier_elem.id_materiel
-							join panier on panier.id_panier = panier_elem.id_panier
-							join utilisateurs on utilisateurs.id_utilisateurs = panier.id_utilisateurs
-
-							where utilisateurs.adressemail =?; select commande.id_commande from commande where id_utilisateurs=?`, [mail,utilis],function (err, result) {
+			con.query("insert into commande(id_utilisateurs,date) values (?,?)", [utilis, today], function (err, result) {
+				con.query(`select materiels.id_materiel, panier_elem.nombre,materiels.prix*panier_elem.nombre as prix from panier_elem
+								join materiels on materiels.id_materiel = panier_elem.id_materiel
+								join panier on panier.id_panier = panier_elem.id_panier
+								join utilisateurs on utilisateurs.id_utilisateurs = panier.id_utilisateurs
+	
+								where utilisateurs.adressemail =?; select commande.id_commande from commande where id_utilisateurs=?`, [mail, utilis], function (err, result) {
 
 
-				let id_com =JSON.parse(JSON.stringify(result[1])).pop();
-				let donnee = JSON.parse(JSON.stringify(result[0]));
-				console.log(donnee);
-				for(let item of donnee){
-					con.query("insert into commande_elem(id_commande,id_materiel,nombre) values (?,?,?)",[id_com.id_commande,item.id_materiel,item.nombre], function (err, result) {
-					});
-				}
-				con.query("select id_panier from panier where id_utilisateurs =? ; ",[utilis], function (err, result) {
-					console.log(JSON.parse(JSON.stringify(result)));
-					con.query("delete from panier_elem where id_panier = ? ; delete from panier where id_utilisateurs = ? ",[JSON.parse(JSON.stringify(result))[0].id_panier,utilis],function (err, result) {
-						envoyerCommandeMail(id_com.id_commande);
+					let id_com = JSON.parse(JSON.stringify(result[1])).pop();
+					let donnee = JSON.parse(JSON.stringify(result[0]));
+					console.log(donnee);
+					for (let item of donnee) {
+						con.query("insert into commande_elem(id_commande,id_materiel,nombre) values (?,?,?)", [id_com.id_commande, item.id_materiel, item.nombre], function (err, result) {
+						});
+					}
+					con.query("select id_panier from panier where id_utilisateurs =? ; ", [utilis], function (err, result) {
+						console.log(JSON.parse(JSON.stringify(result)));
+						con.query("delete from panier_elem where id_panier = ? ; delete from panier where id_utilisateurs = ? ", [JSON.parse(JSON.stringify(result))[0].id_panier, utilis], function (err, result) {
+							envoyerCommandeMail(id_com.id_commande);
+						});
 					});
 				});
 			});
@@ -309,6 +305,18 @@ width: 50%">
 			html: mailAEnvoyer
 		};
 		transporter.sendMail(mailOptions);
+	});
+}
+
+function verifieUtilisateur(connexion, motdepasse) {
+	return new Promise((resolve, reject)=>{
+		con.query("SELECT utilisateurs.adressemail, utilisateurs.motdepasse", function (err, result) {
+			for (let i of result) {
+				if (connexion == i.adressemail && motdepasse == i.motdepasse) {
+					resolve(true);
+				}
+			}
+		});
 	});
 }
 

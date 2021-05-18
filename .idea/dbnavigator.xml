@@ -28,7 +28,6 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="a31bc2e5-48b3-4aed-80a1-595ea4022b0c">
-      <console name="Connection" type="STANDARD" schema="" session="Main" />
       <console name="falcohm" type="STANDARD" schema="" session="Main" />
     </connection>
   </component>

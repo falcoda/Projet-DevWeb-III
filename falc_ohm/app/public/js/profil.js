@@ -3,7 +3,7 @@ let utilisateurConnecte = GetCookie("connexion");
 let panier_utilis;
 
 let xhr = new XMLHttpRequest();
-xhr.open("POST", "http://localhost/panier");
+xhr.open("POST", "http://localhost/panier?connexion="+GetCookie("connexion")+"&motdepasse="+GetCookie("motdepasse"));
 xhr.setRequestHeader("content-type", "application/json");
 xhr.onload = function() {
 	panier_utilis=xhr.responseText;
@@ -42,7 +42,7 @@ xhr.send(JSON.stringify({mail :utilisateurConnecte}));
 
 let commandes;
 let xhr_commande = new XMLHttpRequest();
-xhr_commande.open("GET", "http://localhost/commande");
+xhr_commande.open("GET", "http://localhost/commande?connexion="+GetCookie("connexion")+"&motdepasse="+GetCookie("motdepasse"));
 xhr_commande.onload = function() {
 	commandes=xhr_commande.responseText;
 };
@@ -126,7 +126,7 @@ function afficherInfos() {
 
 function passerCommande() {
 	let xhr = new XMLHttpRequest();
-	xhr.open("POST", "http://localhost/commande-utilisateur");
+	xhr.open("POST", "http://localhost/commande-utilisateur?connexion="+GetCookie("connexion")+"&motdepasse="+GetCookie("motdepasse"));
 	xhr.setRequestHeader("content-type", "application/json");
 	xhr.onload = function() {};
 
