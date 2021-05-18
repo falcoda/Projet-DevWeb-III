@@ -25,37 +25,24 @@ class Connexion extends React.Component {
 			motdepasse1: motdepasse1.value,
 		};
 
-		console.log(data1);
-
-		let tableUtilisateurs =[];
+		let bonUtilisateur;
 		let xhr = new XMLHttpRequest();
 
-		xhr.open("GET", "http://localhost/utilisateurs");
+		xhr.open("GET", "http://localhost/utilisateurs?adressemail="+data1.adressemail1+"&motdepasse="+data1.motdepasse1);
 		xhr.setRequestHeader("content-type", "application/json");
 		xhr.onload = function () {
-			tableUtilisateurs =  JSON.parse(xhr.responseText);
-			let compteur = 0;
-			for (let i of tableUtilisateurs) {
-				compteur++;
-				if (data1.adressemail1 == i.adressemail && data1.motdepasse1 == i.motdepasse) {
-					let duree_cookie = 100;         // durée de vie du cookie en jours
-					let expiration = new Date();    // date et heure courante en format texte
-					expiration.setTime(expiration.getTime() + (duree_cookie * 24*60*60*1000));
-					// => on peut utiliser la variable "expiration"
-					SetCookie ("connexion",data1.adressemail1,expiration,null,null,false);
-					SetCookie ("motdepasse",data1.motdepasse1,expiration,null,null,false);
-					// eslint-disable-next-line no-undef
-					utilisateurConnecte = GetCookie("connexion");
-					motdepasse = GetCookie("motdepasse");
-					console.log("succès");
-					document.location.href="profil"
-					break;
-				}
-				else if (compteur == tableUtilisateurs.length) {
-					// MESSAGE D'ERREUR
-				}
-
-			}
+			bonUtilisateur =  xhr.responseText.split(" ");
+			let duree_cookie = 100;         // durée de vie du cookie en jours
+			let expiration = new Date();    // date et heure courante en format texte
+			expiration.setTime(expiration.getTime() + (duree_cookie * 24*60*60*1000));
+			// => on peut utiliser la variable "expiration"
+			SetCookie ("connexion",bonUtilisateur[0],expiration,null,null,false);
+			SetCookie ("motdepasse",bonUtilisateur[1],expiration,null,null,false);
+			// eslint-disable-next-line no-undef
+			utilisateurConnecte = GetCookie("connexion");
+			motdepasse = GetCookie("motdepasse");
+			console.log("succès");
+			document.location.href="profil"
 		};
 		xhr.send();
 		event.preventDefault();
@@ -122,52 +109,26 @@ class Inscription extends React.Component {
 			confirmation: confirmation.value
 		};
 
-		console.log(data2);
-
-		let tableUtilisateurs = [];
-
-		let xhr = new XMLHttpRequest();
-
-		xhr.open("GET", "http://localhost/utilisateurs");
-		xhr.setRequestHeader("content-type", "application/json");
-		xhr.onload = function () {
-			tableUtilisateurs =  JSON.parse(xhr.responseText);
-		};
-		xhr.send();
-
 		if (data2.motdepasse2.length >= 8 && data2.motdepasse2 == data2.confirmation) {
 			let xhr = new XMLHttpRequest();
 			xhr.open("POST", "http://localhost/inscription");
 			xhr.setRequestHeader("content-type", "application/json");
 			xhr.onload = function () {
-				let compteur = 0;
-				let check = true;
-				for (let i of tableUtilisateurs) {
-					compteur++;
-					if (data2.adressemail2 == i.adressemail) {
-						check = false;
-						// MESSAGE D ERREUR
-						break;
-					}
-
-					if (check && compteur == tableUtilisateurs.length) {
-						let duree_cookie = 100;         // durée de vie du cookie en jours
-						let expiration = new Date();    // date et heure courante en format texte
-						expiration.setTime(expiration.getTime() + (duree_cookie * 24*60*60*1000));
-						// => on peut utiliser la variable "expiration"
-						SetCookie ("connexion",data2.adressemail2,expiration,null,null,false);
-						SetCookie ("motdepasse",data2.motdepasse2,expiration,null,null,false);
-						// eslint-disable-next-line no-undef
-						utilisateurConnecte = GetCookie("connexion");
-						motdepasse = GetCookie("motdepasse");
-						// eslint-disable-next-line no-undef
-						if (utilisateurConnecte != 0){
-							console.log("le cookie est bien sur " + GetCookie("connexion"));
-						}
-						console.log("utilisateur bien créé");
-						document.location.href="profil"
-					}
+				let duree_cookie = 100;         // durée de vie du cookie en jours
+				let expiration = new Date();    // date et heure courante en format texte
+				expiration.setTime(expiration.getTime() + (duree_cookie * 24*60*60*1000));
+				// => on peut utiliser la variable "expiration"
+				SetCookie ("connexion",data2.adressemail2,expiration,null,null,false);
+				SetCookie ("motdepasse",data2.motdepasse2,expiration,null,null,false);
+				// eslint-disable-next-line no-undef
+				utilisateurConnecte = GetCookie("connexion");
+				motdepasse = GetCookie("motdepasse");
+				// eslint-disable-next-line no-undef
+				if (utilisateurConnecte != 0){
+					console.log("le cookie est bien sur " + GetCookie("connexion"));
 				}
+				console.log("utilisateur bien créé");
+				document.location.href="profil"
 			};
 			xhr.send(JSON.stringify(data2));
 			event.preventDefault();

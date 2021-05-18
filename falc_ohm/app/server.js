@@ -114,7 +114,11 @@ app.get("/profil", (request, response)=> {
 
 app.get("/utilisateurs", (request, response)=> {
 	con.query("SELECT utilisateurs.id_utilisateurs, utilisateurs.adressemail, utilisateurs.motdepasse, utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone, utilisateurs.admin from utilisateurs", function (err, result) {
-		response.send(JSON.stringify(result));
+		for (let i of result) {
+			if (request.query.adressemail == i.adressemail && request.query.motdepasse == i.motdepasse) {
+				response.send(i.adressemail + " " + i.motdepasse);
+			}
+		}
 	});
 });
 
@@ -138,7 +142,6 @@ app.post("/ajouterMateriel", (request, response)=> {
 app.get("/liste_utilisateur", (request, response)=> {
 	verifieAdmin(request.query.connexion, request.query.motdepasse).then((value) => {
 		if (value === true) {
-			if (err) throw err;
 			con.query("SELECT utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone as numero, utilisateurs.adressemail as mail from utilisateurs", function (err, result) {
 				response.send(JSON.stringify(result));
 			});
@@ -150,7 +153,6 @@ app.get("/liste_utilisateur", (request, response)=> {
 app.post("/nombre_materiel", (request, response)=> {
 	verifieAdmin(request.query.connexion, request.query.motdepasse).then((value) => {
 		if (value === true) {
-			if (err) throw err;
 			con.query("SELECT m.nom,m.nombre from materiels as m ", function (err, result) {
 				result.forEach(function (item) {
 
@@ -310,7 +312,7 @@ width: 50%">
 
 function verifieUtilisateur(connexion, motdepasse) {
 	return new Promise((resolve, reject)=>{
-		con.query("SELECT utilisateurs.adressemail, utilisateurs.motdepasse", function (err, result) {
+		con.query("SELECT utilisateurs.adressemail, utilisateurs.motdepasse from utilisateurs", function (err, result) {
 			for (let i of result) {
 				if (connexion == i.adressemail && motdepasse == i.motdepasse) {
 					resolve(true);
@@ -318,7 +320,7 @@ function verifieUtilisateur(connexion, motdepasse) {
 			}
 		});
 	});
-}
+};
 
 function verifieAdmin(connexion, motdepasse) {
 	return new Promise((resolve, reject)=>{

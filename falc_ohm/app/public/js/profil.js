@@ -281,37 +281,24 @@ class ChangerUtilisateur extends React.Component {
 			motdepasse1: motdepasse1.value,
 		};
 
-		console.log(data1);
-
-		let tableUtilisateurs =[];
+		let bonUtilisateur;
 		let xhr = new XMLHttpRequest();
 
-		xhr.open("GET", "http://localhost/utilisateurs");
+		xhr.open("GET", "http://localhost/utilisateurs?adressemail="+data1.adressemail1+"&motdepasse="+data1.motdepasse1);
 		xhr.setRequestHeader("content-type", "application/json");
 		xhr.onload = function () {
-			tableUtilisateurs =  JSON.parse(xhr.responseText);
-			let compteur = 0;
-			for (let i of tableUtilisateurs) {
-				compteur++;
-				if (data1.adressemail1 == i.adressemail && data1.motdepasse1 == i.motdepasse) {
-					let duree_cookie = 100;         // durée de vie du cookie en jours
-					let expiration = new Date();    // date et heure courante en format texte
-					expiration.setTime(expiration.getTime() + (duree_cookie * 24*60*60*1000));
-					// => on peut utiliser la variable "expiration"
-					SetCookie ("connexion",data1.adressemail1,expiration,null,null,false);
-					SetCookie ("motdepasse",data1.motdepasse1,expiration,null,null,false);
-					utilisateurConnecte = GetCookie("connexion");
-					motdepasse = GetCookie("motdepasse");
-					console.log("succès");
-					document.location.href="profil"
-					break;
-				}
-				// eslint-disable-next-line no-cond-assign
-				else if (compteur == tableUtilisateurs.length) {
-					// MESSAGE D'ERREUR
-				}
-
-			}
+			bonUtilisateur =  xhr.responseText.split(" ");
+			let duree_cookie = 100;         // durée de vie du cookie en jours
+			let expiration = new Date();    // date et heure courante en format texte
+			expiration.setTime(expiration.getTime() + (duree_cookie * 24*60*60*1000));
+			// => on peut utiliser la variable "expiration"
+			SetCookie ("connexion",bonUtilisateur[0],expiration,null,null,false);
+			SetCookie ("motdepasse",bonUtilisateur[1],expiration,null,null,false);
+			// eslint-disable-next-line no-undef
+			utilisateurConnecte = GetCookie("connexion");
+			motdepasse = GetCookie("motdepasse");
+			console.log("succès");
+			document.location.href="profil"
 		};
 		xhr.send();
 		event.preventDefault();
