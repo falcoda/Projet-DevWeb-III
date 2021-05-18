@@ -219,47 +219,53 @@ app.post("/commande", (request, response)=> {
 	});
 });
 app.post("/commande-utilisateur", (request, response)=> {
-
 	let mail = request.body.mail;
-	console.log(mail);
+	con.query("select * from panier join utilisateurs on utilisateurs.id_utilisateurs = panier.id_utilisateurs where utilisateurs.adressemail =?", [mail],function (err, result) {
 
-	let today = new Date();
-	let dd = String(today.getDate()).padStart(2, '0');
-	let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-	let yyyy = today.getFullYear();
-
-	today = yyyy + "-" + mm + "-" + dd;
-
-	con.query("select utilisateurs.id_utilisateurs from utilisateurs where utilisateurs.adressemail = ?" , [mail],function (err, result) {
-		if (err) throw err;
-		let utilis = JSON.parse(JSON.stringify(result[0].id_utilisateurs));
-
-		con.query("insert into commande(id_utilisateurs,date) values (?,?)",[utilis,today], function (err, result) {
-			con.query(`select materiels.id_materiel, panier_elem.nombre,materiels.prix*panier_elem.nombre as prix from panier_elem
-							join materiels on materiels.id_materiel = panier_elem.id_materiel
-							join panier on panier.id_panier = panier_elem.id_panier
-							join utilisateurs on utilisateurs.id_utilisateurs = panier.id_utilisateurs
-
-							where utilisateurs.adressemail =?; select commande.id_commande from commande where id_utilisateurs=?`, [mail,utilis],function (err, result) {
+		if(result.length !==0 ){
 
 
-				let id_com =JSON.parse(JSON.stringify(result[1])).pop();
-				let donnee = JSON.parse(JSON.stringify(result[0]));
-				console.log(donnee);
-				if (donnee.length != 0){
-					for(let item of donnee){
-						con.query("insert into commande_elem(id_commande,id_materiel,nombre) values (?,?,?)",[id_com.id_commande,item.id_materiel,item.nombre], function (err, result) {
-						});
-					}
-					con.query("select id_panier from panier where id_utilisateurs =? ; ",[utilis], function (err, result) {
-						console.log(JSON.parse(JSON.stringify(result)));
-						con.query("delete from panier_elem where id_panier = ? ; delete from panier where id_utilisateurs = ? ",[JSON.parse(JSON.stringify(result))[0].id_panier,utilis],function (err, result) {
-							envoyerCommandeMail(id_com.id_commande);
-						});
+
+			let today = new Date();
+			let dd = String(today.getDate()).padStart(2, '0');
+			let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+			let yyyy = today.getFullYear();
+
+			today = yyyy + "-" + mm + "-" + dd;
+
+			con.query("select utilisateurs.id_utilisateurs from utilisateurs where utilisateurs.adressemail = ?" , [mail],function (err, result) {
+				if (err) throw err;
+				let utilis = JSON.parse(JSON.stringify(result[0].id_utilisateurs));
+
+				con.query("insert into commande(id_utilisateurs,date) values (?,?)",[utilis,today], function (err, result) {
+					con.query(`select materiels.id_materiel, panier_elem.nombre,materiels.prix*panier_elem.nombre as prix from panier_elem
+									join materiels on materiels.id_materiel = panier_elem.id_materiel
+									join panier on panier.id_panier = panier_elem.id_panier
+									join utilisateurs on utilisateurs.id_utilisateurs = panier.id_utilisateurs
+		
+									where utilisateurs.adressemail =?; select commande.id_commande from commande where id_utilisateurs=?`, [mail,utilis],function (err, result) {
+
+
+						let id_com =JSON.parse(JSON.stringify(result[1])).pop();
+						let donnee = JSON.parse(JSON.stringify(result[0]));
+
+						console.log(donnee);
+						if (donnee.length != 0){
+							for(let item of donnee){
+								con.query("insert into commande_elem(id_commande,id_materiel,nombre) values (?,?,?)",[id_com.id_commande,item.id_materiel,item.nombre], function (err, result) {
+								});
+							}
+							con.query("select id_panier from panier where id_utilisateurs =? ; ",[utilis], function (err, result) {
+								console.log(JSON.parse(JSON.stringify(result)));
+								con.query("delete from panier_elem where id_panier = ? ; delete from panier where id_utilisateurs = ? ",[JSON.parse(JSON.stringify(result))[0].id_panier,utilis],function (err, result) {
+									envoyerCommandeMail(id_com.id_commande);
+								});
+							});
+						}
 					});
-				}
+				});
 			});
-		});
+		}
 	});
 });
 

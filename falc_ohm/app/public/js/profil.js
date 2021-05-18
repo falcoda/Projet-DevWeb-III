@@ -1,4 +1,4 @@
-const utilisateurConnecte = GetCookie("connexion");
+let utilisateurConnecte = GetCookie("connexion");
 
 let panier_utilis;
 
