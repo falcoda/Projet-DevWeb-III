@@ -1,5 +1,5 @@
-import React from "react"
-import ReactDOM from "react-dom";
+//import React from "react"
+//import ReactDOM from "react-dom";
 
 /* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
@@ -73,7 +73,7 @@ class TypeSelect extends React.Component {
 	}
 }
 
-export default class PageMateriels extends React.Component {
+class PageMateriels extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {filtre: "All"};
