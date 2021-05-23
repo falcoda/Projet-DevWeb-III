@@ -1,3 +1,6 @@
+import React from "react"
+import ReactDOM from "react-dom";
+
 /* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/react-in-jsx-scope */
@@ -48,7 +51,7 @@ xhr_commande.onload = function() {
 xhr_commande.send();
 
 
-class User extends React.Component {
+export default class User extends React.Component {
 	constructor(props) {
 		super(props);
 	}
