@@ -14,11 +14,10 @@ xhr.onload = function() {
 				return (
 					<React.Fragment>
 						<div className="m-auto px-2">
-							<h1>Profil de {utilisateurConnecte}</h1>
+							<h3>Profil de {utilisateurConnecte}</h3>
 						</div>
-						<button onClick={afficherPanier}>Panier</button>
-						<button onClick={afficherInfos}> informations </button>
-						<button onClick={afficherCommande}> commande </button>
+						<button onClick={afficherPanier} className="btn btn-light ml-1 mr-1">Panier</button>
+						<button onClick={afficherCommande} className="btn btn-light ml-1 mr-1"> commande </button>
 					</React.Fragment>);
 			}
 			else {
@@ -105,8 +104,8 @@ class PanierUtilis extends React.Component {
 					</tbody>
 				</table>
 
-				<button onClick={passerCommande} className="btn btn-secondary">Commander </button>
-				<button onClick={viderPanier} className="btn btn-secondary">Vider le panier </button>
+				<button onClick={passerCommande} className="btn btn-light ml-1 mr-1">Commander </button>
+				<button onClick={viderPanier} className="btn btn-light ml-1 mr-1">Vider le panier </button>
 
 			</div>
 		);
@@ -133,6 +132,7 @@ function passerCommande() {
 	xhr.onload = function() {};
 
 	xhr.send(JSON.stringify({mail :utilisateurConnecte}));
+	location.reload();
 
 }
 
@@ -144,10 +144,13 @@ function viderPanier(){
 		if (xhr.responseText === "error"){
 			alert("Vous possédez aucun panier, veuillez en créer un");
 		}
+		alert("Commande bien effectuée");
 	};
 
 	xhr.send(JSON.stringify({mail :utilisateurConnecte}));
+
 	location.reload();
+
 
 }
 class Commande extends React.Component {
@@ -181,9 +184,9 @@ class Commande extends React.Component {
 					<td scope="row">{this.props.commande[0]}</td>
 					<td>{this.props.prix}</td>
 					<td>
-						<button className="btn btn-primary" type="button" data-toggle="collapse" onClick={this.creerCommande} value={this.props.commande[0]}
+						<button className="btn btn-light" type="button" data-toggle="collapse" onClick={this.creerCommande} value={this.props.commande[0]}
 								data-target={"#"+this.props.commande[0]} aria-expanded="false" aria-controls="collapseExample" >
-							V
+							Détail
 						</button></td>
 				</tr>
 				<tr className="collapse infoC" id={this.props.commande[0]} >
@@ -232,7 +235,7 @@ class AfficherCommande extends React.Component {
 					<thead>
 					<tr>
 						<th scope="col">Date</th>
-						<th scope="col">ID commande</th>
+						<th scope="col">ID</th>
 						<th scope="col">prix</th>
 						<th scope="col"></th>
 					</tr>
@@ -346,7 +349,7 @@ class ChangerUtilisateur extends React.Component {
 						</div>
 						<div className="form-group">
 							<label htmlFor="motdepasse1">Entrez votre mot de passe</label>
-							<input type="password" className="form-control w-25" id="motdepasse1"
+							   <input type="password" className="form-control w-25" id="motdepasse1"
 								   placeholder="Mot de passe" required/>
 						</div>
 						<input type="submit" className="btn btn-light" id="buttonSubmit" value={"Changer d'utilisateur"} />

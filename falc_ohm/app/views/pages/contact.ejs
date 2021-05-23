@@ -17,6 +17,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="css/navbar.css">
+<link rel="stylesheet" type="text/css" href="/css/responsive.css">
 <script src="https://unpkg.com/react/umd/react.production.min.js" crossorigin></script>
 
 <script
@@ -48,16 +49,17 @@
     <div id="container"></div>
 </head>
 <body onload="chargement()">
-<div id="content" class ="m-auto px-2" style="padding-top: 8px">
-    <div class="row align-self-center">
-        <div class="col-md-5 offset-md-2 align-self-center">
+<div id="content" class ="m-auto w-xl-80 w-lg-85 w-md-90 w-sm-90 w-90 ">
+    <div class="d-flex align-content-center flex-wrap">
+        <div class="mr-auto p-2 mb-3 justify-content-center" >
             <a href="mailto:falcohm6TM@outlook.com" class="contact"> <img src="img/mail.png" alt="logo Facebook" width="30px" height="22px" class="contact">falcohm6TM@outlook.com</a><br>  <!-- si vous voulez louer de matériel audio n'hésitez pas :)-->
             <a href="https://www.facebook.com/Falcohm6TM/" target="_blank" class=" contact"> <img src="img/facebook.png" alt="logo Facebook" width="30px" height="30px" class="contact">Falc'ohm system</a> <br><!-- liens facebook -->
             <a href="https://www.instagram.com/falcohm6tm/" target="_blank" class=" contact"><img src="img/logoInstagram.png" alt="logo Instagram" width="30px" height="30px" class="contact">@falcohm6tm</a>
 
         </div>
-        <div class="col-md-4" id="mapid"></div>
+        <div class="p-2 d-flex justify-content-center" id="mapid"></div>
     </div>
+    <hr class="my-4 border-white border-2">
     <div class="row align-items-center" id="FormsPage"></div>
 </div>
 </body>

@@ -100,22 +100,22 @@ class FormsPage extends React.Component {
 
 						<div className="form-group nom" >
 							<label htmlFor="nom">Entrez votre nom</label>
-							<input value={this.state.value} onChange={this.handleChange} type="text" className="form-control w-25" id="nom" placeholder="Nom" />
+							<input value={this.state.value} onChange={this.handleChange} style={{width :"130px"}} type="text" className="form-control formulaire" id="nom" placeholder="Nom" />
 						</div>
 						<div className="form-group">
 							<label htmlFor="prenom">Entrez votre prenom</label>
-							<input type="text" className="form-control w-25" id="prenom" placeholder="Prénom" />
+							<input type="text" className="form-control formulaire" id="prenom" placeholder="Prénom" style={{width :"130px"}} />
 						</div>
 
 						<div className="form-group">
 							<label htmlFor="email">Entrez votre mail</label>
-							<input type="email" className="form-control w-25"  id="email"
-								   placeholder="Adresse mail" required/>
+							<input type="email" className="form-control formulaire"  id="email"
+								   placeholder="Adresse mail" required style={{width :"130px"}}/>
 						</div>
 
 						<div className="form-group">
 							<label htmlFor="bio">Commentaire</label>
-							<textarea className="form-control " id="commentaire" rows="5" placeholder="Entrez votre commentaire"></textarea>
+							<textarea className="form-control" id="commentaire" rows="5" placeholder="Entrez votre commentaire"></textarea>
 						</div>
 						<input type="submit" className="btn btn-light" id="buttonSubmit" value={"envoyer"} />
 
@@ -148,4 +148,5 @@ function chargement() {
 		radius: 500
 	}).addTo(mymap);
 }
+chargement();
 

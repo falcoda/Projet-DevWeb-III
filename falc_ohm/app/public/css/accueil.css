@@ -23,6 +23,7 @@ body{
 #divImage{
     justify-content: center;
     display: flex;
+    padding-bottom: 7%;
 }
 
 #soundNoirBlanc{ /*photo de couverture */
@@ -33,11 +34,8 @@ body{
 }
 
 #content{ /* contenu*/
-
-
     background-color: lightslategray;
-    width: 70%;
-    padding: 2%;
+    padding: 5%;
 }
 
 .titreContent{    /*  titre de la présentation */
@@ -45,8 +43,11 @@ body{
 }
 
 #logoCouleur{ /* logo dans a propos */
-    height: 45%;
-    width: 45%;
+    height: 200px;
+    width: 200px;
+    float:left;
+
+    margin-right:10px;
 
 }
 .imagePres{
