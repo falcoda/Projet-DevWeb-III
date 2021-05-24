@@ -129,10 +129,15 @@ function passerCommande() {
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", "http://localhost/commande-utilisateur");
 	xhr.setRequestHeader("content-type", "application/json");
-	xhr.onload = function() {};
+	xhr.onload = function() {
+		if (xhr.responseText === "valide"){
+			document.getElementsByClassName("utilis")[0].innerHTML = "<p> Merci de votre commande</p>"
+		}
+	};
 
 	xhr.send(JSON.stringify({mail :utilisateurConnecte}));
-	location.reload();
+
+
 
 }
 

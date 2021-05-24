@@ -194,6 +194,9 @@ function auPanier(){
         if (xhr_panier.responseText === "error"){
             alert('Vous possédez déjà un panier')
         }
+        if (xhr_panier.responseText === "vide"){
+            alert('Merci d\'effectuer une simulation')
+        }
     };
     console.log(tableauGeneral);
     xhr_panier.send(JSON.stringify({data : tableauGeneral, mail :utilisateurConnecte}));

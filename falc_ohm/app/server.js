@@ -258,6 +258,7 @@ app.post("/commande-utilisateur", (request, response)=> {
 							con.query("select id_panier from panier where id_utilisateurs =? ; ",[utilis], function (err, result) {
 								console.log(JSON.parse(JSON.stringify(result)));
 								con.query("delete from panier_elem where id_panier = ? ; delete from panier where id_utilisateurs = ? ",[JSON.parse(JSON.stringify(result))[0].id_panier,utilis],function (err, result) {
+									response.send("valide");
 									envoyerCommandeMail(id_com.id_commande);
 								});
 							});
@@ -339,31 +340,35 @@ function verifieAdmin(connexion, motdepasse) {
 
 app.post("/nouveau-panier", (request, response)=> {
 	let panier = request.body;
-	console.log(request.body);
+	console.log(request.body.data);
 	let mail = request.body.mail;
-	con.query("select id_utilisateurs from utilisateurs where utilisateurs.adressemail = ?",[mail], function (err, result) {
-		let id_utilisateurs = result[0].id_utilisateurs;
-		con.query("select id_panier from panier where id_utilisateurs = ? ", [id_utilisateurs], function(err, result) {
-			console.log(result);
-			if (result.length === 0) {
-				console.log("cc")
-				con.query("INSERT INTO falcohm.panier (id_utilisateurs) VALUES (?);", [id_utilisateurs], function (err, result) {
-					if (result !== []) {
-						con.query("select id_panier from panier where id_utilisateurs = ? ", [id_utilisateurs], function (err, result) {
-							let id_panier = result[0].id_panier;
-							request.body.data.forEach((item) => {
-								console.log(result);
-								con.query("INSERT INTO falcohm.panier_elem (id_panier, id_materiel, nombre) VALUES (? , ? , ?);", [id_panier, item.id, item.nombre], function (err, result) {
+	if (request.body.data.length !== 0 ){
+		con.query("select id_utilisateurs from utilisateurs where utilisateurs.adressemail = ?",[mail], function (err, result) {
+			let id_utilisateurs = result[0].id_utilisateurs;
+			con.query("select id_panier from panier where id_utilisateurs = ? ", [id_utilisateurs], function(err, result) {
+				console.log(result);
+				if (result.length === 0) {
+					console.log("cc")
+					con.query("INSERT INTO falcohm.panier (id_utilisateurs) VALUES (?);", [id_utilisateurs], function (err, result) {
+						if (result !== []) {
+							con.query("select id_panier from panier where id_utilisateurs = ? ", [id_utilisateurs], function (err, result) {
+								let id_panier = result[0].id_panier;
+								request.body.data.forEach((item) => {
+									console.log(result);
+									con.query("INSERT INTO falcohm.panier_elem (id_panier, id_materiel, nombre) VALUES (? , ? , ?);", [id_panier, item.id, item.nombre], function (err, result) {
+									})
 								})
 							})
-						})
-					}
-				})
-			}else {
-				response.send("error");
-			}
-		})
-	})
+						}
+					})
+				}else {
+					response.send("error");
+				}
+			})
+		})}
+	else {
+		response.send("vide");
+	}
 });
 
 
