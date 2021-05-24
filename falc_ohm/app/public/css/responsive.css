@@ -1,8 +1,8 @@
 /* Extra small devices (portrait phones, less than 576px) */
-@media (max-width: 590.98px) {
+@media only screen and (max-width: 590px) {
     .w-xs-95 {
-        width: 95% !important;
-        margin: 5%; !important;
+        width: 99% !important;
+        margin: 2%; !important;
     }
 
     .w-xs-90 {
@@ -17,18 +17,23 @@
         width: 80% !important;
     }
     p {
-        font-size: 190%
+        font-size: 120%
     }
 
     a.navbar-brand{
-        font-size: 100%
+        font-size: 110%
+    }
+    #logoCouleur{
+        height: 200px;
+        width: 200px;
+        text-align: center;
     }
 
 }
 
 
 /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) and (max-width: 767.98px) {
+@media (min-width: 591px) and (max-width: 767px) {
     .w-sm-95 {
         width: 95% !important;
     }
@@ -46,6 +51,11 @@
     }
     p {
         font-size: 150%
+    }
+    #logoCouleur{
+        height: 200px;
+        width: 200px;
+        text-align: center;
     }
 
 }
@@ -75,6 +85,11 @@
     .contact{
         font-size: 130%;
     }
+    #logoCouleur{
+        height: 200px;
+        width: 200px;
+        text-align: center;
+    }
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -101,6 +116,11 @@
     }
     .contact{
         font-size: 160%;
+    }
+    #logoCouleur{
+        height: 200px;
+        width: 200px;
+        text-align: center;
     }
 
 
@@ -130,6 +150,11 @@
     }
     .contact{
         font-size: 190%;
+    }
+    #logoCouleur{
+        height: 200px;
+        width: 200px;
+        text-align: center;
     }
 
 }
