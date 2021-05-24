@@ -47,7 +47,7 @@ xhr_commande.onload = function() {
 	commandes=xhr_commande.responseText;
 };
 xhr_commande.send(JSON.stringify({mail :utilisateurConnecte}));
-
+console.log(commandes);
 class Panier extends React.Component {
 
 
@@ -228,7 +228,7 @@ class AfficherCommande extends React.Component {
 		const rows = [];
 		for(let key in this.props.commande){
 			rows.push(
-				<Commande key={key} commande = {[key,this.props.commande[key][0]]} prix = {this.props.commande[key][1]} date = {this.props.commande[key][2]}/>
+				<Commande key={Number(key.replace("c", ""))} commande = {[Number(key.replace("c", "")),this.props.commande[key][0]]} prix = {this.props.commande[key][1]} date = {this.props.commande[key][2]}/>
 			);
 		}
 
@@ -265,17 +265,16 @@ function date(param) {
 }
 function afficherCommande() {
 	let commandeDiff = {};
-	console.log(JSON.parse(commandes));
 	JSON.parse(commandes).forEach((item)=>{
-		if(item.adressemail ===utilisateurConnecte && !(item.id_commande in commandeDiff)){
-			commandeDiff[item.id_commande] = [item.adressemail, item.prix ,date(item.date)];
+		if(item.adressemail ===utilisateurConnecte && !("c"+item.id_commande in commandeDiff)){
+			commandeDiff["c"+item.id_commande] = [item.adressemail, item.prix ,date(item.date)];
 		}
-		else if(item.id_commande in commandeDiff){
-			commandeDiff[item.id_commande][1] += item.prix;
+		else if("c"+item.id_commande in commandeDiff){
+			commandeDiff["c"+item.id_commande][1] += item.prix;
 		}
 
 	});
-	console.log(commandeDiff);
+
 	ReactDOM.render(<AfficherCommande commande={commandeDiff}/>,document.getElementById("conteneur"));
 }
 

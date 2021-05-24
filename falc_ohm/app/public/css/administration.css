@@ -1,11 +1,7 @@
 
 #content{ /* contenu*/
-
-    margin-top: 11%;
-    padding-bottom: 8px;
     background-color: lightslategray;
-    width: 65%;
-
+    padding: 5%;
 }
 .colNumber{
     width:30%;

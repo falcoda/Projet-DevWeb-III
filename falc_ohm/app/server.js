@@ -171,6 +171,7 @@ app.post("/nombre-materiel", (request, response)=> {
 
 						con.query("UPDATE materiels SET nombre = '" + Number(request.body[item.nom]) + "' WHERE nom ='" + item.nom + "'"
 						);
+						response.send("succes");
 					};
 				});
 			});
@@ -202,7 +203,7 @@ app.get("/all-commande", (request, response)=> {
 		con.query(`select commande.id_commande, utilisateurs.adressemail, materiels.nom,commande_elem.nombre , (materiels.prix*commande_elem.nombre) as prix, commande.date from commande
 			    join commande_elem  on commande.id_commande = commande_elem.id_commande
 			    join materiels on materiels.id_materiel = commande_elem.id_materiel
-			    join utilisateurs on utilisateurs.id_utilisateurs = commande.id_utilisateurs`, function (err, result) {
+			    join utilisateurs on utilisateurs.id_utilisateurs = commande.id_utilisateurs ORDER BY commande.date DESC`, function (err, result) {
 			response.send(JSON.stringify(result));
 		});
 });
@@ -214,7 +215,7 @@ app.post("/commande", (request, response)=> {
 			    join commande_elem  on commande.id_commande = commande_elem.id_commande
 			    join materiels on materiels.id_materiel = commande_elem.id_materiel
 			    join utilisateurs on utilisateurs.id_utilisateurs = commande.id_utilisateurs
-				where utilisateurs.adressemail = ?`,[user], function (err, result) {
+				where utilisateurs.adressemail = ? ORDER BY commande.date DESC`,[user], function (err, result) {
 		response.send(JSON.stringify(result));
 	});
 });
