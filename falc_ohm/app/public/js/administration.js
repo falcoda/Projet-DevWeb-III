@@ -7,7 +7,7 @@ let users;
 let commandes;
 
 let xhr = new XMLHttpRequest();
-xhr.open("GET", "http://localhost/liste_utilisateur?connexion="+GetCookie("connexion")+"&motdepasse="+GetCookie("motdepasse"));
+xhr.open("GET", "http://localhost/liste-utilisateur?connexion="+GetCookie("connexion")+"&motdepasse="+GetCookie("motdepasse"));
 xhr.onload = function() {
 	users=xhr.responseText;
 	class Bouttons extends React.Component {
@@ -202,12 +202,15 @@ function sendNumber() {
 
 	let xhr = new XMLHttpRequest();
 
-	xhr.open("POST", "/nombre_materiel?connexion="+GetCookie("connexion")+"&motdepasse="+GetCookie("motdepasse"));
+	xhr.open("POST", "/nombre-materiel?connexion="+GetCookie("connexion")+"&motdepasse="+GetCookie("motdepasse"));
 	xhr.setRequestHeader("content-type", "application/json");
 	xhr.onload = function () {
-
+		if (xhr.responseText === "succes"){
+			alert('Modification effectuée');
+		}
 	};
 	xhr.send(JSON.stringify(data));
+
 
 }
 class AjoutMateriel extends React.Component {
@@ -408,7 +411,7 @@ class AfficherCommande extends React.Component {
 		const rows = [];
 		for(let key in this.props.commande){
 			rows.push(
-				<Commande key={key} commande = {[key,this.props.commande[key][0]]} prix = {this.props.commande[key][1]}/>
+				<Commande key={Number(key.replace("c", ""))} commande = {[Number(key.replace("c", "")),this.props.commande[key][0]]} prix = {this.props.commande[key][1]}/>
 			);
 		}
 
@@ -436,16 +439,14 @@ class AfficherCommande extends React.Component {
 }
 function afficherCommande() {
 	let commandeDiff = {};
-	console.log(JSON.parse(commandes));
 	JSON.parse(commandes).forEach((item)=>{
-		if(!(item.id_commande  in commandeDiff)){
-			commandeDiff[item.id_commande] = [item.adressemail, item.prix ];
+		if(!("c"+item.id_commande  in commandeDiff)){
+			commandeDiff["c"+item.id_commande] = [item.adressemail, item.prix];
 		}
-		else{
-			commandeDiff[item.id_commande][1] += item.prix;
+		else {
+			commandeDiff["c"+item.id_commande][1] += item.prix;
 		}
 	});
-	console.log(commandeDiff);
 	ReactDOM.render(<AfficherCommande commande={commandeDiff}/>,document.getElementById("conteneur"));
 }
 

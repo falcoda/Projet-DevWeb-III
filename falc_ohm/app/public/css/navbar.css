@@ -1,7 +1,4 @@
 
-
-
-
 .navigation{
     position: relative;
     z-index: 30;
@@ -62,5 +59,8 @@ a.navbar-brand:hover{
 
     color: black;
 
+}
+#logoProfil{
+    background: lightgrey;
 }
 

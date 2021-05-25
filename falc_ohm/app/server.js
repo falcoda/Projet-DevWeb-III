@@ -55,7 +55,7 @@ app.post("/mail", (request, response)=>{
 		secure: false,
 		auth: {
 			user: "corentin@4x4vert.be",
-			pass: "??ProjetDev33"
+			pass: "?projetDev420"
 		}
 	});
 	const mailOptions = {
@@ -98,7 +98,7 @@ app.post("/mail", (request, response)=>{
 
 app.get("/materiel/:format?", (request, response)=> {
 	if (request.params.format == "json") {
-		con.query("SELECT m.nom,m.prix,m.description,m.nombre,m.en_location,c.nom_categorie from materiels as m JOIN categories c on m.id_categorie = c.id_categorie", function (err, result) {
+		con.query("SELECT m.nom,m.id_materiel,m.prix,m.description,m.nombre,m.en_location,c.nom_categorie from materiels as m JOIN categories c on m.id_categorie = c.id_categorie", function (err, result) {
 			response.send(JSON.stringify(result));
 		});
 	}
@@ -150,7 +150,7 @@ app.get("/administration", (request, response)=> {
 });
 
 
-app.get("/liste_utilisateur", (request, response)=> {
+app.get("/liste-utilisateur", (request, response)=> {
 	verifieAdmin(request.query.connexion, request.query.motdepasse).then((value) => {
 		if (value === true) {
 			con.query("SELECT utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone as numero, utilisateurs.adressemail as mail from utilisateurs", function (err, result) {
@@ -161,7 +161,7 @@ app.get("/liste_utilisateur", (request, response)=> {
 });
 
 
-app.post("/nombre_materiel", (request, response)=> {
+app.post("/nombre-materiel", (request, response)=> {
 	verifieAdmin(request.query.connexion, request.query.motdepasse).then((value) => {
 		if (value === true) {
 			con.query("SELECT m.nom,m.nombre from materiels as m ", function (err, result) {
@@ -171,6 +171,7 @@ app.post("/nombre_materiel", (request, response)=> {
 
 						con.query("UPDATE materiels SET nombre = '" + Number(request.body[item.nom]) + "' WHERE nom ='" + item.nom + "'"
 						);
+						response.send("succes");
 					};
 				});
 			});
@@ -202,7 +203,7 @@ app.get("/all-commande", (request, response)=> {
 		con.query(`select commande.id_commande, utilisateurs.adressemail, materiels.nom,commande_elem.nombre , (materiels.prix*commande_elem.nombre) as prix, commande.date from commande
 			    join commande_elem  on commande.id_commande = commande_elem.id_commande
 			    join materiels on materiels.id_materiel = commande_elem.id_materiel
-			    join utilisateurs on utilisateurs.id_utilisateurs = commande.id_utilisateurs`, function (err, result) {
+			    join utilisateurs on utilisateurs.id_utilisateurs = commande.id_utilisateurs ORDER BY commande.date DESC`, function (err, result) {
 			response.send(JSON.stringify(result));
 		});
 });
@@ -214,7 +215,7 @@ app.post("/commande", (request, response)=> {
 			    join commande_elem  on commande.id_commande = commande_elem.id_commande
 			    join materiels on materiels.id_materiel = commande_elem.id_materiel
 			    join utilisateurs on utilisateurs.id_utilisateurs = commande.id_utilisateurs
-				where utilisateurs.adressemail = ?`,[user], function (err, result) {
+				where utilisateurs.adressemail = ? ORDER BY commande.date DESC`,[user], function (err, result) {
 		response.send(JSON.stringify(result));
 	});
 });
@@ -258,6 +259,7 @@ app.post("/commande-utilisateur", (request, response)=> {
 							con.query("select id_panier from panier where id_utilisateurs =? ; ",[utilis], function (err, result) {
 								console.log(JSON.parse(JSON.stringify(result)));
 								con.query("delete from panier_elem where id_panier = ? ; delete from panier where id_utilisateurs = ? ",[JSON.parse(JSON.stringify(result))[0].id_panier,utilis],function (err, result) {
+									response.send("valide");
 									envoyerCommandeMail(id_com.id_commande);
 								});
 							});
@@ -312,7 +314,7 @@ width: 50%">
 			secure: false,
 			auth: {
 				user: "corentin@4x4vert.be",
-				pass: "??ProjetDev33"
+				pass: "?projetDev420"
 			}
 		});
 		const mailOptions = {
@@ -337,4 +339,55 @@ function verifieAdmin(connexion, motdepasse) {
 	});
 }
 
+app.post("/nouveau-panier", (request, response)=> {
+	let panier = request.body;
+	console.log(request.body.data);
+	let mail = request.body.mail;
+	if (request.body.data.length !== 0 ){
+		con.query("select id_utilisateurs from utilisateurs where utilisateurs.adressemail = ?",[mail], function (err, result) {
+			let id_utilisateurs = result[0].id_utilisateurs;
+			con.query("select id_panier from panier where id_utilisateurs = ? ", [id_utilisateurs], function(err, result) {
+				console.log(result);
+				if (result.length === 0) {
+					console.log("cc")
+					con.query("INSERT INTO falcohm.panier (id_utilisateurs) VALUES (?);", [id_utilisateurs], function (err, result) {
+						if (result !== []) {
+							con.query("select id_panier from panier where id_utilisateurs = ? ", [id_utilisateurs], function (err, result) {
+								let id_panier = result[0].id_panier;
+								request.body.data.forEach((item) => {
+									console.log(result);
+									con.query("INSERT INTO falcohm.panier_elem (id_panier, id_materiel, nombre) VALUES (? , ? , ?);", [id_panier, item.id, item.nombre], function (err, result) {
+									})
+								})
+							})
+						}
+					})
+				}else {
+					response.send("error");
+				}
+			})
+		})}
+	else {
+		response.send("vide");
+	}
+});
+
+
+app.post("/reset-panier", (request, response) =>{
+	let mail = request.body.mail;
+	con.query("select id_utilisateurs from utilisateurs where utilisateurs.adressemail = ?",[mail], function (err, result) {
+		let id_utilisateurs = result[0].id_utilisateurs;
+		con.query("select id_panier from panier where id_utilisateurs = ? ", [id_utilisateurs], function(err, result) {
+			if (result.length !== 0 ){
+				con.query("DELETE FROM panier_elem WHERE id_panier = ?", [result[0].id_panier], function (err, result) {
+				})
+				con.query("DELETE FROM panier WHERE id_panier = ?", [result[0].id_panier], function (err, result) {
+				})
+			}else {
+				response.send('error');
+			}
+		})
+	});
+
+});
 app.listen(80);

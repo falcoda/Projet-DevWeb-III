@@ -1,6 +1,7 @@
 //import React from "react";
 //import ReactDOM from "react-dom";
 
+
 class FormsPage extends React.Component {
 	state = {
 		nom: "",
@@ -99,22 +100,22 @@ class FormsPage extends React.Component {
 
 						<div className="form-group nom" >
 							<label htmlFor="nom">Entrez votre nom</label>
-							<input value={this.state.value} onChange={this.handleChange} type="text" className="form-control w-25" id="nom" placeholder="Nom" />
+							<input value={this.state.value} onChange={this.handleChange} style={{width :"130px"}} type="text" className="form-control formulaire" id="nom" placeholder="Nom" />
 						</div>
 						<div className="form-group">
 							<label htmlFor="prenom">Entrez votre prenom</label>
-							<input type="text" className="form-control w-25" id="prenom" placeholder="Prénom" />
+							<input type="text" className="form-control formulaire" id="prenom" placeholder="Prénom" style={{width :"130px"}} />
 						</div>
 
 						<div className="form-group">
 							<label htmlFor="email">Entrez votre mail</label>
-							<input type="email" className="form-control w-25"  id="email"
-								   placeholder="Adresse mail" required/>
+							<input type="email" className="form-control formulaire"  id="email"
+								   placeholder="Adresse mail" required style={{width :"130px"}}/>
 						</div>
 
 						<div className="form-group">
 							<label htmlFor="bio">Commentaire</label>
-							<textarea className="form-control " id="commentaire" rows="5" placeholder="Entrez votre commentaire"></textarea>
+							<textarea className="form-control" id="commentaire" rows="5" placeholder="Entrez votre commentaire"></textarea>
 						</div>
 						<input type="submit" className="btn btn-light" id="buttonSubmit" value={"envoyer"} />
 
@@ -128,23 +129,22 @@ class FormsPage extends React.Component {
 	}
 }
 
-function chargement() {
 
-	ReactDOM.render(<FormsPage/>,document.getElementById("FormsPage"));
+ReactDOM.render(<FormsPage/>,document.getElementById("FormsPage"));
 
-	let mymap = L.map('mapid').setView([50.627339, 4.451884], 13);
-	L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-		maxZoom: 20,
-		id: 'mapbox/streets-v11',
-		tileSize: 512,
-		zoomOffset: -1
-	}).addTo(mymap);
+let mymap = L.map('mapid').setView([50.627339, 4.451884], 13);
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+	maxZoom: 20,
+	id: 'mapbox/streets-v11',
+	tileSize: 512,
+	zoomOffset: -1
+}).addTo(mymap);
 
-	var circle = L.circle([50.627339, 4.451884], {
-		color: 'red',
-		fillColor: '#f03',
-		fillOpacity: 0.5,
-		radius: 500
-	}).addTo(mymap);
-}
+var circle = L.circle([50.627339, 4.451884], {
+	color: 'red',
+	fillColor: '#f03',
+	fillOpacity: 0.5,
+	radius: 500
+}).addTo(mymap);
+
 

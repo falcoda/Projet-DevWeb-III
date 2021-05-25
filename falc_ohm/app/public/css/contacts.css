@@ -7,12 +7,6 @@ html{
 }
 
 
-#imgCouv{
-    position: relative;
-    z-index: 1;
-    top:65px;
-    transition: all 1s;
-}
 
 #body{ /* balise avec tout le bas de la page */
     margin-top: 140px;
@@ -22,22 +16,11 @@ html{
 }
 
 #content{ /* contenu*/
-
-    margin-top: 11%;
-    padding-bottom: 8px;
     background-color: lightslategray;
-    width: 65%;
-
+    padding: 5%;
 }
 
-#logoCouleur{ /* logo dans a propos */
-    height: 15%;
-    width: 15%;
-    position: relative;
-    left: 80%;
-    top : -100px;
 
-}
 
 #presTexte{ /* taille de la zone de texte a propos */
     width: 85%;
@@ -80,11 +63,12 @@ div.collection {
 }
 
 #mapid {
-    height: 200px;
-    width: 200px;
+    height: 300px;
+    width: 300px;
 }
 
 .contact{
     color: black;
     margin-right: 5px;
 }
+

@@ -1,0 +1,160 @@
+/* Extra small devices (portrait phones, less than 576px) */
+@media only screen and (max-width: 590px) {
+    .w-xs-95 {
+        width: 99% !important;
+        margin: 2%; !important;
+    }
+
+    .w-xs-90 {
+        width: 90% !important;
+    }
+
+    .w-xs-85 {
+        width: 85% !important;
+    }
+
+    .w-xs-80 {
+        width: 80% !important;
+    }
+    p {
+        font-size: 120%
+    }
+
+    a.navbar-brand{
+        font-size: 110%
+    }
+    #logoCouleur{
+        height: 200px;
+        width: 200px;
+        text-align: center;
+    }
+
+}
+
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 591px) and (max-width: 767px) {
+    .w-sm-95 {
+        width: 95% !important;
+    }
+
+    .w-sm-90 {
+        width: 90% !important;
+    }
+
+    .w-sm-85 {
+        width: 85% !important;
+    }
+
+    .w-sm-80 {
+        width: 80% !important;
+    }
+    p {
+        font-size: 150%
+    }
+    #logoCouleur{
+        height: 200px;
+        width: 200px;
+        text-align: center;
+    }
+
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+    .w-md-95 {
+        width: 95% !important;
+    }
+
+    .w-md-90 {
+        width: 90% !important;
+    }
+
+    .w-md-85 {
+        width: 85% !important;
+    }
+
+    .w-md-80 {
+        width: 80% !important;
+    }
+    #mapid {
+        height: 260px;
+        width: 260px;
+    }
+    .contact{
+        font-size: 130%;
+    }
+    #logoCouleur{
+        height: 200px;
+        width: 200px;
+        text-align: center;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+
+    .w-lg-95 {
+        width: 95% !important;
+    }
+
+    .w-lg-90 {
+        width: 90% !important;
+    }
+
+    .w-lg-85 {
+        width: 85% !important;
+    }
+
+    .w-lg-80 {
+        width: 80% !important;
+    }
+    #mapid {
+        height: 300px;
+        width: 300px;
+    }
+    .contact{
+        font-size: 160%;
+    }
+    #logoCouleur{
+        height: 200px;
+        width: 200px;
+        text-align: center;
+    }
+
+
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+    .w-xl-95 {
+        width: 95% !important;
+    }
+
+    .w-xl-90 {
+        width: 90% !important;
+    }
+
+    .w-xl-85 {
+        width: 85% !important;
+    }
+
+    .w-xl-80 {
+        width: 80% !important;
+    }
+    #mapid {
+        height: 400px;
+        width: 400px;
+    }
+    .contact{
+        font-size: 190%;
+    }
+    #logoCouleur{
+        height: 200px;
+        width: 200px;
+        text-align: center;
+    }
+
+}
