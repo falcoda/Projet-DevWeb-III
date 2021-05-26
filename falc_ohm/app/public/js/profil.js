@@ -16,8 +16,8 @@ xhr.onload = function() {
 						<div className="m-auto px-2">
 							<h3>Profil de {utilisateurConnecte}</h3>
 						</div>
-						<button onClick={afficherPanier} className="btn btn-light ml-1 mr-1">Panier</button>
-						<button onClick={afficherCommande} className="btn btn-light ml-1 mr-1"> commande </button>
+						<button onClick={afficherPanier} id="bouton_panier" className="btn btn-light ml-1 mr-1">Panier</button>
+						<button onClick={afficherCommande} id="bouton_commande" className="btn btn-light ml-1 mr-1"> Commande </button>
 					</React.Fragment>);
 			}
 			else {

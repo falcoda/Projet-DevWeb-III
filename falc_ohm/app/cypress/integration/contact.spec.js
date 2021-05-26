@@ -9,6 +9,11 @@ describe("Tests pour la page contact", () => {
 		cy.get("textarea[placeholder='Entrez votre commentaire']");
 	});
 
+	it("Test si la navbar est bien présente sur la page", () => {
+		cy.visit("http://localhost:80/");
+		cy.get(".nav-link");
+	});
+
 	it("Test si la page contact contient un bouton clickable", () => {
 		cy.visit("http://localhost:80/contact");
 		cy.get("input[type='submit']");

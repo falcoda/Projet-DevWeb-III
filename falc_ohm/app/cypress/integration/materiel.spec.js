@@ -7,6 +7,11 @@ describe("Tests pour la page matériel", () => {
 		cy.get("#typeSelect");
 	});
 
+	it("Test si la navbar est bien présente sur la page", () => {
+		cy.visit("http://localhost:80/");
+		cy.get(".nav-link");
+	});
+
 	it("Tests si le matériel est bien présent sur la page", () => {
 		cy.visit("http://localhost:80/materiel");
 		cy.get("#container2").contains("mth30");
