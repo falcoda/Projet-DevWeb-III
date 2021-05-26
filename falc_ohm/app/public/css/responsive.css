@@ -1,5 +1,6 @@
+
 /* Extra small devices (portrait phones, less than 576px) */
-@media only screen and (max-width: 590px) {
+@media only screen and (max-width: 589.8px) {
     .w-xs-95 {
         width: 99% !important;
         margin: 2%; !important;
@@ -29,11 +30,30 @@
         text-align: center;
     }
 
+
+/* responsive page matériel */
+    #materielsTable{
+        grid-template-columns: 1fr;
+    }
+
+    .card_container{
+        width: 235px;
+    }
+
+    #typeSelect{
+        width: 99%;
+        padding: 3%;
+    }
+
+    #gender1{
+        width: 90%;
+    }
+
 }
 
 
 /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 591px) and (max-width: 767px) {
+@media (min-width: 590px) and (max-width: 767.98px) {
     .w-sm-95 {
         width: 95% !important;
     }
@@ -58,10 +78,27 @@
         text-align: center;
     }
 
+
+    /* responsive page matériel */
+    #materielsTable{
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .card_container{
+        width: 235px;
+    }
+
+    #typeSelect{
+        width: 99%;
+        padding: 3%;
+    }
+
+
+
 }
 
 /* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) and (max-width: 991.98px) {
+@media (min-width: 767.99px) and (max-width: 991.98px) {
 
     .w-md-95 {
         width: 95% !important;
@@ -90,6 +127,21 @@
         width: 200px;
         text-align: center;
     }
+
+    /* responsive page matériel */
+    #materielsTable{
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .card_container{
+        width: 235px;
+    }
+
+    #typeSelect{
+        width: 99%;
+        padding: 3%;
+    }
+
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -121,6 +173,20 @@
         height: 200px;
         width: 200px;
         text-align: center;
+    }
+
+    /* responsive page matériel */
+    #materielsTable{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .card_container{
+        width: 235px;
+    }
+
+    #typeSelect{
+        width: 99%;
+        padding: 3%;
     }
 
 
@@ -155,6 +221,19 @@
         height: 200px;
         width: 200px;
         text-align: center;
+    }
+    /* responsive page matériel */
+    #materielsTable{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .card_container{
+        width: 235px;
+    }
+
+    #typeSelect{
+        width: 99%;
+        padding: 3%;
     }
 
 }

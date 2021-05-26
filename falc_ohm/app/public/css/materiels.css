@@ -58,7 +58,6 @@ body{
     transform: rotateY( 180deg );
     backface-visibility: hidden;
     padding: 3%;
-    position: absolute;
     text-align: center;
     background-color: lightslategray;
     height: 100%;
@@ -92,18 +91,6 @@ body{
     height: 100%;
 }
 
-@media screen and (max-width: 420px){
-
-    #materielsTable{
-        grid-template-columns: 1fr;
-    }
-
-    .card_container{
-        width: 85%;
-    }
-
-    #typeSelect{
-          width: 99%;
-          padding: 3%;
-      }
+.card_info p {
+    font-size: 120%
 }

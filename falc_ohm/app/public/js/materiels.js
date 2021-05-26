@@ -8,7 +8,7 @@
 class MaterielCard extends React.Component {
 	render() {
 		const materiel = this.props.materiel;
-		const image = (materiel.nom_categorie == "ampli" || materiel.nom_categorie == "processeur") ? "img/ampli.jpg" : "img/"+ materiel.nom +".jpg";
+		const image = "img/"+ materiel.nom +".jpg";
 		const nom = materiel.nom;
 		const description = materiel.description;
 
@@ -67,6 +67,7 @@ class TypeSelect extends React.Component {
 					<option value={"ampli"}>Ampli</option>
 					<option value={"processeur"}>Processeur</option>
 					<option value={"top 2 voies"}>Top 2 voies</option>
+					<option value={"lumière"}>Lumière</option>
 				</select>
 			</div>
 		);
