@@ -9,7 +9,6 @@ let admin ="";
 xhr_admin.open("GET", "http://localhost/admin?adressemail="+GetCookie("connexion")+"&motdepasse="+GetCookie("motdepasse"));
 xhr_admin.setRequestHeader("content-type", "application/json");
 xhr_admin.onload = function () {
-	console.log(xhr_admin.responseText)
 
 	if (xhr_admin.responseText=== "1"){
 

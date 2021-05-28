@@ -146,7 +146,7 @@ function viderPanier(){
 		if (xhr.responseText === "error"){
 			alert("Vous possédez aucun panier, veuillez en créer un");
 		}
-		alert("Commande bien effectuée");
+
 	};
 
 	xhr.send(JSON.stringify({mail :utilisateurConnecte}));

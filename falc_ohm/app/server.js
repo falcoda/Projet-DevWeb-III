@@ -48,7 +48,7 @@ app.get("/contact", (request, response)=> {
 
 
 app.post("/mail", (request, response)=>{
-	console.log(request.body);
+
 	const transporter = nodemailer.createTransport({
 		host: "ssl0.ovh.net",
 		port: 587,
@@ -121,10 +121,17 @@ app.get("/profil", (request, response)=> {
 
 app.get("/utilisateurs", (request, response)=> {
 	con.query("SELECT utilisateurs.id_utilisateurs, utilisateurs.adressemail, utilisateurs.motdepasse, utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone, utilisateurs.admin from utilisateurs", function (err, result) {
+		let bonUtilis = false;
 		for (let i of result) {
 			if (request.query.adressemail == i.adressemail && request.query.motdepasse == i.motdepasse) {
+				bonUtilis = true;
 				response.send(i.adressemail + " " + i.motdepasse);
+
 			}
+
+		}
+		if(bonUtilis ===false){
+			response.send("erreur")
 		}
 	});
 });
@@ -133,7 +140,7 @@ app.get("/admin", (request, response)=> {
 	con.query("SELECT utilisateurs.id_utilisateurs, utilisateurs.adressemail, utilisateurs.motdepasse, utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone, utilisateurs.admin from utilisateurs", function (err, result) {
 		for (let i of result) {
 			if (request.query.adressemail == i.adressemail && request.query.motdepasse == i.motdepasse) {
-				console.log(i.admin);
+
 				response.send(String(i.admin));
 			}
 		}
@@ -152,9 +159,9 @@ app.post("/ajouterMateriel", (request, response)=> {
 		if (value === true) {
 			con.query("select materiels.nom from materiels", function (err, result) {
 				let isIndb = false;
-				console.log(request.body.nom)
+
 				result.forEach((item)=>{
-					console.log(item.nom)
+
 					if(item.nom === request.body.nom){
 						isIndb = true;
 					}
@@ -213,10 +220,12 @@ app.post("/nombre-materiel", (request, response)=> {
 
 app.post("/panier", (request, response)=> {
 	verifieUtilisateur(request.query.connexion,request.query.motdepasse).then((value) => {
-		let mail= request.body.mail;
-		con.query("select materiels.nom, panier_elem.nombre from panier_elem join materiels on materiels.id_materiel = panier_elem.id_materiel join panier on panier.id_panier = panier_elem.id_panier join utilisateurs on utilisateurs.id_utilisateurs = panier.id_utilisateurs where utilisateurs.adressemail ='" +mail +"'", function (err, result) {
-			response.send(JSON.stringify(result));
-		});
+		if (value === true) {
+			let mail= request.body.mail;
+			con.query("select materiels.nom, panier_elem.nombre from panier_elem join materiels on materiels.id_materiel = panier_elem.id_materiel join panier on panier.id_panier = panier_elem.id_panier join utilisateurs on utilisateurs.id_utilisateurs = panier.id_utilisateurs where utilisateurs.adressemail ='" +mail +"'", function (err, result) {
+				response.send(JSON.stringify(result));
+			});
+		}
 	});
 });
 
@@ -233,81 +242,86 @@ app.get("/mentionslegales", (request, response)=> {
 
 app.get("/all-commande", (request, response)=> {
 	verifieUtilisateur(request.query.connexion,request.query.motdepasse).then((value) => {
-		con.query(`select commande.id_commande, utilisateurs.adressemail, materiels.nom,commande_elem.nombre , (materiels.prix*commande_elem.nombre) as prix, commande.date from commande
-			    join commande_elem  on commande.id_commande = commande_elem.id_commande
-			    join materiels on materiels.id_materiel = commande_elem.id_materiel
-			    join utilisateurs on utilisateurs.id_utilisateurs = commande.id_utilisateurs ORDER BY commande.date DESC`, function (err, result) {
-			response.send(JSON.stringify(result));
-		});
+		if (value === true) {
+			con.query(`select commande.id_commande, utilisateurs.adressemail, materiels.nom,commande_elem.nombre , (materiels.prix*commande_elem.nombre) as prix, commande.date from commande
+					join commande_elem  on commande.id_commande = commande_elem.id_commande
+					join materiels on materiels.id_materiel = commande_elem.id_materiel
+					join utilisateurs on utilisateurs.id_utilisateurs = commande.id_utilisateurs ORDER BY commande.date DESC`, function (err, result) {
+				response.send(JSON.stringify(result));
+			});
+		}
 	});
 });
 
 app.post("/commande", (request, response)=> {
 	verifieUtilisateur(request.query.connexion,request.query.motdepasse).then((value) => {
-		let user = request.query.connexion;
-		console.log(request.body);
-		con.query(`select commande.id_commande, utilisateurs.adressemail, materiels.nom,commande_elem.nombre , (materiels.prix*commande_elem.nombre) as prix, commande.date from commande
-					join commande_elem  on commande.id_commande = commande_elem.id_commande
-					join materiels on materiels.id_materiel = commande_elem.id_materiel
-					join utilisateurs on utilisateurs.id_utilisateurs = commande.id_utilisateurs
-					where utilisateurs.adressemail = ? ORDER BY commande.date DESC`,[user], function (err, result) {
-			response.send(JSON.stringify(result));
-		});
+		if (value === true) {
+			let user = request.query.connexion;
+
+			con.query(`select commande.id_commande, utilisateurs.adressemail, materiels.nom,commande_elem.nombre , (materiels.prix*commande_elem.nombre) as prix, commande.date from commande
+						join commande_elem  on commande.id_commande = commande_elem.id_commande
+						join materiels on materiels.id_materiel = commande_elem.id_materiel
+						join utilisateurs on utilisateurs.id_utilisateurs = commande.id_utilisateurs
+						where utilisateurs.adressemail = ? ORDER BY commande.date DESC`, [user], function (err, result) {
+				response.send(JSON.stringify(result));
+			});
+		}
 	});
 });
 
 
 app.post("/commande-utilisateur", (request, response)=> {
-	verifieAdmin(request.query.connexion,request.query.motdepasse).then((value) => {
-		let mail = request.body.mail;
-		con.query("select * from panier join utilisateurs on utilisateurs.id_utilisateurs = panier.id_utilisateurs where utilisateurs.adressemail =?", [mail],function (err, result) {
+	verifieUtilisateur(request.query.connexion,request.query.motdepasse).then((value) => {
+		if (value === true) {
+			let mail = request.body.mail;
+			con.query("select * from panier join utilisateurs on utilisateurs.id_utilisateurs = panier.id_utilisateurs where utilisateurs.adressemail =?", [mail], function (err, result) {
 
-			if(result.length !==0 ){
+				if (result.length !== 0) {
 
 
+					let today = new Date();
+					let dd = String(today.getDate()).padStart(2, '0');
+					let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+					let yyyy = today.getFullYear();
 
-				let today = new Date();
-				let dd = String(today.getDate()).padStart(2, '0');
-				let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-				let yyyy = today.getFullYear();
+					today = yyyy + "-" + mm + "-" + dd;
 
-				today = yyyy + "-" + mm + "-" + dd;
+					con.query("select utilisateurs.id_utilisateurs from utilisateurs where utilisateurs.adressemail = ?", [mail], function (err, result) {
+						if (err) throw err;
+						let utilis = JSON.parse(JSON.stringify(result[0].id_utilisateurs));
 
-				con.query("select utilisateurs.id_utilisateurs from utilisateurs where utilisateurs.adressemail = ?" , [mail],function (err, result) {
-					if (err) throw err;
-					let utilis = JSON.parse(JSON.stringify(result[0].id_utilisateurs));
-
-					con.query("insert into commande(id_utilisateurs,date) values (?,?)",[utilis,today], function (err, result) {
-						con.query(`select materiels.id_materiel, panier_elem.nombre,materiels.prix*panier_elem.nombre as prix from panier_elem
+						con.query("insert into commande(id_utilisateurs,date) values (?,?)", [utilis, today], function (err, result) {
+							con.query(`select materiels.id_materiel, panier_elem.nombre,materiels.prix*panier_elem.nombre as prix from panier_elem
 										join materiels on materiels.id_materiel = panier_elem.id_materiel
 										join panier on panier.id_panier = panier_elem.id_panier
 										join utilisateurs on utilisateurs.id_utilisateurs = panier.id_utilisateurs
 			
-										where utilisateurs.adressemail =?; select commande.id_commande from commande where id_utilisateurs=?`, [mail,utilis],function (err, result) {
+										where utilisateurs.adressemail =?; select commande.id_commande from commande where id_utilisateurs=?`, [mail, utilis], function (err, result) {
 
 
-							let id_com =JSON.parse(JSON.stringify(result[1])).pop();
-							let donnee = JSON.parse(JSON.stringify(result[0]));
+								let id_com = JSON.parse(JSON.stringify(result[1])).pop();
+								let donnee = JSON.parse(JSON.stringify(result[0]));
 
-							console.log(donnee);
-							if (donnee.length != 0){
-								for(let item of donnee){
-									con.query("insert into commande_elem(id_commande,id_materiel,nombre) values (?,?,?)",[id_com.id_commande,item.id_materiel,item.nombre], function (err, result) {
+
+								if (donnee.length != 0) {
+									for (let item of donnee) {
+										con.query("insert into commande_elem(id_commande,id_materiel,nombre) values (?,?,?)", [id_com.id_commande, item.id_materiel, item.nombre], function (err, result) {
+										});
+									}
+									con.query("select id_panier from panier where id_utilisateurs =? ; ", [utilis], function (err, result) {
+
+										con.query("delete from panier_elem where id_panier = ? ; delete from panier where id_utilisateurs = ? ", [JSON.parse(JSON.stringify(result))[0].id_panier, utilis], function (err, result) {
+											response.send("valide");
+											envoyerCommandeMail(id_com.id_commande);
+										});
 									});
 								}
-								con.query("select id_panier from panier where id_utilisateurs =? ; ",[utilis], function (err, result) {
-									console.log(JSON.parse(JSON.stringify(result)));
-									con.query("delete from panier_elem where id_panier = ? ; delete from panier where id_utilisateurs = ? ",[JSON.parse(JSON.stringify(result))[0].id_panier,utilis],function (err, result) {
-										response.send("valide");
-										envoyerCommandeMail(id_com.id_commande);
-									});
-								});
-							}
+							});
 						});
 					});
-				});
-			}
-		});
+				}
+			});
+		}
 	});
 });
 
@@ -394,60 +408,68 @@ function verifieUtilisateur(connexion, motdepasse) {
 
 app.post("/nouveau-panier", (request, response)=> {
 	verifieUtilisateur(request.query.connexion,request.query.motdepasse).then((value) => {
-		let panier = request.body;
 
-		let mail = request.body.mail;
-		if (request.body.data.length !== 0 ){
-			con.query("select id_utilisateurs from utilisateurs where utilisateurs.adressemail = ?",[mail], function (err, result) {
-				let id_utilisateurs = result[0].id_utilisateurs;
-				con.query("select id_panier from panier where id_utilisateurs = ? ", [id_utilisateurs], function(err, result) {
+		if (value === true) {
+			let panier = request.body;
 
-					if (result.length === 0) {
+			let mail = request.body.mail;
+			if (request.body.data.length !== 0) {
+				con.query("select id_utilisateurs from utilisateurs where utilisateurs.adressemail = ?", [mail], function (err, result) {
+					let id_utilisateurs = result[0].id_utilisateurs;
+					con.query("select id_panier from panier where id_utilisateurs = ? ", [id_utilisateurs], function (err, result) {
 
-						con.query("INSERT INTO falcohm.panier (id_utilisateurs) VALUES (?);", [id_utilisateurs], function (err, result) {
-							if (result !== []) {
-								con.query("select id_panier from panier where id_utilisateurs = ? ", [id_utilisateurs], function (err, result) {
-									let id_panier = result[0].id_panier;
-									request.body.data.forEach((item) => {
+						if (result.length === 0) {
 
-										con.query("INSERT INTO falcohm.panier_elem (id_panier, id_materiel, nombre) VALUES (? , ? , ?);", [id_panier, item.id, item.nombre], function (err, result) {
+							con.query("INSERT INTO falcohm.panier (id_utilisateurs) VALUES (?);", [id_utilisateurs], function (err, result) {
+								if (result !== []) {
+									con.query("select id_panier from panier where id_utilisateurs = ? ", [id_utilisateurs], function (err, result) {
+										let id_panier = result[0].id_panier;
+										request.body.data.forEach((item) => {
+
+											con.query("INSERT INTO falcohm.panier_elem (id_panier, id_materiel, nombre) VALUES (? , ? , ?);", [id_panier, item.id, item.nombre], function (err, result) {
+
+											});
 
 										});
+										response.send("succes");
+									})
+								}
+							})
+						} else {
+							response.send("error");
+						}
+					});
 
-									});
-									response.send("succes");
-								})
-							}
-						})
-					}else {
-						response.send("error");
-					}
-				});
-
-			})}
-		else {
-			response.send("vide");
+				})
+			} else {
+				response.send("vide");
+			}
 		}
 	});
+	if(request.body.mail ===null){
+		response.send("connect");
+	}
 });
 
 
 app.post("/reset-panier", (request, response) =>{
 	verifieUtilisateur(request.query.connexion,request.query.motdepasse).then((value) => {
-		let mail = request.body.mail;
-		con.query("select id_utilisateurs from utilisateurs where utilisateurs.adressemail = ?",[mail], function (err, result) {
-			let id_utilisateurs = result[0].id_utilisateurs;
-			con.query("select id_panier from panier where id_utilisateurs = ? ", [id_utilisateurs], function(err, result) {
-				if (result.length !== 0 ){
-					con.query("DELETE FROM panier_elem WHERE id_panier = ?", [result[0].id_panier], function (err, result) {
-					})
-					con.query("DELETE FROM panier WHERE id_panier = ?", [result[0].id_panier], function (err, result) {
-					})
-				}else {
-					response.send('error');
-				}
-			})
-		});
+		if (value === true) {
+			let mail = request.body.mail;
+			con.query("select id_utilisateurs from utilisateurs where utilisateurs.adressemail = ?", [mail], function (err, result) {
+				let id_utilisateurs = result[0].id_utilisateurs;
+				con.query("select id_panier from panier where id_utilisateurs = ? ", [id_utilisateurs], function (err, result) {
+					if (result.length !== 0) {
+						con.query("DELETE FROM panier_elem WHERE id_panier = ?", [result[0].id_panier], function (err, result) {
+						})
+						con.query("DELETE FROM panier WHERE id_panier = ?", [result[0].id_panier], function (err, result) {
+						})
+					} else {
+						response.send('error');
+					}
+				})
+			});
+		}
 	});
 });
 app.listen(80);

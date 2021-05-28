@@ -31,18 +31,26 @@ class Connexion extends React.Component {
 		xhr.open("GET", "http://localhost/utilisateurs?adressemail="+data1.adressemail1+"&motdepasse="+data1.motdepasse1);
 		xhr.setRequestHeader("content-type", "application/json");
 		xhr.onload = function () {
-			bonUtilisateur =  xhr.responseText.split(" ");
-			let duree_cookie = 100;         // durée de vie du cookie en jours
-			let expiration = new Date();    // date et heure courante en format texte
-			expiration.setTime(expiration.getTime() + (duree_cookie * 24*60*60*1000));
-			// => on peut utiliser la variable "expiration"
-			SetCookie ("connexion",bonUtilisateur[0],expiration,null,null,false);
-			SetCookie ("motdepasse",bonUtilisateur[1],expiration,null,null,false);
-			// eslint-disable-next-line no-undef
-			utilisateurConnecte = GetCookie("connexion");
-			motdepasse = GetCookie("motdepasse");
-			console.log("succès");
-			document.location.href="/"
+			console.log(xhr.responseText)
+			if(xhr.responseText === "erreur"){
+				alert("Email ou mot de passe invalide")
+			}
+			else
+			{
+				bonUtilisateur = xhr.responseText.split(" ");
+				let duree_cookie = 100;         // durée de vie du cookie en jours
+				let expiration = new Date();    // date et heure courante en format texte
+				expiration.setTime(expiration.getTime() + (duree_cookie * 24 * 60 * 60 * 1000));
+				// => on peut utiliser la variable "expiration"
+				SetCookie("connexion", bonUtilisateur[0], expiration, null, null, false);
+				SetCookie("motdepasse", bonUtilisateur[1], expiration, null, null, false);
+				// eslint-disable-next-line no-undef
+				utilisateurConnecte = GetCookie("connexion");
+				motdepasse = GetCookie("motdepasse");
+				console.log("succès");
+				document.location.href = "/";
+			}
+
 		};
 		xhr.send();
 		event.preventDefault();
@@ -115,10 +123,11 @@ class Inscription extends React.Component {
 
 		let xhr = new XMLHttpRequest();
 
-		xhr.open("GET", "http://localhost/utilisateurs");
+		xhr.open("GET",  "http://localhost/utilisateurs?adressemail="+data1.adressemail1+"&motdepasse="+data1.motdepasse1);
 		xhr.setRequestHeader("content-type", "application/json");
 		xhr.onload = function () {
 			tableUtilisateurs =  JSON.parse(xhr.responseText);
+
 		};
 		xhr.send();
 
@@ -138,6 +147,7 @@ class Inscription extends React.Component {
 					}
 
 					if (check && compteur == tableUtilisateurs.length) {
+
 						let duree_cookie = 100;         // durée de vie du cookie en jours
 						let expiration = new Date();    // date et heure courante en format texte
 						expiration.setTime(expiration.getTime() + (duree_cookie * 24*60*60*1000));
