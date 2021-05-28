@@ -219,7 +219,7 @@ function conditionForms(etat){
     let obj = {};
     let bdd = JSON.parse(materiel);
     if (etat.typeEvenement == "event1") { //soiree dansante
-        obj = boucle(bdd, 'AlienHead Z14', 1);  //materiel par defaut
+        obj = boucle(bdd, 'Allen & Heath ZED-14', 1);  //materiel par defaut
         tableobj.push(obj);
         if (parseInt(etat.tailleSalle) <= 100) { //nombre de personnes
             //ajout du matériel spécifique a cette config
@@ -332,7 +332,7 @@ function conditionForms(etat){
             }
         }
     } else if (etat.typeEvenement == "event2") { //mariage
-        obj = boucle(bdd, 'AlienHead Z14', 1);
+        obj = boucle(bdd, 'Allen & Heath ZED-14', 1);
         tableobj.push(obj);
         if (parseInt(etat.tailleSalle) <= 100) { //nombre de personnes
             //ajout du matériel spécifique a cette config
@@ -387,7 +387,7 @@ function conditionForms(etat){
         }
 
     } else if (etat.typeEvenement == "event3" || etat.typeEvenement == "event4") { //festival ou festival car mêmes valeurs
-        obj = boucle(bdd, 'AlienHead Z14', 1);
+        obj = boucle(bdd, 'Allen & Heath ZED-14', 1);
         tableobj.push(obj);
         if (parseInt(etat.tailleSalle) <= 100) { //nombre de personnes
             //ajout du matériel spécifique a cette config
@@ -467,7 +467,7 @@ function conditionForms(etat){
         }
         //}else if(etat.typeEvenement == "event4"){ //teuf
     } else if (etat.typeEvenement == "event5") { //conference ou seminaire
-        obj = boucle(bdd, 'AlienHead Z14', 1);
+        obj = boucle(bdd, 'Allen & Heath ZED-14', 1);
         tableobj.push(obj);
         if (parseInt(etat.tailleSalle) <= 200) { //nombre de personnes  (ici 0-200 = meme sono)
             //ajout du matériel spécifique a cette config

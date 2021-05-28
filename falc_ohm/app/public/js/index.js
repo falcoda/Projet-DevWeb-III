@@ -10,6 +10,7 @@ xhr_admin.open("GET", "http://localhost/admin?adressemail="+GetCookie("connexion
 xhr_admin.setRequestHeader("content-type", "application/json");
 xhr_admin.onload = function () {
 
+
 	if (xhr_admin.responseText=== "1"){
 
 		renderAdmin();
@@ -183,6 +184,6 @@ function renderAdmin() {
 }
 
 if (utilisateurConnecte == null) {
-	console.log("lol")
+
 	renderSiPasConnecte();
 }

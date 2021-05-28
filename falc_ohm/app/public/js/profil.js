@@ -44,7 +44,7 @@ xhr_commande.onload = function() {
 	commandes=xhr_commande.responseText;
 };
 xhr_commande.send(JSON.stringify({mail :utilisateurConnecte}));
-console.log(commandes);
+
 class Panier extends React.Component {
 
 

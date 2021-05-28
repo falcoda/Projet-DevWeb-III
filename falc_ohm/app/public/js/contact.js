@@ -36,15 +36,12 @@ class FormsPage extends React.Component {
 			commentaire: commentaire.value,
 		};
 
-		console.log(data);
 
 		let xhr = new XMLHttpRequest();
 
 		xhr.open("POST", "/mail");
 		xhr.setRequestHeader("content-type", "application/json");
 		xhr.onload = function () {
-			console.log(xhr.responseText);
-			console.log("coucou");
 			if(xhr.responseText === "success") {
 				alert("Mail envoyé avec success");
 				document.getElementById("prenom").classList.remove("is-invalid");

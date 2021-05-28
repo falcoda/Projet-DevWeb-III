@@ -140,7 +140,7 @@ app.get("/admin", (request, response)=> {
 	con.query("SELECT utilisateurs.id_utilisateurs, utilisateurs.adressemail, utilisateurs.motdepasse, utilisateurs.nom, utilisateurs.prenom, utilisateurs.numerotelephone, utilisateurs.admin from utilisateurs", function (err, result) {
 		for (let i of result) {
 			if (request.query.adressemail == i.adressemail && request.query.motdepasse == i.motdepasse) {
-
+				console.log(String(i.admin))
 				response.send(String(i.admin));
 			}
 		}

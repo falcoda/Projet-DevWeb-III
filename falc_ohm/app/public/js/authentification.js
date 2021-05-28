@@ -31,7 +31,7 @@ class Connexion extends React.Component {
 		xhr.open("GET", "http://localhost/utilisateurs?adressemail="+data1.adressemail1+"&motdepasse="+data1.motdepasse1);
 		xhr.setRequestHeader("content-type", "application/json");
 		xhr.onload = function () {
-			console.log(xhr.responseText)
+
 			if(xhr.responseText === "erreur"){
 				alert("Email ou mot de passe invalide")
 			}
@@ -47,7 +47,7 @@ class Connexion extends React.Component {
 				// eslint-disable-next-line no-undef
 				utilisateurConnecte = GetCookie("connexion");
 				motdepasse = GetCookie("motdepasse");
-				console.log("succès");
+
 				document.location.href = "/";
 			}
 
