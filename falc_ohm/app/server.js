@@ -357,7 +357,7 @@ app.post("/nouveau-panier", (request, response)=> {
 								request.body.data.forEach((item) => {
 									console.log(result);
 									con.query("INSERT INTO falcohm.panier_elem (id_panier, id_materiel, nombre) VALUES (? , ? , ?);", [id_panier, item.id, item.nombre], function (err, result) {
-									})
+										response.send("succes");});
 								})
 							})
 						}
