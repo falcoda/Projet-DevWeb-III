@@ -3,7 +3,7 @@ let utilisateurConnecte = GetCookie("connexion");
 let panier_utilis;
 
 let xhr = new XMLHttpRequest();
-xhr.open("POST", "http://localhost/panier");
+xhr.open("POST", "http://localhost/panier?connexion="+GetCookie("connexion")+"&motdepasse="+GetCookie("motdepasse"));
 xhr.setRequestHeader("content-type", "application/json");
 xhr.onload = function() {
 	panier_utilis=xhr.responseText;
@@ -13,9 +13,6 @@ xhr.onload = function() {
 			if (utilisateurConnecte != null) {
 				return (
 					<React.Fragment>
-						<div className="m-auto px-2">
-							<h3>Profil de {utilisateurConnecte}</h3>
-						</div>
 						<button onClick={afficherPanier} id="bouton_panier" className="btn btn-light ml-1 mr-1">Panier</button>
 						<button onClick={afficherCommande} id="bouton_commande" className="btn btn-light ml-1 mr-1"> Commande </button>
 					</React.Fragment>);
@@ -41,7 +38,7 @@ xhr.send(JSON.stringify({mail :utilisateurConnecte}));
 
 let commandes;
 let xhr_commande = new XMLHttpRequest();
-xhr_commande.open("POST", "http://localhost/commande");
+xhr_commande.open("POST", "http://localhost/commande?connexion="+GetCookie("connexion")+"&motdepasse="+GetCookie("motdepasse"));
 xhr_commande.setRequestHeader("content-type", "application/json");
 xhr_commande.onload = function() {
 	commandes=xhr_commande.responseText;
@@ -127,7 +124,7 @@ function afficherInfos() {
 
 function passerCommande() {
 	let xhr = new XMLHttpRequest();
-	xhr.open("POST", "http://localhost/commande-utilisateur");
+	xhr.open("POST", "http://localhost/commande-utilisateur?connexion="+GetCookie("connexion")+"&motdepasse="+GetCookie("motdepasse"));
 	xhr.setRequestHeader("content-type", "application/json");
 	xhr.onload = function() {
 		if (xhr.responseText === "valide"){
@@ -143,7 +140,7 @@ function passerCommande() {
 
 function viderPanier(){
 	let xhr = new XMLHttpRequest();
-	xhr.open("POST", "http://localhost/reset-panier");
+	xhr.open("POST", "http://localhost/reset-panier?connexion="+GetCookie("connexion")+"&motdepasse="+GetCookie("motdepasse"));
 	xhr.setRequestHeader("content-type", "application/json");
 	xhr.onload = function() {
 		if (xhr.responseText === "error"){
@@ -171,7 +168,6 @@ class Commande extends React.Component {
 		JSON.parse(commandes).forEach((item)=>{
 
 			if(Number(mail.target.value)  === item.id_commande){
-				console.log("toto");
 				commandeUtilis+= "<tr><td scope='row'>"+item.nom+"</td><td>"+item.nombre+"</td><td>"+item.prix+"</td> </tr>";
 			}
 
@@ -278,129 +274,3 @@ function afficherCommande() {
 	ReactDOM.render(<AfficherCommande commande={commandeDiff}/>,document.getElementById("conteneur"));
 }
 
-class ChangerUtilisateur extends React.Component {
-	state = {
-		adressemail1: "",
-		motdepasse1: "",
-	};
-
-	constructor(props) {
-		super(props);
-		this.state = {value: ''};
-
-		this.handleChange = this.handleChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
-	}
-
-	handleChange(event) {
-		this.setState({value: event.target.value});
-	}
-
-	handleSubmit(event) {
-		let adressemail1 = document.getElementById("adressemail1");
-		let motdepasse1 = document.getElementById("motdepasse1");
-
-		let data1 = {
-			adressemail1: adressemail1.value,
-			motdepasse1: motdepasse1.value,
-		};
-
-		console.log(data1);
-
-		let tableUtilisateurs =[];
-		let xhr = new XMLHttpRequest();
-
-		xhr.open("GET", "http://localhost/utilisateurs");
-		xhr.setRequestHeader("content-type", "application/json");
-		xhr.onload = function () {
-			tableUtilisateurs =  JSON.parse(xhr.responseText);
-			let compteur = 0;
-			for (let i of tableUtilisateurs) {
-				compteur++;
-				if (data1.adressemail1 == i.adressemail && data1.motdepasse1 == i.motdepasse) {
-					let duree_cookie = 100;         // durée de vie du cookie en jours
-					let expiration = new Date();    // date et heure courante en format texte
-					expiration.setTime(expiration.getTime() + (duree_cookie * 24*60*60*1000));
-					// => on peut utiliser la variable "expiration"
-					SetCookie ("connexion",data1.adressemail1,expiration,null,null,false);
-					SetCookie ("motdepasse",data1.motdepasse1,expiration,null,null,false);
-					utilisateurConnecte = GetCookie("connexion");
-					motdepasse = GetCookie("motdepasse");
-					console.log("succès");
-					document.location.href="profil"
-					break;
-				}
-				// eslint-disable-next-line no-cond-assign
-				else if (compteur == tableUtilisateurs.length) {
-					// MESSAGE D'ERREUR
-				}
-
-			}
-		};
-		xhr.send();
-		event.preventDefault();
-	}
-	render() {
-		return (
-			<div  className="m-auto px-2">
-				<form id="formChangerUtilisateur" onSubmit={this.handleSubmit}>
-					<fieldset>
-						<legend>Changer d'utilisateur</legend>
-						<div className="form-group">
-							<label htmlFor="adressemail1">Entrez votre adresse mail</label>
-							<input type="email" className="form-control w-25" id="adressemail1"
-								   placeholder="Adresse mail" required/>
-						</div>
-						<div className="form-group">
-							<label htmlFor="motdepasse1">Entrez votre mot de passe</label>
-							   <input type="password" className="form-control w-25" id="motdepasse1"
-								   placeholder="Mot de passe" required/>
-						</div>
-						<input type="submit" className="btn btn-light" id="buttonSubmit" value={"Changer d'utilisateur"} />
-					</fieldset>
-				</form>
-			</div>
-		);
-	}
-}
-
-class Deconnexion extends React.Component {
-	handleSubmit(event) {
-		DeleteCookie ("connexion",null,null);
-		DeleteCookie ("motdepasse",null,null);
-		document.location.href = "authentification";
-	}
-	render() {
-		return (
-			<div  className="m-auto px-2">
-				<form id="formDeconnexion" onSubmit={this.handleSubmit}>
-					<fieldset>
-						<input type="submit" className="btn btn-light" id="buttonSubmit2" value={"Déconnexion"} />
-					</fieldset>
-				</form>
-			</div>
-		);
-	}
-}
-
-class Profil extends React.Component {
-	render(){
-		if (utilisateurConnecte != null) {
-			return (
-				<React.Fragment>
-					<div id="content" className="m-auto px-2">
-						<ChangerUtilisateur/><br/>
-						<Deconnexion/>
-					</div>
-				</React.Fragment>)
-		}
-		else {
-			return (
-				<div id="content" className="m-auto px-2" hidden>
-				</div>
-			)
-		}
-	}
-}
-
-ReactDOM.render(<Profil/>,document.getElementById("profil"));

@@ -15,10 +15,10 @@ xhr.onload = function() {
 		render(){
 			return (
 				<React.Fragment>
-					<button onClick={afficherUtilis}>Liste utilisateurs</button>
-					<button onClick={nombreMateriel}> Nombre matériel </button>
-					<button onClick={ajoutMateriel}> Ajouter matériel </button>
-					<button onClick={afficherCommande}> Commandes effectuées </button>
+					<button className="btn btn-light m-1" onClick={afficherUtilis}>Liste utilisateurs</button>
+					<button className="btn btn-light m-1" onClick={nombreMateriel}> Nombre matériel </button>
+					<button className="btn btn-light m-1" onClick={ajoutMateriel}> Ajouter matériel </button>
+					<button className="btn btn-light m-1" onClick={afficherCommande}> Commandes effectuées </button>
 				</React.Fragment>);
 		}
 	}
@@ -40,7 +40,7 @@ xhr_materiel.onload = function() {
 xhr_materiel.send();
 
 let xhr_commande = new XMLHttpRequest();
-xhr_commande.open("GET", "http://localhost/all-commande");
+xhr_commande.open("GET", "http://localhost/all-commande?connexion="+GetCookie("connexion")+"&motdepasse="+GetCookie("motdepasse"));
 xhr_commande.onload = function() {
 	commandes=xhr_commande.responseText;
 
@@ -88,7 +88,7 @@ class ListeUtilis extends React.Component {
 		});
 
 		return (
-			<div id={"utilisateurs"} className="overflow utilis">
+			<div id={"utilisateurs"} className="overflow utilis table-utilisateurs">
 
 				<table className="table">
 					<thead>
@@ -163,7 +163,7 @@ class ListeMateriel extends React.Component {
 					{rows}
 					</tbody>
 				</table>
-				<button onClick={sendNumber}>Envoyer</button>
+				<button className="btn btn-light" onClick={sendNumber}>Envoyer</button>
 			</div>
 		);
 	}
@@ -264,16 +264,21 @@ class AjoutMateriel extends React.Component {
 		xhr2.setRequestHeader("content-type", "application/json");
 		xhr2.onload = function () {
 			console.log(xhr2.responseText);
-			if (xhr.responseText == "success") {
+			if (xhr2.responseText == "success") {
 				alert("Matériel ajouté avec succès");
 				nom.value = "";
 				categorie.value = "";
 				prix.value = "";
 				nombre.value = "";
-				description = "";
+				description.value = "";
 			}
-			else if (xhr.responseText === "nomInvalid") {
-				alert("nomInvalid");
+			else if (xhr2.responseText === "erreur") {
+				alert("le matériel existe déjà");
+				nom.value = "";
+				categorie.value = "";
+				prix.value = "";
+				nombre.value = "";
+				description.value = "";
 				document.getElementById("nom").innerHTML =
 					"<input type=\"text\" className=\"form-control w-25\" id=\"nom\" placeholder=\"Nom du matériel\" required>"
 			}
@@ -303,11 +308,11 @@ class AjoutMateriel extends React.Component {
 						<legend>Veuillez remplir les champs ci-dessous pour ajouter du matériel.</legend>
 						<div className="form-group">
 							<label htmlFor="nom">Entrez le nom du matériel</label>
-							<input type="text" className="form-control w-25" id="nom" placeholder="Nom du matériel" required/>
+							<input type="text" className="form-control form-mat" id="nom" placeholder="Nom du matériel" required/>
 						</div>
 						<div className="form-group">
 							<label htmlFor="categorie">Choisissez la catégorie</label>
-							<select className="form-control w-25" id="categorie" name="select" required>
+							<select className="form-control form-mat" id="categorie" name="select" required>
 								<option value="1">Caisson</option>
 								<option value="2">Top 2 voies</option>
 								<option value="3">Ampli</option>
@@ -316,12 +321,12 @@ class AjoutMateriel extends React.Component {
 						</div>
 						<div className="form-group">
 							<label htmlFor="prix">Entrez le prix</label>
-							<input type="number" name="prix" className="form-control w-25" id="prix" min="0"
+							<input type="number" name="prix" className="form-control form-mat" id="prix" min="0"
 								   placeholder="0" required/>
 						</div>
 						<div className="form-group">
 							<label htmlFor="nombre">Entrez le nombre d'articles</label>
-							<input type="number" name="nombre" className="form-control w-25" id="nombre" min="0"
+							<input type="number" name="nombre" className="form-control form-mat" id="nombre" min="0"
 								   placeholder="0" required/>
 						</div>
 						<div className="form-group">
@@ -349,12 +354,12 @@ class Commande extends React.Component {
 
 	creerCommande(mail){
 		let commandeUtilis = "";
-		console.log(typeof mail.target.value);
+
 
 		JSON.parse(commandes).forEach((item)=>{
-			console.log(typeof item.id_commande);
+
 			if(Number(mail.target.value)  === item.id_commande){
-				console.log("toto");
+
 				commandeUtilis+= "<tr><td scope='row'>"+item.nom+"</td><td>"+item.nombre+"</td><td>"+item.prix+"</td> </tr>";
 			}
 
@@ -372,9 +377,9 @@ class Commande extends React.Component {
 					<td scope="row">{this.props.commande[0]}</td>
 					<td>{this.props.prix}</td>
 					<td>
-						<button className="btn btn-primary" type="button" data-toggle="collapse" onClick={this.creerCommande} value={this.props.commande[0]}
+						<button className="btn btn-light" type="button" data-toggle="collapse" onClick={this.creerCommande} value={this.props.commande[0]}
 								data-target={"#"+this.props.commande[0]} aria-expanded="false" aria-controls="collapseExample" >
-							V
+							Détail
 						</button></td>
 				</tr>
 				<tr className="collapse infoC" id={this.props.commande[0]} >
@@ -417,13 +422,13 @@ class AfficherCommande extends React.Component {
 
 
 		return (
-			<div  className="overflow">
+			<div  className="overflow table-commande">
 
-				<table className="table">
+				<table className="table ">
 					<thead>
 					<tr>
 						<th scope="col">Mail</th>
-						<th scope="col">ID commande</th>
+						<th scope="col">ID</th>
 						<th scope="col">prix</th>
 						<th scope="col"></th>
 					</tr>

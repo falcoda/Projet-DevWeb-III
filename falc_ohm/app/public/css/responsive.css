@@ -31,6 +31,7 @@
     }
 
 
+
 /* responsive page matériel */
     #materielsTable{
         grid-template-columns: 1fr;
@@ -47,6 +48,22 @@
 
     #gender1{
         width: 90%;
+    }
+
+    /* page autentification */
+    .form-autent{
+        width: 150px;
+    }
+
+    .form-mat{
+        width: 150px;
+    }
+    .table-commande .table td, .table-commande .table th{
+        padding: .2rem;
+    }
+    .table-utilisateurs .table td, .table-utilisateurs .table th{
+        padding: .2rem;
+        font-size: 11px;
     }
 
 }
@@ -91,6 +108,11 @@
     #typeSelect{
         width: 99%;
         padding: 3%;
+    }
+
+    /* page autentification */
+    .form-autent{
+        width: 200px;
     }
 
 
@@ -141,6 +163,17 @@
         width: 99%;
         padding: 3%;
     }
+    /* page autentification */
+    .form-autent{
+        width: 200px;
+    }
+
+    /* page audministration */
+    .form-mat{
+        width: 200px;
+    }
+
+
 
 }
 
@@ -188,7 +221,15 @@
         width: 99%;
         padding: 3%;
     }
+    /* page autentification */
+    .form-autent{
+        width: 200px;
+    }
 
+    /* page audministration */
+    .form-mat{
+        width: 200px;
+    }
 
 }
 
@@ -234,6 +275,15 @@
     #typeSelect{
         width: 99%;
         padding: 3%;
+    }
+    /* page autentification */
+    .form-autent{
+        width: 200px;
+    }
+
+    /* page audministration */
+    .form-mat{
+        width: 200px;
     }
 
 }

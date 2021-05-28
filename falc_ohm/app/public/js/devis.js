@@ -171,7 +171,7 @@ function prefLightAndSound(objet, pref) {
         }
 
     }else {
-        console.log("pas de pref du coup " + tableauValue[1])
+        console.log("pas de pref du coup " + tableauValue[1]);
         if (tableauValue[2] == "light1"){ //preferences show light
             tableobj = lightDevis('big');
             generationDevis(tableobj);
@@ -192,7 +192,7 @@ function prefLightAndSound(objet, pref) {
 function auPanier(){
     let panier;
     let xhr_panier = new XMLHttpRequest();
-    xhr_panier.open("POST", "http://localhost/nouveau-panier");
+    xhr_panier.open("POST", "http://localhost/nouveau-panier?connexion="+GetCookie("connexion")+"&motdepasse="+GetCookie("motdepasse"));
     xhr_panier.setRequestHeader("content-type", "application/json");
     xhr_panier.onload = function() {
         if (xhr_panier.responseText === "error"){
@@ -203,6 +203,9 @@ function auPanier(){
         }
         else if (xhr_panier.responseText === "succes"){
             alert('Vos articles ont été ajoutés au panier ! Veuillez vous rendre sur votre page panier pour le consulter');
+        }
+        else if (xhr_panier.responseText === "connect"){
+            alert('Veuillez vous connecter pour enregistrer un panier');
         }
     };
 

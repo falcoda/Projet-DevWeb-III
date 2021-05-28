@@ -25,37 +25,24 @@ class Connexion extends React.Component {
 			motdepasse1: motdepasse1.value,
 		};
 
-		console.log(data1);
-
-		let tableUtilisateurs =[];
+		let bonUtilisateur;
 		let xhr = new XMLHttpRequest();
 
-		xhr.open("GET", "http://localhost/utilisateurs");
+		xhr.open("GET", "http://localhost/utilisateurs?adressemail="+data1.adressemail1+"&motdepasse="+data1.motdepasse1);
 		xhr.setRequestHeader("content-type", "application/json");
 		xhr.onload = function () {
-			tableUtilisateurs =  JSON.parse(xhr.responseText);
-			let compteur = 0;
-			for (let i of tableUtilisateurs) {
-				compteur++;
-				if (data1.adressemail1 == i.adressemail && data1.motdepasse1 == i.motdepasse) {
-					let duree_cookie = 100;         // durée de vie du cookie en jours
-					let expiration = new Date();    // date et heure courante en format texte
-					expiration.setTime(expiration.getTime() + (duree_cookie * 24*60*60*1000));
-					// => on peut utiliser la variable "expiration"
-					SetCookie ("connexion",data1.adressemail1,expiration,null,null,false);
-					SetCookie ("motdepasse",data1.motdepasse1,expiration,null,null,false);
-					// eslint-disable-next-line no-undef
-					utilisateurConnecte = GetCookie("connexion");
-					motdepasse = GetCookie("motdepasse");
-					console.log("succès");
-					document.location.href="profil"
-					break;
-				}
-				else if (compteur == tableUtilisateurs.length) {
-					// MESSAGE D'ERREUR
-				}
-
-			}
+			bonUtilisateur =  xhr.responseText.split(" ");
+			let duree_cookie = 100;         // durée de vie du cookie en jours
+			let expiration = new Date();    // date et heure courante en format texte
+			expiration.setTime(expiration.getTime() + (duree_cookie * 24*60*60*1000));
+			// => on peut utiliser la variable "expiration"
+			SetCookie ("connexion",bonUtilisateur[0],expiration,null,null,false);
+			SetCookie ("motdepasse",bonUtilisateur[1],expiration,null,null,false);
+			// eslint-disable-next-line no-undef
+			utilisateurConnecte = GetCookie("connexion");
+			motdepasse = GetCookie("motdepasse");
+			console.log("succès");
+			document.location.href="/"
 		};
 		xhr.send();
 		event.preventDefault();
@@ -68,12 +55,12 @@ class Connexion extends React.Component {
 					<legend>Connexion</legend>
 					<div className="form-group">
 						<label htmlFor="adressemail1">Entrez votre adresse mail</label>
-						<input type="email" className="form-control w-25" id="adressemail1"
+						<input type="email" className="form-control form-autent" id="adressemail1"
 							   placeholder="Adresse mail" required/>
 					</div>
 					<div className="form-group">
 						<label htmlFor="motdepasse1">Entrez votre mot de passe</label>
-						<input type="password" className="form-control w-25" id="motdepasse1"
+						<input type="password" className="form-control form-autent" id="motdepasse1"
 							   placeholder="Mot de passe" required/>
 					</div>
 					<input type="submit" className="btn btn-light" id="buttonSubmit" value={"Connexion"}/>
@@ -181,32 +168,32 @@ class Inscription extends React.Component {
 					<legend>Inscription</legend>
 					<div className="form-group">
 						<label htmlFor="nom">Entrez votre nom</label>
-						<input type="text" className="form-control w-25" id="nom" placeholder="Nom" required/>
+						<input type="text" className="form-control form-autent" id="nom" placeholder="Nom" required/>
 					</div>
 					<div className="form-group">
 						<label htmlFor="prenom">Entrez votre prénom</label>
-						<input type="text" className="form-control w-25" id="prenom" placeholder="Prénom" required/>
+						<input type="text" className="form-control form-autent" id="prenom" placeholder="Prénom" required/>
 					</div>
 					<div className="form-group">
 						<label htmlFor="numerotel">Entrez votre numéro de téléphone</label>
-						<input type="tel" className="form-control w-25" id="numerotel"
+						<input type="tel" className="form-control form-autent" id="numerotel"
 							   pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$"
 							   placeholder="(+32)499 999999" required/>
 					</div>
 					<div className="form-group">
 						<label htmlFor="adressemail2">Entrez votre adresse mail</label>
-						<input type="email" className="form-control w-25" id="adressemail2" placeholder="Adresse mail"
+						<input type="email" className="form-control form-autent" id="adressemail2" placeholder="Adresse mail"
 							   required/>
 					</div>
 					<div className="form-group">
 						<label htmlFor="motdepasse2">Entrez votre mot de passe</label>
-						<input type="password" className="form-control w-25" id="motdepasse2"
+						<input type="password" className="form-control form-autent" id="motdepasse2"
 							   placeholder="Min. 8 caractères" minLength="8"
 							   required/>
 					</div>
 					<div className="form-group">
 						<label htmlFor="confirmation">Veuillez confirmer votre mot de passe</label>
-						<input type="password" className="form-control w-25" id="confirmation" minLength="8"
+						<input type="password" className="form-control form-autent" id="confirmation" minLength="8"
 							   placeholder="Confirmation du mot de passe" required/>
 					</div>
 					<input type="submit" className="btn btn-light" id="buttonSubmit2" value={"Inscription"}/>
@@ -231,7 +218,7 @@ class PageAuthentification extends React.Component {
 	render() {
 		if (utilisateurConnecte == null) {
 			return (
-				<div id="content" className="m-auto px-2">
+				<div id="content" className="m-auto w-xl-80 w-lg-85 w-md-90 w-sm-90 w-90 mt-5">
 					<React.Fragment>
 						<Connexion/>
 						<Inscription/>
@@ -241,7 +228,7 @@ class PageAuthentification extends React.Component {
 		}
 		else {
 			return (
-				<div id="content" className="m-auto px-2">
+				<div id="content" className="m-auto px-2 w-xl-80 w-lg-85 w-md-90 w-sm-90 w-90 mt-5">
 					<h3>Vous êtes déjà connecté.</h3>
 				</div>
 			)
