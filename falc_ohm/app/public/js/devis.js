@@ -1,6 +1,7 @@
 let tableauGeneral = [];
 let utilisateurConnecte = GetCookie("connexion");
 function generationDevis(objet) {
+
     let elem = document.getElementById("devis");
     let writing = "";
     let totalPrix = 0;
@@ -11,12 +12,7 @@ function generationDevis(objet) {
     }
     writing += "<tr><td>Prix total</td><td></td><td>" + totalPrix + "</td></tr><table>";
     elem.innerHTML += writing;   //BUG
-    /* let elem = "<table> <tr><th>Matériel</th><th>Nombre</th><th>Prix</th></tr>"
-    for (let i = 0 ; i < objet.length ; i++){
-        elem += "<tr><td>" + objet[i].denom + "</td><td>" + objet[i].nombre + "</td><td>" + objet[i].prix + "</td></tr>"
-    }
-    console.log(elem);
-    ReactDOM.render(elem, document.getElementById('devis')) */
+
 
 }
 let materiel;
@@ -24,12 +20,13 @@ let xhr_materiel = new XMLHttpRequest();
 xhr_materiel.open("GET", "http://localhost/materiel/json");
 xhr_materiel.onload = function() {
     materiel=xhr_materiel.responseText;
-    console.log(JSON.parse(materiel));
+
 
 };
 xhr_materiel.send();
 
 function boucle(tableau, name , number) {
+
     let retour = {
         id : 0,
         denom : '',
@@ -91,10 +88,17 @@ function prefLightAndSound(objet, pref) {
     let tableobj = [];
     var bdd = JSON.parse(materiel);
     var tableauValue = Object.values(objet);
-    if (pref == "sound"){
-        let elem = document.getElementById("devis");
-        elem.innerHTML = ""   //supprimer le sound déjà existant
+
+    if(obj !=={}){
+        if (tableauValue[2] == "light1"){ //preferences show light
+            tableobj = lightDevis('big');
+            generationDevis(tableobj);
+        }else if (tableauValue[2] == "light2") {
+            tableobj = lightDevis('small');
+            generationDevis(tableobj);
+        }
     }
+    else{
     if(tableauValue[1] == "sound1"){ //preference sonorisation
         obj = boucle(bdd,'nexo SI 2000', 4);
         tableobj.push(obj);
@@ -179,7 +183,7 @@ function prefLightAndSound(objet, pref) {
         }else{
             console.log("pas de pref light")
         }
-    }
+    }}
 
 
 }
@@ -192,22 +196,22 @@ function auPanier(){
     xhr_panier.setRequestHeader("content-type", "application/json");
     xhr_panier.onload = function() {
         if (xhr_panier.responseText === "error"){
-            alert('Vous possédez déjà un panier')
+            alert('Vous possédez déjà un panier');
         }
-        if (xhr_panier.responseText === "vide"){
-            alert('Merci d\'effectuer une simulation')
+        else if (xhr_panier.responseText === "vide"){
+            alert('Merci d\'effectuer une simulation');
         }
-        if (xhr_panier.responseText === "succes"){
-            alert('Vos articles ont été ajoutés au panier ! Veuillez vous rendre sur votre page profil pour le consulter')
+        else if (xhr_panier.responseText === "succes"){
+            alert('Vos articles ont été ajoutés au panier ! Veuillez vous rendre sur votre page panier pour le consulter');
         }
     };
-    console.log(tableauGeneral);
+
     xhr_panier.send(JSON.stringify({data : tableauGeneral, mail :utilisateurConnecte}));
 }
 
 function conditionForms(etat){
     const data = JSON.stringify(etat);
-    console.log(data);
+
     let tableobj = [];
     let obj = {};
     let bdd = JSON.parse(materiel);
@@ -222,7 +226,7 @@ function conditionForms(etat){
             tableobj.push(obj);
             obj = boucle(bdd, 'Quadro 500DSP', 1);
             tableobj.push(obj);
-            console.log(tableobj);
+
             generationDevis(tableobj);
             if (etat.typeSound != "soundAuto") {
                 prefLightAndSound(etat, "sound");
@@ -457,8 +461,6 @@ function conditionForms(etat){
             } else if (etat.typeLight != "lightAuto") {
                 prefLightAndSound(etat, "light");
             }
-        } else {
-            console.log("error holder")
         }
         //}else if(etat.typeEvenement == "event4"){ //teuf
     } else if (etat.typeEvenement == "event5") { //conference ou seminaire
@@ -495,11 +497,11 @@ function conditionForms(etat){
                 prefLightAndSound(etat, "light");
             }
         } else {
-            console.log("Nous somme pas en mesure de fournir une telle préstation, veuillez nous contacter pour plus d'info")
+            alert("Nous somme pas en mesure de fournir une telle préstation, veuillez nous contacter pour plus d'info")
         }
 
     } else {   //pas de type d'event séléctionné => l'afficher sur la page html qe c'est requis
-        console.log("choisisez un type d'événement")
+        alert("choisisez un type d'événement")
     }
 }
 
@@ -533,15 +535,16 @@ class MyForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const data = JSON.stringify(this.state);
-        console.log(data);
+
         let tableobj = [];
         let obj = {};
         let bdd = JSON.parse(materiel);
-        let elem = document.getElementById("devis")
-        if (elem.innerText == "") {    //vérification si la simulation a deja ete faite
+        let elem = document.getElementById("devis");
+        if (elem.innerText === "") {    //vérification si la simulation a deja ete faite
             conditionForms(this.state);
         } else {
             elem.innerHTML = "";
+            tableauGeneral=[];
             conditionForms(this.state);
         }
     }

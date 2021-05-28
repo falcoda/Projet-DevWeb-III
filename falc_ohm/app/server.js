@@ -341,31 +341,35 @@ function verifieAdmin(connexion, motdepasse) {
 
 app.post("/nouveau-panier", (request, response)=> {
 	let panier = request.body;
-	console.log(request.body.data);
+
 	let mail = request.body.mail;
 	if (request.body.data.length !== 0 ){
 		con.query("select id_utilisateurs from utilisateurs where utilisateurs.adressemail = ?",[mail], function (err, result) {
 			let id_utilisateurs = result[0].id_utilisateurs;
 			con.query("select id_panier from panier where id_utilisateurs = ? ", [id_utilisateurs], function(err, result) {
-				console.log(result);
+
 				if (result.length === 0) {
-					console.log("cc")
+
 					con.query("INSERT INTO falcohm.panier (id_utilisateurs) VALUES (?);", [id_utilisateurs], function (err, result) {
 						if (result !== []) {
 							con.query("select id_panier from panier where id_utilisateurs = ? ", [id_utilisateurs], function (err, result) {
 								let id_panier = result[0].id_panier;
 								request.body.data.forEach((item) => {
-									console.log(result);
+
 									con.query("INSERT INTO falcohm.panier_elem (id_panier, id_materiel, nombre) VALUES (? , ? , ?);", [id_panier, item.id, item.nombre], function (err, result) {
-										response.send("succes");});
-								})
+
+									});
+
+								});
+								response.send("succes");
 							})
 						}
 					})
 				}else {
 					response.send("error");
 				}
-			})
+			});
+
 		})}
 	else {
 		response.send("vide");
